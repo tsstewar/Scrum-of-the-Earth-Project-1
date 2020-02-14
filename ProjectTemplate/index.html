@@ -64,21 +64,83 @@
 
 	<!--AND YOUR OWN CSS CAN GO HERE AS WELL-->
 	<style>
+        @font-face {
+            font-family: Poppins-Regular;
+            src: url('../fonts/poppins/Poppins-Regular.ttf');
+        }
 
+        @font-face {
+            font-family: Poppins-Bold;
+            src: url('../fonts/poppins/Poppins-Bold.ttf');
+        }
+
+        @font-face {
+            font-family: Poppins-Medium;
+            src: url('../fonts/poppins/Poppins-Medium.ttf');
+        }
+
+        @font-face {
+            font-family: Montserrat-Bold;
+            src: url('../fonts/montserrat/Montserrat-Bold.ttf');
+        }
+
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: Poppins-Regular, sans-serif;
+        }
+
+        .page {
+            width: 100%;
+            margin: 0 auto;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            padding-top: 150px;
+            display: grid;
+            background: #f3f2f2;
+        }
+
+        .loginbox {
+            width: 960px;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 300px 150px 50px 100px;
+            background: white;
+        }
+
+        .header {
+            align-items: baseline;
+            color: #2a7886;
+        }
 	</style>
 	<!--END OF YOUR OWN CSS-->
 </head >
 <body>
-    <h1>Want to track time?</h1>
-    <h2>Log in to Timr!</h2>
-    <form>
-        <br />
+    <div class="page">
+        <div class="loginbox">
+        <div class="header">
+            <h1>Want to track time?</h1>
+            <h2>Log in to Timr!</h2>
+            <br />
+        </div>
+    <div class="input">
         <h3>Username</h3>
         <input type="text" id="logonId" />
         <h3>Password</h3>
         <input type="text" id="logonPass" />
         <br />
-        <button onclick="javascript: logon();">Log On!</button>
-    </form>
+        <button onclick="javascript: logon();">Log In</button>
+        </div>
+    </div>
+    </div>
 </body>
 </html >
