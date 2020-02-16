@@ -58,6 +58,52 @@
             });
         }
 
+        //TIMER PORTION JS
+        var h5 = document.getElementsByTagName('h5'),
+            start = document.getElementById('start'),
+            stop = document.getElementById('stop'),
+            clear = document.getElementById('clear'),
+            seconds = 0, minutes = 0, hours = 0,
+            t;
+
+        function add() {
+            seconds++;
+            if (seconds >= 60) {
+                seconds = 0;
+                minutes++;
+                if (minutes >= 60) {
+                    minutes = 0;
+                    hours++;
+                }
+            }
+            document.getElementById("h5").innerHTML = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
+            //h5.textContent = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
+
+            timer();
+        }
+
+        function timer() {
+            t = setTimeout(add, 1000);
+        }
+        //timer();
+
+
+        /* Start button */
+        //start.onclick = timer();
+
+
+        /* Stop button */
+        function plzstop() {
+            clearTimeout(t);
+        }
+
+        /* Clear button */
+        function clearnow() {
+            document.getElementById("h5").innerHTML = "00:00:00";
+            seconds = 0; minutes = 0; hours = 0;
+        }
+        //END TIMER PORTION
+
 
 	</script>
 	<!--END OF YOUR OWN JAVASCRIPT-->
@@ -80,5 +126,13 @@
         <br />
         <button onclick="javascript: logon();">Log On!</button>
     </form>
+
+    <!--TIMER HTML-->
+    <br /><br /><br />
+    <h5 id="h5"><time>00:00:00</time></h5>
+    <button onclick="timer()">start</button>
+    <button onclick="plzstop()">stop</button>
+    <button onclick="clearnow()">clear</button>
+
 </body>
 </html >
