@@ -132,6 +132,10 @@
         }
         //END TIMER PORTION
 
+        function logtime() {
+            var time = document.getElementById("h5").innerHTML;
+        }
+
 	</script>
 	<!--END OF YOUR OWN JAVASCRIPT-->
 
@@ -162,7 +166,7 @@
     <button id="stop" onclick="plzstop()">stop</button>
     <button id="clear" onclick="clearnow()">clear</button>
     <input id="timeComment"  placeholder="Enter a comment">
-    <button id="logBtn">Log Time</button>
+    <button id="logBtn" onclick="logtime()">Log Time</button>
 
 
 </body>
