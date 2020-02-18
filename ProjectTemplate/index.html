@@ -141,8 +141,11 @@
             var cell1 = row.insertCell(0);
             var cell2 = row.insertCell(1);
 
-            cell2.innerHTML = $("#timeComment").value;
-            cell2.innerHTML = $("#h5").value;
+            //cell2.innerHTML = $("#timeComment").value;
+            //cell2.innerHTML = $("#h5").value;
+
+            cell1.innerHTML = document.getElementById("timeComment").value;
+            cell2.innerHTML = document.getElementById("h5").innerHTML;
 
             clearnow();
         }
