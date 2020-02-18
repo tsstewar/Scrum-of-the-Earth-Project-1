@@ -19,7 +19,9 @@
 			$("#h5").hide();
 			$("#start").hide();
 			$("#stop").hide();
-			$("#clear").hide();
+            $("#clear").hide();
+            $("#timeComment").hide();
+            $("#logBtn").hide();
 		})
 
 
@@ -67,7 +69,9 @@
 						$("#h5").show();
 						$("#start").show();
 						$("#stop").show();
-						$("#clear").show();
+                        $("#clear").show();
+                        $("#timeComment").show();
+                        $("#logBtn").show();
 
                     }
                     else {
@@ -75,7 +79,9 @@
 						$("#h5").hide();
 						$("#start").hide();
 						$("#stop").hide();
-						$("#clear").hide();
+                        $("#clear").hide();
+                        $("#timeComment").hide();
+                        $("#logBtn").hide();
                     }
                 },
                 error: function (e) {
@@ -126,8 +132,6 @@
         }
         //END TIMER PORTION
 
-
-
 	</script>
 	<!--END OF YOUR OWN JAVASCRIPT-->
 
@@ -141,14 +145,14 @@
     <h1>Want to track time?</h1>
     <h2>Log in to Timr!</h2>
 
-        <br />
-        <h3>Username</h3>
-        <input type="text" id="logonId" />
-        <h3>Password</h3>
-        <input type="text" id="logonPass" />
-        <br />
-		<br />
-        <button onclick="javascript: logon();">Log On!</button>
+    <br />
+    <h3>Username</h3>
+    <input type="text" id="logonId" />
+    <h3>Password</h3>
+    <input type="text" id="logonPass" />
+    <br />
+    <br />
+    <button onclick="javascript: logon();">Log On!</button>
 
 
     <!--TIMER HTML-->
@@ -157,6 +161,9 @@
     <button id="start" onclick="timer()">start</button>
     <button id="stop" onclick="plzstop()">stop</button>
     <button id="clear" onclick="clearnow()">clear</button>
+    <input id="timeComment"  placeholder="Enter a comment">
+    <button id="logBtn">Log Time</button>
+
 
 </body>
 </html >
