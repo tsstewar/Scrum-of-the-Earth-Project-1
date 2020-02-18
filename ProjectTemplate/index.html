@@ -8,9 +8,28 @@
 
 	<!--YOUR OWN JAVASCRIPT CAN GO RIGHT HERE-->
 	<script type="text/javascript">
+		var h5 = document.getElementsByTagName('h5'),
+			start = document.getElementById('start'),
+			stop = document.getElementById('stop'),
+			clear = document.getElementById('clear'),
+			seconds = 0, minutes = 0, hours = 0,
+			t;
+
+		window.addEventListener('load', () => { 
+			$("#h5").hide();
+			$("#start").hide();
+			$("#stop").hide();
+            $("#clear").hide();
+            $("#timeComment").hide();
+            $("#logBtn").hide();
+            $("#logTable").hide();
+		})
+
+
 		function TestButtonHandler() {
 			var webMethod = "ProjectServices.asmx/TestConnection";
-			var parameters = "{}";
+			var parameters = "{}";			
+
 
 			//jQuery ajax method
 			$.ajax({
@@ -35,6 +54,7 @@
 
             var webMethod = "ProjectServices.asmx/logon";
             var parameters = "{\"uid\":\"" + encodeURI(id) + "\", \"pass\":\"" + encodeURI(pass) + "\"} ";
+			
 
             //jQuery ajax method
             $.ajax({
@@ -46,10 +66,24 @@
                 success: function (msg) {
                     var responseFromServer = msg.d;
                     if (responseFromServer == true) {
-                        alert("logged in!")
+						alert("logged in!")
+						$("#h5").show();
+						$("#start").show();
+						$("#stop").show();
+                        $("#clear").show();
+                        $("#timeComment").show();
+                        $("#logBtn").show();
+                        $("#logTable").show();
                     }
                     else {
-                        alert("bad credentials")
+						alert("bad credentials")
+						$("#h5").hide();
+						$("#start").hide();
+						$("#stop").hide();
+                        $("#clear").hide();
+                        $("#timeComment").hide();
+                        $("#logBtn").hide();
+                        $("#logTable").hide();
                     }
                 },
                 error: function (e) {
@@ -59,12 +93,8 @@
         }
 
         //TIMER PORTION JS
-        var h5 = document.getElementsByTagName('h5'),
-            start = document.getElementById('start'),
-            stop = document.getElementById('stop'),
-            clear = document.getElementById('clear'),
-            seconds = 0, minutes = 0, hours = 0,
-            t;
+
+			
 
         function add() {
             seconds++;
@@ -104,12 +134,28 @@
         }
         //END TIMER PORTION
 
+        //function to clear the timer and show a log entry with the recorded time and comment in a table below the timer
+        function logtime() {
+            var table = document.getElementById("logTable");
+            var row = table.insertRow(1);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+
+            //cell2.innerHTML = $("#timeComment").value;
+            //cell2.innerHTML = $("#h5").value;
+
+            cell1.innerHTML = document.getElementById("timeComment").value;
+            cell2.innerHTML = document.getElementById("h5").innerHTML;
+
+            clearnow();
+        }
 
 	</script>
 	<!--END OF YOUR OWN JAVASCRIPT-->
 
 	<!--AND YOUR OWN CSS CAN GO HERE AS WELL-->
 	<style>
+<<<<<<< HEAD
         @font-face {
             font-family: Poppins-Regular;
             src: url('../fonts/poppins/Poppins-Regular.ttf');
@@ -167,10 +213,48 @@
             align-items: baseline;
             color: #2a7886;
         }
+=======
+        #logTable {
+            font-family: verdana, arial, sans-serif;
+            font-size: 11px;
+            color: #333333;
+            border-width: 1px;
+            border-color: #3A3A3A;
+            border-collapse: collapse;
+        }
+
+        #logTable th {
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            border-color: #517994;
+            background-color: #B2CFD8;
+        }
+
+        #logTable tr:hover td {
+            background-color: #DFEBF1;
+        }
+
+        #logTable td {
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            border-color: #517994;
+            background-color: #ffffff;
+        }
+		#h5 {
+			border-style: solid;
+			border-color: black;
+			border-width: 1px;
+			display: inline;
+			padding: 3px;
+		}
+>>>>>>> ab14fc4b19de07d8fb2d17feeb481aedbb52b6ed
 	</style>
 	<!--END OF YOUR OWN CSS-->
 </head >
 <body>
+<<<<<<< HEAD
     <div class="page">
         <div class="loginbox">
         <div class="header">
@@ -191,13 +275,48 @@
 =======
         <button onclick="javascript: logon();">Log On!</button>
     </form>
+=======
+    <h1>Want to track time?</h1>
+    <h2>Log in to Timr!</h2>
+
+    <br />
+    <h3>Username</h3>
+    <input type="text" id="logonId" />
+    <h3>Password</h3>
+    <input type="text" id="logonPass" />
+    <br />
+    <br />
+    <button onclick="javascript: logon();">Log On!</button>
+
+>>>>>>> ab14fc4b19de07d8fb2d17feeb481aedbb52b6ed
 
     <!--TIMER HTML-->
     <br /><br /><br />
     <h5 id="h5"><time>00:00:00</time></h5>
-    <button onclick="timer()">start</button>
-    <button onclick="plzstop()">stop</button>
-    <button onclick="clearnow()">clear</button>
+    <button id="start" onclick="timer()">start</button>
+    <button id="stop" onclick="plzstop()">stop</button>
+    <button id="clear" onclick="clearnow()">clear</button>
+    <input id="timeComment" placeholder="Enter a comment">
+    <button id="logBtn" onclick="logtime()">Log Time</button>
+
+    <!--Table for the timer log-->
+    <br /><br /><br />
+    <table id="logTable">
+        <tr>
+            <th>Log Comment</th>
+            <th>Time Logged</th>
+        </tr>
+        <tr>
+            <td>Team meeting</td>
+            <td>00:01:23</td>
+        </tr>
+        <tr>
+            <td>Contract negotitions</td>
+            <td>00:04:12</td>
+        </tr>
+    </table>
+    <br />
+
 
 >>>>>>> 56e042904e6732ba10e3bdeddd1f427c91558ccf
 </body>
