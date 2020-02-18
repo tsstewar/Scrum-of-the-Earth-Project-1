@@ -15,83 +15,6 @@
 			seconds = 0, minutes = 0, hours = 0,
 			t;
 
-		window.addEventListener('load', () => { 
-			$("#h5").hide();
-			$("#start").hide();
-			$("#stop").hide();
-            $("#clear").hide();
-            $("#timeComment").hide();
-            $("#logBtn").hide();
-            $("#logTable").hide();
-		})
-
-
-		function TestButtonHandler() {
-			var webMethod = "ProjectServices.asmx/TestConnection";
-			var parameters = "{}";			
-
-
-			//jQuery ajax method
-			$.ajax({
-				type: "POST",
-				url: webMethod,
-				data: parameters,
-				contentType: "application/json; charset=utf-8",
-				dataType: "json",
-				success: function (msg) {
-					var responseFromServer = msg.d;
-					alert(responseFromServer);
-				},
-				error: function (e) {
-					alert("this code will only execute if javascript is unable to access the webservice");
-				}
-			});
-        }
-
-        function logon() {
-            var id = document.getElementById("logonId").value;
-            var pass = document.getElementById("logonPass").value;
-
-            var webMethod = "ProjectServices.asmx/logon";
-            var parameters = "{\"uid\":\"" + encodeURI(id) + "\", \"pass\":\"" + encodeURI(pass) + "\"} ";
-			
-
-            //jQuery ajax method
-            $.ajax({
-                type: "POST",
-                url: webMethod,
-                data: parameters,
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (msg) {
-                    var responseFromServer = msg.d;
-                    if (responseFromServer == true) {
-						alert("logged in!")
-						$("#h5").show();
-						$("#start").show();
-						$("#stop").show();
-                        $("#clear").show();
-                        $("#timeComment").show();
-                        $("#logBtn").show();
-                        $("#logTable").show();
-                    }
-                    else {
-						alert("bad credentials")
-						$("#h5").hide();
-						$("#start").hide();
-						$("#stop").hide();
-                        $("#clear").hide();
-                        $("#timeComment").hide();
-                        $("#logBtn").hide();
-                        $("#logTable").hide();
-                    }
-                },
-                error: function (e) {
-                    alert("this code will only execute if javascript is unable to access the webservice");
-                }
-            });
-        }
-
         //TIMER PORTION JS
 
 			
@@ -146,8 +69,6 @@
 
             cell1.innerHTML = document.getElementById("timeComment").value;
             cell2.innerHTML = document.getElementById("h5").innerHTML;
-
-            clearnow();
         }
 
 	</script>
@@ -155,65 +76,7 @@
 
 	<!--AND YOUR OWN CSS CAN GO HERE AS WELL-->
 	<style>
-<<<<<<< HEAD
-        @font-face {
-            font-family: Poppins-Regular;
-            src: url('../fonts/poppins/Poppins-Regular.ttf');
-        }
 
-        @font-face {
-            font-family: Poppins-Bold;
-            src: url('../fonts/poppins/Poppins-Bold.ttf');
-        }
-
-        @font-face {
-            font-family: Poppins-Medium;
-            src: url('../fonts/poppins/Poppins-Medium.ttf');
-        }
-
-        @font-face {
-            font-family: Montserrat-Bold;
-            src: url('../fonts/montserrat/Montserrat-Bold.ttf');
-        }
-
-        * {
-            margin: 0px;
-            padding: 0px;
-            box-sizing: border-box;
-        }
-
-        body, html {
-            height: 100%;
-            font-family: Poppins-Regular, sans-serif;
-        }
-
-        .page {
-            width: 100%;
-            margin: 0 auto;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-            padding-top: 150px;
-            display: grid;
-            background: #f3f2f2;
-        }
-
-        .loginbox {
-            width: 960px;
-            border-radius: 10px;
-            overflow: hidden;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            padding: 300px 150px 50px 100px;
-            background: white;
-        }
-
-        .header {
-            align-items: baseline;
-            color: #2a7886;
-        }
-=======
         #logTable {
             font-family: verdana, arial, sans-serif;
             font-size: 11px;
@@ -242,54 +105,17 @@
             border-color: #517994;
             background-color: #ffffff;
         }
-		#h5 {
-			border-style: solid;
-			border-color: black;
-			border-width: 1px;
-			display: inline;
-			padding: 3px;
-		}
->>>>>>> ab14fc4b19de07d8fb2d17feeb481aedbb52b6ed
+        #h5 {
+            border-style: solid;
+            border-color: black;
+            border-width: 1px;
+            display: inline;
+            padding: 3px;
+        }
 	</style>
 	<!--END OF YOUR OWN CSS-->
 </head >
 <body>
-<<<<<<< HEAD
-    <div class="page">
-        <div class="loginbox">
-        <div class="header">
-            <h1>Want to track time?</h1>
-            <h2>Log in to Timr!</h2>
-            <br />
-        </div>
-    <div class="input">
-        <h3>Username</h3>
-        <input type="text" id="logonId" />
-        <h3>Password</h3>
-        <input type="text" id="logonPass" />
-        <br />
-        <button onclick="javascript: logon();">Log In</button>
-        </div>
-    </div>
-    </div>
-=======
-        <button onclick="javascript: logon();">Log On!</button>
-    </form>
-=======
-    <h1>Want to track time?</h1>
-    <h2>Log in to Timr!</h2>
-
-    <br />
-    <h3>Username</h3>
-    <input type="text" id="logonId" />
-    <h3>Password</h3>
-    <input type="text" id="logonPass" />
-    <br />
-    <br />
-    <button onclick="javascript: logon();">Log On!</button>
-
->>>>>>> ab14fc4b19de07d8fb2d17feeb481aedbb52b6ed
-
     <!--TIMER HTML-->
     <br /><br /><br />
     <h5 id="h5"><time>00:00:00</time></h5>
@@ -316,8 +142,5 @@
         </tr>
     </table>
     <br />
-
-
->>>>>>> 56e042904e6732ba10e3bdeddd1f427c91558ccf
 </body>
 </html >
