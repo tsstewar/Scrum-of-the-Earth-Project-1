@@ -8,9 +8,25 @@
 
 	<!--YOUR OWN JAVASCRIPT CAN GO RIGHT HERE-->
 	<script type="text/javascript">
+		var h5 = document.getElementsByTagName('h5'),
+			start = document.getElementById('start'),
+			stop = document.getElementById('stop'),
+			clear = document.getElementById('clear'),
+			seconds = 0, minutes = 0, hours = 0,
+			t;
+
+		window.addEventListener('load', () => { 
+			$("#h5").hide();
+			$("#start").hide();
+			$("#stop").hide();
+			$("#clear").hide();
+		})
+
+
 		function TestButtonHandler() {
 			var webMethod = "ProjectServices.asmx/TestConnection";
-			var parameters = "{}";
+			var parameters = "{}";			
+
 
 			//jQuery ajax method
 			$.ajax({
@@ -35,6 +51,7 @@
 
             var webMethod = "ProjectServices.asmx/logon";
             var parameters = "{\"uid\":\"" + encodeURI(id) + "\", \"pass\":\"" + encodeURI(pass) + "\"} ";
+			
 
             //jQuery ajax method
             $.ajax({
@@ -46,10 +63,19 @@
                 success: function (msg) {
                     var responseFromServer = msg.d;
                     if (responseFromServer == true) {
-                        alert("logged in!")
+						alert("logged in!")
+						$("#h5").show();
+						$("#start").show();
+						$("#stop").show();
+						$("#clear").show();
+
                     }
                     else {
-                        alert("bad credentials")
+						alert("bad credentials")
+						$("#h5").hide();
+						$("#start").hide();
+						$("#stop").hide();
+						$("#clear").hide();
                     }
                 },
                 error: function (e) {
@@ -59,12 +85,8 @@
         }
 
         //TIMER PORTION JS
-        var h5 = document.getElementsByTagName('h5'),
-            start = document.getElementById('start'),
-            stop = document.getElementById('stop'),
-            clear = document.getElementById('clear'),
-            seconds = 0, minutes = 0, hours = 0,
-            t;
+
+			
 
         function add() {
             seconds++;
@@ -105,6 +127,7 @@
         //END TIMER PORTION
 
 
+
 	</script>
 	<!--END OF YOUR OWN JAVASCRIPT-->
 
@@ -117,22 +140,23 @@
 <body>
     <h1>Want to track time?</h1>
     <h2>Log in to Timr!</h2>
-    <form>
+    <form action="">
         <br />
         <h3>Username</h3>
         <input type="text" id="logonId" />
         <h3>Password</h3>
         <input type="text" id="logonPass" />
         <br />
+		<br />
         <button onclick="javascript: logon();">Log On!</button>
     </form>
 
     <!--TIMER HTML-->
     <br /><br /><br />
     <h5 id="h5"><time>00:00:00</time></h5>
-    <button onclick="timer()">start</button>
-    <button onclick="plzstop()">stop</button>
-    <button onclick="clearnow()">clear</button>
+    <button id="start" onclick="timer()">start</button>
+    <button id="stop" onclick="plzstop()">stop</button>
+    <button id="clear" onclick="clearnow()">clear</button>
 
 </body>
 </html >
