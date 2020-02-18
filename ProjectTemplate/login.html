@@ -97,8 +97,6 @@
             .page {
                 width: 100%;
                 margin: 0 auto;
-                justify-content: center;
-                align-items: center;
                 height: 100%;
                 display: grid;
                 background: #f3f2f2;
@@ -107,17 +105,81 @@
             .loginbox {
                 width: 960px;
                 border-radius: 10px;
-                overflow: hidden;
-                padding: 300px 150px 50px 100px;
                 background: white;
+                box-shadow: 20px 20px 50px grey;
             }
 
             .header {
                 color: #2a7886;
+                text-align: center;
             }
 
             .text {
                 padding-left:300px;
+                margin: 0px 0px 50px 50px;
+                padding-top
+            }
+
+            .logo {
+                margin-left: 15px;
+                margin-top: 15px;
+            }
+
+            input {
+                border-radius: 6px;
+                background-color: ghostwhite;
+                height: 30px;
+                width: 200px;
+                border-color: aliceblue;
+                border-width: .25px;
+                border-style:inset;
+                box-shadow: 5px 5px 5px lightgrey;
+                margin-left: 15px;
+            }
+
+            #login {
+                background-color: #6096BA;
+                border: none;
+                color: white;
+                width: 150px;
+                padding: 10px 20px;
+                margin: 4px 2px;
+                cursor: pointer;
+                border-radius: 8px;
+                font-weight: bold;
+                margin: 15px 40px;
+                margin-bottom: 50px;
+
+            }
+
+            h3 {
+                padding-bottom: 5px;
+                padding-top: 40px;
+                font-size: 15px;
+                color: darkslategrey;
+                margin-left: 15px;
+            }
+
+            h1 {
+                font-size: 50px;
+                color: #274C77;
+            }
+
+            h2 {
+                font-size: 20px;
+                color: #6096BA;
+            }
+
+            img {
+                width: 4%;
+                height: auto;
+            }
+
+            h4 {
+                font-family: 'Lucida Sans Typewriter';
+                font-size:25px;
+                color: darkslategrey;
+                margin-left:3px;
             }
 
         </style>
@@ -126,21 +188,26 @@
 </head>
 <body>
     <div class="page">
-        <div class="loginbox">
-            <div class="text">
+        <div class="logo">
+            <img src="timer.png">
+            <h4>Timr&reg;</h4>
+        </div>
+        <div class="text">
+            <div class="loginbox">
                 <div class="header">
                     <h1>Want to track time?</h1>
-                    <h2>Log in to Timr!</h2>
+                    <h2>Log in to your Timr Account.</h2>
                     <br />
                 </div>
-                <div class="input">
-                    <h3>Username</h3>
-                    <input type="text" id="logonId" />
-                    <h3>Password</h3>
-                    <input type="text" id="logonPass" />
-                    <br />
-                    <button onclick="javascript: logon();">Log In</button>
+                <div class="text">
+                    <div class="input">
+                        <h3>Username</h3>
+                        <input type="text" :focus id="logonId" />
+                        <h3>Password</h3>
+                        <input type="text" :focus id="logonPass" />
+                        <br />
+                        <button id="login" onclick="javascript: logon();">Log In</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
