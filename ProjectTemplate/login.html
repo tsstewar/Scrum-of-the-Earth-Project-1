@@ -1,0 +1,142 @@
+﻿﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Timr</title>
+    <!--DO NOT FORGET THIS SCRIPT TAG SO YOU CAN USE JQUERY!!!!!-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!--YOUR OWN JAVASCRIPT CAN GO RIGHT HERE-->
+    <script type="text/javascript">
+        function TestButtonHandler() {
+            var webMethod = "ProjectServices.asmx/TestConnection";
+            var parameters = "{}";
+
+            //jQuery ajax method
+            $.ajax({
+                type: "POST",
+                url: webMethod,
+                data: parameters,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (msg) {
+                    var responseFromServer = msg.d;
+                    alert(responseFromServer);
+                },
+                error: function (e) {
+                    alert("this code will only execute if javascript is unable to access the webservice");
+                }
+            });
+        }
+
+        function logon() {
+            var id = document.getElementById("logonId").value;
+            var pass = document.getElementById("logonPass").value;
+
+            var webMethod = "ProjectServices.asmx/logon";
+            var parameters = "{\"uid\":\"" + encodeURI(id) + "\", \"pass\":\"" + encodeURI(pass) + "\"} ";
+
+            //jQuery ajax method
+            $.ajax({
+                type: "POST",
+                url: webMethod,
+                data: parameters,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (msg) {
+                    var responseFromServer = msg.d;
+                    if (responseFromServer == true) {
+                        alert("logged in!")
+                    }
+                    else {
+                        alert("bad credentials")
+                    }
+                },
+                error: function (e) {
+                    alert("this code will only execute if javascript is unable to access the webservice");
+                }
+            });
+        }
+
+    </script>
+    <!--END OF YOUR OWN JAVASCRIPT-->
+    <!--AND YOUR OWN CSS CAN GO HERE AS WELL-->
+    <style>
+        @font-face {
+            font-family: Poppins-Regular;
+            src: url('../fonts/poppins/Poppins-Regular.ttf');
+        }
+
+        @font-face {
+            font-family: Poppins-Bold;
+            src: url('../fonts/poppins/Poppins-Bold.ttf');
+        }
+
+        @font-face {
+            font-family: Poppins-Medium;
+            src: url('../fonts/poppins/Poppins-Medium.ttf');
+        }
+
+        @font-face {
+            font-family: Montserrat-Bold;
+            src: url('../fonts/montserrat/Montserrat-Bold.ttf');
+        }
+
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: Poppins-Regular, sans-serif;
+        }
+
+        .page {
+            width: 100%;
+            margin: 0 auto;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            padding-top: 150px;
+            display: grid;
+            background: #f3f2f2;
+        }
+
+        .loginbox {
+            width: 960px;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 300px 150px 50px 100px;
+            background: white;
+        }
+
+        .header {
+            align-items: baseline;
+            color: #2a7886;
+        }
+    </style>
+    <!--END OF YOUR OWN CSS-->
+</head>
+<body>
+    <div class="page">
+        <div class="loginbox">
+            <div class="header">
+                <h1>Want to track time?</h1>
+                <h2>Log in to Timr!</h2>
+                <br />
+            </div>
+            <div class="input">
+                <h3>Username</h3>
+                <input type="text" id="logonId" />
+                <h3>Password</h3>
+                <input type="text" id="logonPass" />
+                <br />
+                <button onclick="javascript: logon();">Log In</button>
+            </div>
+        </div>
+    </div>
