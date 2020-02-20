@@ -57,18 +57,74 @@
         }
         //END TIMER PORTION
 
+
+        function itemDelete(r) {
+            var i = r.parentNode.parentNode.rowIndex;
+            document.getElementById("logTable").deleteRow(i);
+
+            //if 'edit log comment' is pressed
+            //var lc = r.parentNode.parentNode.rowIndex.cell1;
+            //lc.text = "";
+        }
+
+        function editComment(r) {
+            var comment = window.prompt("Enter new Log Comment", "");
+
+            if (comment != null) {
+                var table = document.getElementById("logTable");
+                var rowNum = r.parentNode.parentNode.rowIndex;
+
+                //confirm if user wants to change
+                var confirms = window.confirm("Are you sure you want to change the comment?")
+
+                //yes
+                if (confirms == true) {
+                    table.rows[rowNum].cells[0].innerHTML = comment;
+                }
+
+
+            }
+        }
+
+        function editTime(r) {
+            var comment = window.prompt("Enter new Time Logged", "00:00:00");
+
+            if (comment != null) {
+                var table = document.getElementById("logTable");
+                var rowNum = r.parentNode.parentNode.rowIndex;
+
+                //confirm if user wants to change
+                var confirms = window.confirm("Are you sure you want to change the time?")
+
+                //yes
+                if (confirms == true) {
+                    table.rows[rowNum].cells[2].innerHTML = comment;
+                }
+
+            }
+        }
+
+
         //function to clear the timer and show a log entry with the recorded time and comment in a table below the timer
         function logtime() {
             var table = document.getElementById("logTable");
             var row = table.insertRow(1);
+
             var cell1 = row.insertCell(0);
             var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(4);
 
             //cell2.innerHTML = $("#timeComment").value;
             //cell2.innerHTML = $("#h5").value;
 
             cell1.innerHTML = document.getElementById("timeComment").value;
-            cell2.innerHTML = document.getElementById("h5").innerHTML;
+            cell2.innerHTML = '<button onclick="editComment(this)">Edit</button>';
+            cell3.innerHTML = document.getElementById("h5").innerHTML;
+            cell4.innerHTML = '<button onclick="editTime(this)">Edit</button>';
+            cell5.innerHTML = '<button onclick="itemDelete(this)">Delete</button>';
+
         }
 
 	</script>
@@ -130,16 +186,19 @@
     <table id="logTable">
         <tr>
             <th>Log Comment</th>
+            <th>Edit Log Comment</th>
             <th>Time Logged</th>
+            <th>Edit Time Logged</th>
+            <th>Delete</th>
         </tr>
-        <tr>
+        <!--<tr>
             <td>Team meeting</td>
             <td>00:01:23</td>
         </tr>
         <tr>
             <td>Contract negotitions</td>
             <td>00:04:12</td>
-        </tr>
+        </tr>-->
     </table>
     <br />
 </body>
