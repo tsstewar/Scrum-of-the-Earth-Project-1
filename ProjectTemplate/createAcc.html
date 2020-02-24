@@ -1,0 +1,75 @@
+﻿﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Timr</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+			function CreateAccount(id, userid, pass) {
+			var webMethod = "ProjectServices.asmx/RequestAccount";
+			var parameters = "{\"id\":\"" + encodeURI(id) + "\",\"userid\":\"" + encodeURI(userid) + "\",\"pass\":\"" + encodeURI(pass) + "\";
+
+			$.ajax({
+				type: "POST",
+				url: webMethod,
+				data: parameters,
+				contentType: "application/json; charset=utf-8",
+				dataType: "json",
+				success: function (msg) {
+						alert("Account request pending approval...");
+						window.location.replace("/login.html")
+				},
+				error: function (e) {
+					alert("Something went wrong");
+				}
+			});
+		}
+	</script>
+	<style>
+    	.newAccountBox {
+			display: inline-block;
+			text-align: right;
+		}
+
+			.newAccountBox input {
+				width: 100px;
+				border: 1px inset gray;
+			}
+
+			.newAccountBox hr {
+				padding: 0px;
+				margin: 0px;
+			}
+
+    </style>
+</head>
+
+<body>
+	<div id="accountCreation" class="contentpanel accountCreation">
+		<div class="newAccountBox">
+			<form onsubmit="CreateAccount($('#newLogonIdNum').val(), $('#newLogonUserId').val(), $('#newLogonPassword').val()); return false;">
+					<div class="left">Request Account</div>
+					<!-- Gotta link back to login
+						<div><a href="#" onclick="showPanel('logonPanel')" class="tinyLink">Back to login</a></div> -->
+					<hr />
+					<div>
+						ID Number: <input type="text" id="newLogonIdNum" />
+					</div>
+					<div>
+						User ID: <input type="text" id="newLogonUserId" />
+					</div>
+					<div>
+						Password: <input type="password" id="newLogonPassword" />
+					</div>
+					<hr />
+					<div>
+						<button type="submit">Submit</button>
+					</div>
+				</form>
+			</div>	
+		</div>
+
+</body>
+
+</html>
