@@ -17,8 +17,6 @@
 
         //TIMER PORTION JS
 
-        var totals = [0, 0, 0];
-        var totalTime = "00:00:00";
 			
 
         function add() {
@@ -122,28 +120,6 @@
             cell1.innerHTML = document.getElementById("timeComment").value;
             cell2.innerHTML = document.getElementById("h5").innerHTML;
 
-            time = document.getElementById("h5").innerHTML.split(":");
-
-            totals[2] += parseInt(time[2]);
-            if (totals[2] > 60) {
-                totals[2] %= 60;
-                totals[1] += parseInt(time[1]) + 1;
-            }
-            else
-                totals[1] += parseInt(time[1]);
-
-            if (totals[1] > 60) {
-                totals[1] %= 60;
-                totals[0] += parseInt(time[0]) + 1;
-            }
-            else
-                totals[0] += parseInt(time[0]);
-
-
-            totalTime = ("Total Time Spent: " + totals[0] + ":" + totals[1] + ":" + totals[2]);
-
-            document.getElementById("total").innerHTML = totalTime;
-
         }
 
 	</script>
@@ -245,10 +221,9 @@
             <h4>Timr&reg;</h4>
         </div>
         <div class="table">
-<<<<<<< HEAD
         <br />
-        <h3><em></em></h3>
         <br />
+            <h3><em>Hello, </em></h3>
         <br />
         <h5 id="h5"><time>00:00:00</time></h5>
         <button id="start" onclick="timer()">start</button>
@@ -275,35 +250,6 @@
         </table>
         <br />
            </div>
-=======
-            <br /><br /><br />
-            <h5 id="h5"><time>00:00:00</time></h5>
-            <button id="start" onclick="timer()">start</button>
-            <button id="stop" onclick="plzstop()">stop</button>
-            <button id="clear" onclick="clearnow()">clear</button>
-            <input id="timeComment" placeholder="Enter a project name">
-            <button id="logBtn" onclick="logtime()">Log Time</button>
-
-            <!--Table for the timer log-->
-            <br /><br /><br />
-            <table id="logTable">
-                <tr>
-                    <th>Project</th>
-                    <th>Time Logged</th>
-                </tr>
-                <!--<tr>
-            <td>Team meeting</td>
-            <td>00:01:23</td>
-        </tr>
-        <tr>
-            <td>Contract negotitions</td>
-            <td>00:04:12</td>
-        </tr>-->
-            </table>
-            <br />
-            <h4 id="total"> </h4>
-        </div>
->>>>>>> e104534b0ace5836bad340dbb9348fc532970bbc
         </div>
 </body>
 </html >
