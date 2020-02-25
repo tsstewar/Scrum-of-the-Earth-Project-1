@@ -1,4 +1,4 @@
-﻿﻿<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -6,9 +6,9 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script type="text/javascript">
 
-		function CreateAccount(id, userid, pass) {
+		function CreateAccount(userid, pass) {
 			var webMethod = "ProjectServices.asmx/RequestAccount";
-			var parameters = "{\"id\":\"" + encodeURI(id) + "\",\"userid\":\"" + encodeURI(userid) + "\",\"pass\":\"" + encodeURI(pass) + "\"}";
+			var parameters = "{\"userid\":\"" + encodeURI(userid) + "\",\"pass\":\"" + encodeURI(pass) + "\"}";
 
 			$.ajax({
 				type: "POST",
@@ -17,7 +17,7 @@
 				contentType: "application/json; charset=utf-8",
 				dataType: "json",
 				success: function (msg) {
-					alert("Account request pending approval...");
+					alert("Account Created!");
 					window.location.replace("/login.html")
 				},
 				error: function (e) {
@@ -26,48 +26,45 @@
 			});
 		}
 	</script>
-		<style>
-			.newAccountBox {
-				display: inline-block;
-				text-align: right;
+	<style>
+		.newAccountBox {
+			display: inline-block;
+			text-align: right;
+		}
+
+			.newAccountBox input {
+				width: 100px;
+				border: 1px inset gray;
 			}
 
-				.newAccountBox input {
-					width: 100px;
-					border: 1px inset gray;
-				}
-
-				.newAccountBox hr {
-					padding: 0px;
-					margin: 0px;
-				}
-		</style>
+			.newAccountBox hr {
+				padding: 0px;
+				margin: 0px;
+			}
+	</style>
 </head>
 
 <body>
 	<div id="accountCreation" class="contentpanel accountCreation">
 		<div class="newAccountBox">
-			<form onsubmit="CreateAccount($('#newLogonIdNum').val(), $('#newLogonUserId').val(), $('#newLogonPassword').val()); return false;">
-					<div class="left">Request Account</div>
-					<!-- Gotta link back to login
-						<div><a href="#" onclick="showPanel('logonPanel')" class="tinyLink">Back to login</a></div> -->
-					<hr />
-					<div>
-						ID Number: <input type="text" id="newLogonIdNum" />
-					</div>
-					<div>
-						User ID: <input type="text" id="newLogonUserId" />
-					</div>
-					<div>
-						Password: <input type="password" id="newLogonPassword" />
-					</div>
-					<hr />
-					<div>
-						<button type="submit">Submit</button>
-					</div>
-				</form>
-			</div>	
+			<form onsubmit="CreateAccount($('#newLogonUserId').val(), $('#newLogonPassword').val()); return false;">
+				<div class="left">Account Creation</div>
+				<!-- Gotta link back to login
+					<div><a href="#" onclick="showPanel('logonPanel')" class="tinyLink">Back to login</a></div> -->
+				<hr />
+				<div>
+					User ID: <input type="text" id="newLogonUserId" />
+				</div>
+				<div>
+					Password: <input type="password" id="newLogonPassword" />
+				</div>
+				<hr />
+				<div>
+					<button type="submit">Submit</button>
+				</div>
+			</form>
 		</div>
+	</div>
 
 </body>
 
