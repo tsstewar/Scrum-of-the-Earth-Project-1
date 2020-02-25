@@ -1,13 +1,13 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8" />
-	<title>Timr</title>
-	<!--DO NOT FORGET THIS SCRIPT TAG SO YOU CAN USE JQUERY!!!!!-->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <meta charset="utf-8" />
+    <title>Timr</title>
+    <!--DO NOT FORGET THIS SCRIPT TAG SO YOU CAN USE JQUERY!!!!!-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-	<!--YOUR OWN JAVASCRIPT CAN GO RIGHT HERE-->
-	<script type="text/javascript">
+    <!--YOUR OWN JAVASCRIPT CAN GO RIGHT HERE-->
+    <script type="text/javascript">
 		var h5 = document.getElementsByTagName('h5'),
 			start = document.getElementById('start'),
 			stop = document.getElementById('stop'),
@@ -17,7 +17,7 @@
 
         //TIMER PORTION JS
 
-			
+
 
         function add() {
             seconds++;
@@ -112,21 +112,25 @@
 
             var cell1 = row.insertCell(0);
             var cell2 = row.insertCell(1);
-
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(4);
 
             //cell2.innerHTML = $("#timeComment").value;
             //cell2.innerHTML = $("#h5").value;
 
             cell1.innerHTML = document.getElementById("timeComment").value;
-            cell2.innerHTML = document.getElementById("h5").innerHTML;
+            cell2.innerHTML = '<button onclick="editComment(this)">Edit</button>';
+            cell3.innerHTML = document.getElementById("h5").innerHTML;
+            cell4.innerHTML = '<button onclick="editTime(this)">Edit</button>';
+            cell5.innerHTML = '<button onclick="itemDelete(this)">Delete</button>';
 
         }
 
-	</script>
-	<!--END OF YOUR OWN JAVASCRIPT-->
-
-	<!--AND YOUR OWN CSS CAN GO HERE AS WELL-->
-	<style>
+    </script>
+    <!--END OF YOUR OWN JAVASCRIPT-->
+    <!--AND YOUR OWN CSS CAN GO HERE AS WELL-->
+    <style>
 
         #logTable {
             font-family: Poppins-Regular, sans-serif;
@@ -135,28 +139,29 @@
             border-width: 1px;
             border-color: #3A3A3A;
             border-collapse: collapse;
-            margin:0px 50px;
+            margin: 0px 50px;
         }
 
-        #logTable th {
-            border-width: 1px;
-            padding: 10px 15px;
-            border-style: solid;
-            border-color: #517994;
-            background-color: #B2CFD8;
-        }
+            #logTable th {
+                border-width: 1px;
+                padding: 10px 15px;
+                border-style: solid;
+                border-color: #517994;
+                background-color: #B2CFD8;
+            }
 
-        #logTable tr:hover td {
-            background-color: #DFEBF1;
-        }
+            #logTable tr:hover td {
+                background-color: #DFEBF1;
+            }
 
-        #logTable td {
-            border-width: 1px;
-            padding: 8px;
-            border-style: solid;
-            border-color: #517994;
-            background-color: #ffffff;
-        }
+            #logTable td {
+                border-width: 1px;
+                padding: 8px;
+                border-style: solid;
+                border-color: #517994;
+                background-color: #ffffff;
+            }
+
         #h5 {
             border-style: solid;
             border-radius: 6px;
@@ -164,7 +169,7 @@
             border-width: 1px;
             display: inline;
             padding: 4px;
-            margin-left:15px;
+            margin-left: 15px;
             font-size: 17px;
             background-color: white;
         }
@@ -197,8 +202,8 @@
 
         button {
             border-radius: 6px;
-            background-color:  gainsboro;
-            font-size:17px;
+            background-color: gainsboro;
+            font-size: 17px;
             font-weight: 700;
         }
 
@@ -208,11 +213,9 @@
             height: 25px;
             font-size: 17px;
         }
-
-
-	</style>
-	<!--END OF YOUR OWN CSS-->
-</head >
+    </style>
+    <!--END OF YOUR OWN CSS-->
+</head>
 <body>
     <!--TIMER HTML-->
     <div class="page">
@@ -221,32 +224,35 @@
             <h4>Timr&reg;</h4>
         </div>
         <div class="table">
-        <br /><br /><br />
-        <h5 id="h5"><time>00:00:00</time></h5>
-        <button id="start" onclick="timer()">start</button>
-        <button id="stop" onclick="plzstop()">stop</button>
-        <button id="clear" onclick="clearnow()">clear</button>
-        <input id="timeComment" placeholder="Enter a project name">
-        <button id="logBtn" onclick="logtime()">Log Time</button>
+            <br /><br /><br />
+            <h5 id="h5"><time>00:00:00</time></h5>
+            <button id="start" onclick="timer()">start</button>
+            <button id="stop" onclick="plzstop()">stop</button>
+            <button id="clear" onclick="clearnow()">clear</button>
+            <input id="timeComment" placeholder="Enter a project name">
+            <button id="logBtn" onclick="logtime()">Log Time</button>
 
-        <!--Table for the timer log-->
-        <br /><br /><br />
-        <table id="logTable">
-            <tr>
-                <th>Project</th>
-                <th>Time Logged</th>
-            </tr>
-            <!--<tr>
-                <td>Team meeting</td>
-                <td>00:01:23</td>
-            </tr>
-            <tr>
-                <td>Contract negotitions</td>
-                <td>00:04:12</td>
-            </tr>-->
-        </table>
-        <br />
-           </div>
+            <!--Table for the timer log-->
+            <br /><br /><br />
+            <table id="logTable">
+                <tr>
+                    <th>Project</th>
+                    <th>Edit Project</th>
+                    <th>Time Logged</th>
+                    <th>Edit Time Logged</th>
+                    <th>Delete</th>
+                </tr>
+                <!--<tr>
+                    <td>Team meeting</td>
+                    <td>00:01:23</td>
+                </tr>
+                <tr>
+                    <td>Contract negotitions</td>
+                    <td>00:04:12</td>
+                </tr>-->
+            </table>
+            <br />
         </div>
+    </div>
 </body>
-</html >
+</html>

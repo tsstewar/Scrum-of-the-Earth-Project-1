@@ -52,6 +52,19 @@
                     else {
                         alert("bad credentials")
                     }
+
+                    //Failed if-function for admin login
+                    //if (responseFromServer[0] == true && responseFromServer[1] == false) {
+                    //    alert("User logged in!")
+                    //    window.location.replace("/index.html")
+                    //}
+                    //else if (responseFromServer[0] == true && responseFromServer[1] == true) {
+                    //    alert("Admin logged in!")
+                    //    window.location.replace("/adminIndex.html")
+                    //}
+                    //else {
+                    //    alert("bad credentials")
+                    //}
                 },
                 error: function (e) {
                     alert("this code will only execute if javascript is unable to access the webservice");
