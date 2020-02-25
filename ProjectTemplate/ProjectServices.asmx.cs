@@ -64,25 +64,22 @@ namespace ProjectTemplate
 		}
 
         [WebMethod(EnableSession = true)] //NOTICE: gotta enable session on each individual method
-        public bool LogOn(string uid, string pass)
+        public bool[] LogOn(string uid, string pass)
         {
             //we return this flag to tell them if they logged in or not
             bool success = false;
 
-            //***failed test code for admin login
-            //***bool isAdmin = false;
-            //***bool[] loggedOn = new bool[2];
-            //***loggedOn[0] = success;
-            //***loggedOn[1] = isAdmin;
+            //bool[] parameters so that if function can determine addmin from user
+            bool isAdmin = false;
+            bool[] loggedOn = new bool[2];
+            loggedOn[0] = success;
+            loggedOn[1] = isAdmin;
 
             //our connection string comes from our web.config file like we talked about earlier
             string sqlConnectString = getConString();
             //here's our query.  A basic select with nothing fancy.  Note the parameters that begin with @
             //NOTICE: we added admin to what we pull, so that we can store it along with the id in the session
-            string sqlSelect = "SELECT id FROM users WHERE userid=@idValue and pass=@passValue";
-
-            //***failed sqlSelect string for admin login
-            //***string sqlSelect = "SELECT id, admin FROM users WHERE userid=@idValue and pass=@passValue";
+            string sqlSelect = "SELECT id, admin FROM users WHERE userid=@idValue and pass=@passValue";
 
             //set up our connection object to be ready to use our connection string
             MySqlConnection sqlConnection = new MySqlConnection(sqlConnectString);
@@ -103,34 +100,23 @@ namespace ProjectTemplate
             //here we go filling it!
             sqlDa.Fill(sqlDt);
             //check to see if any rows were returned.  If they were, it means it's 
-            //a legit account
+            //a legit account, if function to determine if user or admin
             if (sqlDt.Rows.Count > 0)
             {
                 //if we found an account, store the id and admin status in the session
                 //so we can check those values later on other method calls to see if they 
                 //are 1) logged in at all, and 2) and admin or not
                 Session["id"] = sqlDt.Rows[0]["id"];
-                success = true;
+                Session["Admin"] = sqlDt.Rows[0]["Admin"];
+                loggedOn[0] = true;
+
+                if (sqlDt.Rows[0]["Admin"].ToString() == "y")
+                {
+                    loggedOn[1] = true;
+                }
             }
             //return the result!
-            return success;
-
-            //****Failed if function for admin login
-            //if (sqlDt.Rows.Count > 0)
-            //{
-            //    //if we found an account, store the id and admin status in the session
-            //    //so we can check those values later on other method calls to see if they 
-            //    //are 1) logged in at all, and 2) and admin or not
-            //    Session["id"] = sqlDt.Rows[0]["id"];
-            //    Session["Admin"] = sqlDt.Rows[0]["Admin"];
-                
-            //    if (sqlDt.Rows[0]["Admin"].ToString() == "y")
-            //    {
-            //        isAdmin = true;
-            //    }
-            //}
-            ////return the result!
-            //return success;
+            return loggedOn;
         }
 		
 		//EXAMPLE OF AN INSERT QUERY WITH PARAMS PASSED IN.  BONUS GETTING THE INSERTED ID FROM THE DB!
