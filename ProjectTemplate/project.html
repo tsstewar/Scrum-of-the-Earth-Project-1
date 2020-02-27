@@ -1,15 +1,74 @@
 ﻿<!DOCTYPE html>
-
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
-    <meta charset="utf-8" />
-    <title></title>
+	<meta charset="utf-8">
+	<title>Timr</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript">
+
+		function CreateAccount(project_name, billable_rate, user_id) {
+			var webMethod = "ProjectServices.asmx/CreateProject";
+			var parameters = "{\"\":\"project_name" + encodeURI(project_name) + "\",\"billable_rate\":\"" + encodeURI(billable_rate) + "\",\"user_id\":\"" + encodeURI(user_id) + "\"}";
+
+			$.ajax({
+				type: "POST",
+				url: webMethod,
+				data: parameters,
+				contentType: "application/json; charset=utf-8",
+				dataType: "json",
+				success: function (msg) {
+					alert("Project Added!");
+					window.location.replace("/login.html")
+				},
+				error: function (e) {
+					alert("Something went wrong");
+				}
+			});
+		}
+	</script>
+	<style>
+		.newProjBox {
+			display: inline-block;
+			text-align: right;
+		}
+
+			.newProjBox input {
+				width: 100px;
+				border: 1px inset gray;
+			}
+
+			.newProjBox hr {
+				padding: 0px;
+				margin: 0px;
+			}
+	</style>
 </head>
+
 <body>
-    <h2>Projects</h2>
-    <h5>Project Name</h5>
-    <input class="pName"/>
-    <h5>Billable Rate</h5>
-    <input class="rate"/>
+	<div id="projCreation" class="contentpanel projCreation">
+		<div class="newProjBox">
+			<form onsubmit="createProj($('#projNameId').val(), $('#billRate').val(), $('#user_id').val()); return false;">
+				<div class="left">Project Creation</div>
+				<!-- Gotta link back to login
+				<div><a href="#" onclick="showPanel('logonPanel')" class="tinyLink">Back to login</a></div> -->
+				<hr />
+				<div>
+					Project Name: <input type="text" id="projNameId" />
+				</div>
+				<div>
+					Billable Rate: <input type="number" id="billRate" />
+				</div>
+				<div>
+					userID: <input type="text" id="user_id" />
+				</div>
+				<hr />
+				<div>
+					<button type="submit">Submit</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
 </body>
+
 </html>
