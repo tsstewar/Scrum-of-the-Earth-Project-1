@@ -150,27 +150,6 @@
             document.getElementById("total").innerHTML = totalTime;
         }
 
-        //logs the user off both at the client and at the server
-        function LogOff() {
-
-            var webMethod = "AccountServices.asmx/LogOff";
-            $.ajax({
-                type: "POST",
-                url: webMethod,
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (msg) {
-                    if (msg.d) {
-                        window.location.replace("/login.html")
-                    }
-                    else {
-                    }
-                },
-                error: function (e) {
-                    alert("boo...");
-                }
-            });
-        }
 
     </script>
     <!--END OF YOUR OWN JAVASCRIPT-->
@@ -294,7 +273,6 @@
             <h2><a href="user.html">Users</a></h2>
             <h2><a href="project.html">Projects</a></h2>
             <h2><a href="client.html">Clients</a></h2>
-            <h2></h2><a href="#" onclick="LogOff()">log off</a></h2>
             <button class="download">Download Report</button>
         </div>
         <div class="table">
