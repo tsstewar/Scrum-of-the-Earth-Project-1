@@ -6,9 +6,9 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script type="text/javascript">
 
-		function CreateAccount(userid, pass) {
+		function CreateAccount(userid, pass, firstname, lastname) {
 			var webMethod = "ProjectServices.asmx/RequestAccount";
-			var parameters = "{\"userid\":\"" + encodeURI(userid) + "\",\"pass\":\"" + encodeURI(pass) + "\"}";
+            var parameters = "{\"userid\":\"" + encodeURI(userid) + "\",\"pass\":\"" + encodeURI(pass) + "\",\"firstname\":\"" + encodeURI(firstname) + "\",\"lastname\":\"" + encodeURI(lastname) + "\"}";
 
 			$.ajax({
 				type: "POST",
@@ -47,22 +47,28 @@
 <body>
 	<div id="accountCreation" class="contentpanel accountCreation">
 		<div class="newAccountBox">
-			<form onsubmit="CreateAccount($('#newLogonUserId').val(), $('#newLogonPassword').val()); return false;">
-				<div class="left">Account Creation</div>
-				<!-- Gotta link back to login
-					<div><a href="#" onclick="showPanel('logonPanel')" class="tinyLink">Back to login</a></div> -->
-				<hr />
-				<div>
-					User ID: <input type="text" id="newLogonUserId" />
-				</div>
-				<div>
-					Password: <input type="password" id="newLogonPassword" />
-				</div>
-				<hr />
-				<div>
-					<button type="submit">Submit</button>
-				</div>
-			</form>
+            <form onsubmit="CreateAccount($('#newLogonUserId').val(), $('#newLogonPassword').val(), $('#newLogonFirstName').val(), $('#newLogonLastName').val()); return false;">
+                <div class="left">Account Creation</div>
+                <!-- Gotta link back to login
+        <div><a href="#" onclick="showPanel('logonPanel')" class="tinyLink">Back to login</a></div> -->
+                <hr />
+                <div>
+                    User ID: <input type="text" id="newLogonUserId" />
+                </div>
+                <div>
+                    Password: <input type="password" id="newLogonPassword" />
+                </div>
+                <div>
+                    First Name: <input type="text" id="newLogonFirstName" />
+                </div>
+                <div>
+                    Last Name: <input type="text" id="newLogonLastName" />
+                </div>
+                <hr />
+                <div>
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
 		</div>
 	</div>
 
