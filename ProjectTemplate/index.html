@@ -122,6 +122,27 @@
 
         }
 
+
+        function CreateProject(project_name, time_logged) {
+            var webMethod = "ProjectServices.asmx/AddTime";
+            var parameters = "{\"project_name\":\"" + encodeURI(project_name) + "\",\"time_logged\":\"" + encodeURI(time_logged) + "\"}";
+
+            $.ajax({
+                type: "POST",
+                url: webMethod,
+                data: parameters,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (msg) {
+                    alert("Time & Project Added!");
+                },
+                error: function (e) {
+                    alert("Something went wrong");
+                }
+            });
+        };
+
+
 	</script>
 	<!--END OF YOUR OWN JAVASCRIPT-->
 
@@ -230,7 +251,7 @@
         <button id="stop" onclick="plzstop()">stop</button>
         <button id="clear" onclick="clearnow()">clear</button>
         <input id="timeComment" placeholder="Enter a project name">
-        <button id="logBtn" onclick="logtime()">Log Time</button>
+        <button id="logBtn" onclick="logtime(); CreateProject($('#timeComment').val(), $('#h5').val()); return false;">Log Time</button>
 
         <!--Table for the timer log-->
         <br /><br /><br />

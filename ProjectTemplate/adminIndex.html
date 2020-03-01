@@ -81,7 +81,7 @@
 
                 //yes
                 if (confirms == true) {
-                    table.rows[rowNum].cells[0].innerHTML = comment;
+                    table.rows[rowNum].cells[1].innerHTML = comment;
                 }
 
 
@@ -100,7 +100,7 @@
 
                 //yes
                 if (confirms == true) {
-                    table.rows[rowNum].cells[2].innerHTML = comment;
+                    table.rows[rowNum].cells[3].innerHTML = comment;
                 }
 
             }
@@ -145,7 +145,7 @@
                 totals[0] += parseInt(time[0]);
 
             
-            totalTime = ("Total Time Spent: " + totals[0] + ":" + totals[1] + ":" + totals[2]);
+            totalTime = ("Total Time Spent: " + totals[0] + " hrs " + totals[1] + " mins " + totals[2] + " secs");
             console.log(totalTime);
             document.getElementById("total").innerHTML = totalTime;
         }
