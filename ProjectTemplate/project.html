@@ -6,7 +6,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script type="text/javascript">
 
-		function CreateAccount(project_name, billable_rate, user_id) {
+		function CreateProject(project_name, billable_rate, user_id) {
 			var webMethod = "ProjectServices.asmx/CreateProject";
 			var parameters = "{\"\":\"project_name" + encodeURI(project_name) + "\",\"billable_rate\":\"" + encodeURI(billable_rate) + "\",\"user_id\":\"" + encodeURI(user_id) + "\"}";
 
@@ -47,7 +47,7 @@
 <body>
 	<div id="projCreation" class="contentpanel projCreation">
 		<div class="newProjBox">
-			<form onsubmit="createProj($('#projNameId').val(), $('#billRate').val(), $('#user_id').val()); return false;">
+			<form onsubmit="CreateProject($('#projNameId').val(), $('#billRate').val(), $('#user_id').val()); return false;">
 				<div class="left">Project Creation</div>
 				<!-- Gotta link back to login
 				<div><a href="#" onclick="showPanel('logonPanel')" class="tinyLink">Back to login</a></div> -->
