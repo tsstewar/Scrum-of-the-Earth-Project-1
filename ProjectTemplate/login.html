@@ -45,15 +45,12 @@
                 dataType: "json",
                 success: function (msg) {
                     var responseFromServer = msg.d;
-<<<<<<< HEAD
                     if (responseFromServer == true) {
                         alert("logged in!");
                         window.location.replace("/index.html");
-=======
                     if (responseFromServer[0] == true && responseFromServer[1] == false) {
                         alert("User logged in!")
                         window.location.replace("/index.html")
->>>>>>> b5dc37501809addb0a1f8e319bdfe70379b854fa
                     }
                     else if (responseFromServer[0] == true && responseFromServer[1] == true) {
                         alert("Admin logged in!")
@@ -127,7 +124,6 @@
             .text {
                 padding-left:300px;
                 margin: 0px 0px 50px 50px;
-                padding-top
             }
 
             .logo {
@@ -145,6 +141,7 @@
                 border-style:inset;
                 box-shadow: 5px 5px 5px lightgrey;
                 margin-left: 15px;
+                padding-left:10px;
             }
 
             #login {
