@@ -3,17 +3,74 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>Timr</title>
+
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            font-family: Poppins-Regular, sans-serif;
+        }
+
+        .page {
+            margin-left: 575px;
+            margin-top:50px;
+            background: white;
+        }
+
+        h1{
+            margin-left:190px;
+            margin-bottom: 10px;
+        }
+
+        th {
+            border-width: 1px;
+            padding: 10px 30px;
+            border-style: solid;
+            border-color: #517994;
+            background-color: #B2CFD8;
+            font-size:20px;
+        }
+
+        h4 {
+            font-family: 'Lucida Sans Typewriter';
+            font-size: 25px;
+            color: darkslategrey;
+            margin-left: 3px;
+            margin-top: 0px;
+        }
+
+        .logo {
+            margin-left: 15px;
+            margin-top: 15px;
+        }
+
+        img {
+            width: 4%;
+            height: auto;
+        }
+
+    </style>
 </head>
 <body>
-    <h2>Users</h2>
-    <table id="userTable">
-    <tr>
-        <th>Name</th>
-        <th>Username</th>
-        <th>Edit</th>
-        <th>Delete</th>
-    </tr>
+    <div class="logo">
+        <img src="timer.png">
+        <h4>Timr&reg;</h4>
+    </div>
+    <div class="page">
+        <h1>All Users</h1>
+        <table id="userTable">
+            <tr>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
         </table>
+    </div>
 </body>
 </html>

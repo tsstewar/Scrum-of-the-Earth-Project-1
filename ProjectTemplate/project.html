@@ -23,7 +23,18 @@
 					alert("Something went wrong");
 				}
 			});
-		}
+        }
+
+        function getAllProjects() {
+            var webMethod = "ProjectServices.asmx/CreateProject";
+            var parameters = "{\"project_name\":\"" + encodeURI(project_name) + "\",\"billable_rate\":\"" + encodeURI(billable_rate) + "\"}";
+            $.ajax({
+                type: "POST",
+                url: webMethod,
+                data: parameters,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+        }
 	</script>
 	<style>
 		.newProjBox {
