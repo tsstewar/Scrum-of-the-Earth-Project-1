@@ -150,6 +150,31 @@
             document.getElementById("total").innerHTML = totalTime;
         }
 
+        //logs the user off both at the client and at the server
+        function logOff() {
+
+            var webMethod = "AccountServices.asmx/LogOff";
+            $.ajax({
+                type: "POST",
+                url: webMethod,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (msg) {
+                    if (msg.d == true) {
+                        //we logged off, so go back to logon page,
+                        //stop checking messages
+                        //and clear the chat panel
+                        window.location.replace("/login.html")
+                    }
+                    else {
+                    }
+                },
+                error: function (e) {
+                    alert("Log Off failed");
+                }
+            });
+        }
+
 
     </script>
     <!--END OF YOUR OWN JAVASCRIPT-->
@@ -270,6 +295,7 @@
             <h4>Timr&reg;</h4>
         </div>
         <div class="head">
+            <h2><a href="login.html" onclick="logOff()">Log Off</a></h2>
             <h2><a href="user.html">Users</a></h2>
             <h2><a href="project.html">Projects</a></h2>
             <h2><a href="client.html">Clients</a></h2>

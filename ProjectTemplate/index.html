@@ -142,6 +142,30 @@
             });
         };
 
+        //logs the user off both at the client and at the server
+        function logOff() {
+
+            var webMethod = "AccountServices.asmx/LogOff";
+            $.ajax({
+                type: "POST",
+                url: webMethod,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (msg) {
+                    if (msg.d == true) {
+                        //we logged off, so go back to logon page,
+                        //stop checking messages
+                        //and clear the chat panel
+                        window.location.replace("/login.html")
+                    }
+                    else {
+                    }
+                },
+                error: function (e) {
+                    alert("Log Off failed");
+                }
+            });
+
 
 	</script>
 	<!--END OF YOUR OWN JAVASCRIPT-->
@@ -230,6 +254,20 @@
             font-size: 17px;
         }
 
+        h2 {
+            float: right;
+            margin-top: 0px;
+            margin-right: 30px;
+            margin-left: 0px;
+            padding: 15px;
+            font-family: 'Lucida Sans Typewriter';
+            font-size: 15px;
+        }
+
+        .head {
+            margin-right: 75px;
+        }
+
 
 	</style>
 	<!--END OF YOUR OWN CSS-->
@@ -240,6 +278,9 @@
         <div class="logo">
             <img src="timer.png">
             <h4>Timr&reg;</h4>
+        </div>
+        <div class="head">
+            <h2><a href="login.html" onclick="logOff()">Log Off</a></h2>
         </div>
         <div class="table">
         <br />
