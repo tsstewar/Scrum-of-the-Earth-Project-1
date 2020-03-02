@@ -81,7 +81,7 @@
 
                 //yes
                 if (confirms == true) {
-                    table.rows[rowNum].cells[0].innerHTML = comment;
+                    table.rows[rowNum].cells[1].innerHTML = comment;
                 }
 
 
@@ -100,7 +100,7 @@
 
                 //yes
                 if (confirms == true) {
-                    table.rows[rowNum].cells[2].innerHTML = comment;
+                    table.rows[rowNum].cells[3].innerHTML = comment;
                 }
 
             }
@@ -145,10 +145,36 @@
                 totals[0] += parseInt(time[0]);
 
             
-            totalTime = ("Total Time Spent: " + totals[0] + ":" + totals[1] + ":" + totals[2]);
+            totalTime = ("Total Time Spent: " + totals[0] + " hrs " + totals[1] + " mins " + totals[2] + " secs");
             console.log(totalTime);
             document.getElementById("total").innerHTML = totalTime;
         }
+
+        //logs the user off both at the client and at the server
+        function logOff() {
+
+            var webMethod = "AccountServices.asmx/LogOff";
+            $.ajax({
+                type: "POST",
+                url: webMethod,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (msg) {
+                    if (msg.d == true) {
+                        //we logged off, so go back to logon page,
+                        //stop checking messages
+                        //and clear the chat panel
+                        window.location.replace("/login.html")
+                    }
+                    else {
+                    }
+                },
+                error: function (e) {
+                    alert("Log Off failed");
+                }
+            });
+        }
+
 
     </script>
     <!--END OF YOUR OWN JAVASCRIPT-->
@@ -268,12 +294,12 @@
             <img src="timer.png">
             <h4>Timr&reg;</h4>
         </div>
-    <div class="head">
-        <h2><a href="user.html">Users</a></h2>
-        <h2><a href="project.html">Projects</a></h2>
-        <h2><a href="client.html">Clients</a></h2>
-        <button class="download">Download Report</button>
-    </div>
+        <div class="head">
+            <h2><a href="login.html" onclick="logOff()">Log Off</a></h2>
+            <h2><a href="user.html">Users</a></h2>
+            <h2><a href="project.html">Projects</a></h2>
+            <button class="download">Download Report</button>
+        </div>
         <div class="table">
             <br /><br /><br />
             <h5 id="h5"><time>00:00:00</time></h5>

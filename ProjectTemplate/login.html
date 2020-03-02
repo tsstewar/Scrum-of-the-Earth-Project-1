@@ -45,26 +45,23 @@
                 dataType: "json",
                 success: function (msg) {
                     var responseFromServer = msg.d;
+<<<<<<< HEAD
                     if (responseFromServer == true) {
                         alert("logged in!");
                         window.location.replace("/index.html");
+=======
+                    if (responseFromServer[0] == true && responseFromServer[1] == false) {
+                        alert("User logged in!")
+                        window.location.replace("/index.html")
+>>>>>>> b5dc37501809addb0a1f8e319bdfe70379b854fa
+                    }
+                    else if (responseFromServer[0] == true && responseFromServer[1] == true) {
+                        alert("Admin logged in!")
+                        window.location.replace("/adminIndex.html")
                     }
                     else {
                         alert("bad credentials");
                     }
-
-                    //Failed if-function for admin login
-                    //if (responseFromServer[0] == true && responseFromServer[1] == false) {
-                    //    alert("User logged in!")
-                    //    window.location.replace("/index.html")
-                    //}
-                    //else if (responseFromServer[0] == true && responseFromServer[1] == true) {
-                    //    alert("Admin logged in!")
-                    //    window.location.replace("/adminIndex.html")
-                    //}
-                    //else {
-                    //    alert("bad credentials")
-                    //}
                 },
                 error: function (e) {
                     alert("this code will only execute if javascript is unable to access the webservice");
@@ -222,7 +219,7 @@
                         <h3>Username</h3>
                         <input type="text" :focus id="logonId" />
                         <h3>Password</h3>
-                        <input type="text" :focus id="logonPass" />
+                        <input type="password" :focus id="logonPass" />
                         <br />
                         <button id="login" onclick="javascript: logon();">Log In</button>
                         <h5>

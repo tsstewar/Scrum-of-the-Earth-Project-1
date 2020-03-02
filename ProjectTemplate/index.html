@@ -180,6 +180,56 @@
             addData(cell1.innerHTML, cell2.innerHTML);
         }
 
+<<<<<<< HEAD
+=======
+
+        function CreateProject(project_name, time_logged) {
+            var webMethod = "ProjectServices.asmx/AddTime";
+            var parameters = "{\"project_name\":\"" + encodeURI(project_name) + "\",\"time_logged\":\"" + encodeURI(time_logged) + "\"}";
+
+            $.ajax({
+                type: "POST",
+                url: webMethod,
+                data: parameters,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (msg) {
+                    alert("Time & Project Added!");
+                },
+                error: function (e) {
+                    alert("Something went wrong");
+                }
+            });
+        };
+
+        //logs the user off both at the client and at the server
+        function logOff() {
+
+            var webMethod = "AccountServices.asmx/LogOff";
+            $.ajax({
+                type: "POST",
+                url: webMethod,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (msg) {
+                    if (msg.d == true) {
+                        //we logged off, so go back to logon page,
+                        //stop checking messages
+                        //and clear the chat panel
+                        window.location.replace("/login.html")
+                    }
+                    else {
+                    }
+                },
+                error: function (e) {
+                    alert("Log Off failed");
+                }
+            });
+
+
+	</script>
+	<!--END OF YOUR OWN JAVASCRIPT-->
+>>>>>>> b5dc37501809addb0a1f8e319bdfe70379b854fa
 
     </script>
     <!--END OF YOUR OWN JAVASCRIPT-->
@@ -267,9 +317,31 @@
             height: 25px;
             font-size: 17px;
         }
+<<<<<<< HEAD
     </style>
     <!--END OF YOUR OWN CSS-->
 </head>
+=======
+
+        h2 {
+            float: right;
+            margin-top: 0px;
+            margin-right: 30px;
+            margin-left: 0px;
+            padding: 15px;
+            font-family: 'Lucida Sans Typewriter';
+            font-size: 15px;
+        }
+
+        .head {
+            margin-right: 75px;
+        }
+
+
+	</style>
+	<!--END OF YOUR OWN CSS-->
+</head >
+>>>>>>> b5dc37501809addb0a1f8e319bdfe70379b854fa
 <body>
     <!--TIMER HTML-->
     <div class="page">
@@ -277,10 +349,14 @@
             <img src="timer.png">
             <h4>Timr&reg;</h4>
         </div>
+        <div class="head">
+            <h2><a href="login.html" onclick="logOff()">Log Off</a></h2>
+        </div>
         <div class="table">
             <br />
             <br />
             <h3><em>Hello, </em></h3>
+<<<<<<< HEAD
             <br />
             <h5 id="h5"><time>00:00:00</time></h5>
             <button id="start" onclick="timer()">start</button>
@@ -306,6 +382,34 @@
                 </tr>-->
             </table>
             <br />
+=======
+        <br />
+        <h5 id="h5"><time>00:00:00</time></h5>
+        <button id="start" onclick="timer()">start</button>
+        <button id="stop" onclick="plzstop()">stop</button>
+        <button id="clear" onclick="clearnow()">clear</button>
+        <input id="timeComment" placeholder="Enter a project name">
+        <button id="logBtn" onclick="logtime(); CreateProject($('#timeComment').val(), $('#h5').val()); return false;">Log Time</button>
+
+        <!--Table for the timer log-->
+        <br /><br /><br />
+        <table id="logTable">
+            <tr>
+                <th>Project</th>
+                <th>Time Logged</th>
+            </tr>
+            <!--<tr>
+                <td>Team meeting</td>
+                <td>00:01:23</td>
+            </tr>
+            <tr>
+                <td>Contract negotitions</td>
+                <td>00:04:12</td>
+            </tr>-->
+        </table>
+        <br />
+           </div>
+>>>>>>> b5dc37501809addb0a1f8e319bdfe70379b854fa
         </div>
     </div>
     <div id="mouseoverdiv" />

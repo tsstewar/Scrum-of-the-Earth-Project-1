@@ -1,15 +1,134 @@
 ﻿<!DOCTYPE html>
-
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
-    <meta charset="utf-8" />
-    <title></title>
+	<meta charset="utf-8">
+	<title>Timr</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript">
+
+		function CreateProject(project_name, billable_rate) {
+			var webMethod = "ProjectServices.asmx/CreateProject";
+            var parameters = "{\"project_name\":\"" + encodeURI(project_name) + "\",\"billable_rate\":\"" + encodeURI(billable_rate) + "\"}";
+			$.ajax({
+				type: "POST",
+				url: webMethod,
+				data: parameters,
+				contentType: "application/json; charset=utf-8",
+				dataType: "json",
+				success: function (msg) {
+					alert("Project Added!");
+					window.location.replace("/login.html")
+				},
+				error: function (e) {
+					alert("Something went wrong");
+				}
+			});
+		}
+	</script>
+	<style>
+		.newProjBox {
+			display: inline-block;
+			text-align: right;
+            margin-left:100px;
+            margin-top:15px;
+            float:left;
+		}
+
+			.newProjBox input {
+				width: 100px;
+				border: 1px inset gray;
+                margin-top:10px;
+			}
+
+			.newProjBox hr {
+				padding: 0px;
+				margin: 0px;
+			}
+
+            .cProjects{
+                margin-left: 700px;
+                float:left;
+                margin-top:15px;
+            }
+
+        input {
+            border-radius: 6px;
+            background-color: ghostwhite;
+            height: 30px;
+            width: 400px;
+            padding-left:10px;
+            border-color: aliceblue;
+            border-width: .25px;
+            border-style: inset;
+            box-shadow: 5px 5px 5px lightgrey;
+            margin-left: 15px;
+            margin-bottom:15px;
+        }
+
+        #create {
+            border-radius: 6px;
+            background-color: gainsboro;
+            font-size: 17px;
+            font-weight: 700;
+            justify-content:center;
+            margin-top:10px;
+        }
+
+        h1 {
+            font-family: Poppins-Regular, sans-serif;
+            font-size: 30px;
+        }
+
+        h4 {
+            font-family: 'Lucida Sans Typewriter';
+            font-size: 25px;
+            color: darkslategrey;
+            margin-left: 3px;
+            margin-top:0px;
+        }
+
+        .logo {
+            margin-left: 15px;
+            margin-top: 15px;
+        }
+
+        img {
+            width: 4%;
+            height: auto;
+        }
+
+	</style>
 </head>
+
 <body>
-    <h2>Projects</h2>
-    <h5>Project Name</h5>
-    <input class="pName"/>
-    <h5>Billable Rate</h5>
-    <input class="rate"/>
+    <div class="logo">
+        <img src="timer.png">
+        <h4>Timr&reg;</h4>
+    </div>
+    <div id="projCreation" class="contentpanel projCreation">
+        <div class="newProjBox">
+            <form onsubmit="CreateProject($('#projNameId').val(), $('#billRate').val()); return false;">
+                <div class="left"><h1>Create New Project</h1></div>
+                <!-- Gotta link back to login
+                <div><a href="#" onclick="showPanel('logonPanel')" class="tinyLink">Back to login</a></div> -->
+                <hr />
+                <div>
+                    Project Name: <input type="text" id="projNameId" />
+                </div>
+                <div>
+                    Billable Rate: <input type="number" id="billRate" />
+                </div>
+                <hr />
+                <div>
+                    <button id="create" type="submit">Create Project</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="cProjects">
+        <h1>Current Projects</h1>
+    </div>
+
 </body>
+
 </html>
