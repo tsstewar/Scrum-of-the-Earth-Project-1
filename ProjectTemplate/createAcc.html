@@ -77,8 +77,15 @@
 
         .left {
             text-align: center;
-            margin-bottom: 10px;
             color: #274C77;
+        }
+
+        h3 {
+            text-align: center;
+            margin-top: 3px;
+            margin-bottom: 15px;
+            font-size:15px;
+            font-weight:800;
         }
 
         button {
@@ -129,11 +136,12 @@
         <div class="newAccountBox">
             <form onsubmit="CreateAccount($('#newLogonUserId').val(), $('#newLogonPassword').val(), $('#newLogonFirstName').val(), $('#newLogonLastName').val()); return false;">
                 <div class="left"><h1>Create New Account</h1></div>
+                <h3><em>Enter in information below.</em></h3>
                 <!-- Gotta link back to login
             <div><a href="#" onclick="showPanel('logonPanel')" class="tinyLink">Back to login</a></div> -->
                 <div class="inputs">
                 <div>
-                    User ID: <input type="text" id="newLogonUserId" />
+                    Username: <input type="text" id="newLogonUserId" />
                 </div>
                 <div>
                     Password: <input type="password" id="newLogonPassword" />
