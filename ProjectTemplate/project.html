@@ -8,7 +8,7 @@
 
 		function CreateProject(project_name, billable_rate) {
 			var webMethod = "ProjectServices.asmx/CreateProject";
-            var parameters = "{\"project_name\":\"" + encodeURI(project_name) + "\",\"billable_rate\":\"" + encodeURI(billable_rate) + "\"}";
+			var parameters = "{\"project_name\":\"" + encodeURI(project_name) + "\",\"billable_rate\":\"" + encodeURI(billable_rate) + "\"}";
 			$.ajax({
 				type: "POST",
 				url: webMethod,
@@ -17,31 +17,30 @@
 				dataType: "json",
 				success: function (msg) {
 					alert("Project Added!");
-					window.location.replace("/login.html")
+					document.getElementsbyClassName('clear').value = '';
 				},
 				error: function (e) {
 					alert("Something went wrong");
 				}
 			});
-        }
+		}
+		function getAllProjects() {
 
-        function getAllProjects() {
-        
-        }
+		}
 	</script>
 	<style>
 		.newProjBox {
 			display: inline-block;
 			text-align: right;
-            margin-left:100px;
-            margin-top:15px;
-            float:left;
+			margin-left: 100px;
+			margin-top: 15px;
+			float: left;
 		}
 
 			.newProjBox input {
 				width: 100px;
 				border: 1px inset gray;
-                margin-top:10px;
+				margin-top: 10px;
 			}
 
 			.newProjBox hr {
@@ -49,89 +48,98 @@
 				margin: 0px;
 			}
 
-            .cProjects{
-                margin-left: 700px;
-                float:left;
-                margin-top:15px;
-            }
+		.cProjects {
+			margin-left: 700px;
+			float: left;
+			margin-top: 15px;
+		}
 
-        input {
-            border-radius: 6px;
-            background-color: ghostwhite;
-            height: 30px;
-            width: 400px;
-            padding-left:10px;
-            border-color: aliceblue;
-            border-width: .25px;
-            border-style: inset;
-            box-shadow: 5px 5px 5px lightgrey;
-            margin-left: 15px;
-            margin-bottom:15px;
-        }
+		input {
+			border-radius: 6px;
+			background-color: ghostwhite;
+			height: 30px;
+			width: 400px;
+			padding-left: 10px;
+			border-color: aliceblue;
+			border-width: .25px;
+			border-style: inset;
+			box-shadow: 5px 5px 5px lightgrey;
+			margin-left: 15px;
+			margin-bottom: 15px;
+		}
 
-        #create {
-            border-radius: 6px;
-            background-color: gainsboro;
-            font-size: 17px;
-            font-weight: 700;
-            justify-content:center;
-            margin-top:10px;
-        }
+		#create {
+			border-radius: 6px;
+			background-color: gainsboro;
+			font-size: 17px;
+			font-weight: 700;
+			justify-content: center;
+			margin-top: 10px;
+		}
 
-        h1 {
-            font-family: Poppins-Regular, sans-serif;
-            font-size: 30px;
-        }
+		h1 {
+			font-family: Poppins-Regular, sans-serif;
+			font-size: 30px;
+		}
 
-        h4 {
-            font-family: 'Lucida Sans Typewriter';
-            font-size: 25px;
-            color: darkslategrey;
-            margin-left: 3px;
-            margin-top:0px;
-        }
+		h4 {
+			font-family: 'Lucida Sans Typewriter';
+			font-size: 25px;
+			color: darkslategrey;
+			margin-left: 3px;
+			margin-top: 0px;
+		}
 
-        .logo {
-            margin-left: 15px;
-            margin-top: 15px;
-        }
+		.logo {
+			margin-left: 15px;
+			margin-top: 15px;
+		}
 
-        img {
-            width: 4%;
-            height: auto;
-        }
-
+		img {
+			width: 4%;
+			height: auto;
+		}
 	</style>
 </head>
 
 <body>
-    <div class="logo">
-        <img src="timer.png">
-        <h4>Timr&reg;</h4>
-    </div>
-    <div id="projCreation" class="contentpanel projCreation">
-        <div class="newProjBox">
-            <form onsubmit="CreateProject($('#projNameId').val(), $('#billRate').val()); return false;">
-                <div class="left"><h1>Create New Project</h1></div>
-                <!-- Gotta link back to login
-                <div><a href="#" onclick="showPanel('logonPanel')" class="tinyLink">Back to login</a></div> -->
-                <hr />
-                <div>
-                    Project Name: <input type="text" id="projNameId" />
-                </div>
-                <div>
-                    Billable Rate: <input type="number" id="billRate" />
-                </div>
-                <hr />
-                <div>
-                    <button id="create" type="submit">Create Project</button>
-                </div>
-            </form>
-        </div>
-    </div>
-    <div class="cProjects">
-        <h1>Current Projects</h1>
-    </div>
+	<div class="logo">
+		<img src="timer.png">
+		<h4>Timr&reg;</h4>
+	</div>
+	<div id="projCreation" class="contentpanel projCreation">
+		<div class="newProjBox">
+			<form autocomplete="off">
+				<div class="left"><h1>Create New Project</h1></div>
+				<!-- Gotta link back to login
+				<div><a href="#" onclick="showPanel('logonPanel')" class="tinyLink">Back to login</a></div> -->
+				<hr />
+				<div>
+					Project Name: <input type="text" id="projNameId" class="clear" />
+				</div>
+				<div>
+					Billable Rate: <input type="number" id="billRate" class="clear" />
+				</div>
+				<hr />
+				<div>
+					<button id="create" type="button"
+							onclick="CreateProject($('#projNameId').val(), $('#billRate').val()); return false;">
+						Create Project
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="cProjects">
+		<h1>Current Projects</h1>
+		<table id="projTable">
+			<tr>
+				<th>Project Name</th>
+				<th>Billable Rate</th>
+			</tr>
+
+		</table>
+	</div>
 
 </body>
 
