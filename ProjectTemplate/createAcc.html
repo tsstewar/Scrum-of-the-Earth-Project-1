@@ -27,31 +27,110 @@
 		}
 	</script>
 	<style>
-		.newAccountBox {
-			display: inline-block;
-			text-align: right;
-		}
+        .newAccountBox {
+            width: 500px;
+            height:300px;
+            border-radius: 10px;
+            background: white;
+            box-shadow: 20px 20px 50px grey;
+            margin-left:600px;
+            margin-top: 0px;
+            
+        }
 
-			.newAccountBox input {
-				width: 100px;
-				border: 1px inset gray;
+            .newAccountBox input {
+            border-radius: 6px;
+            width: 200px;
+            height: 25px;
+            font-size: 17px;
 			}
 
 			.newAccountBox hr {
 				padding: 0px;
 				margin: 0px;
 			}
+
+            form {
+               margin-left:15px;
+               margin-top: 20px;
+
+            }
+
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: Poppins-Regular, sans-serif;
+        }
+
+        .accountCreation {
+            width: 100%;
+            margin: 0 auto;
+            height: 100%;
+            display: grid;
+            background: #f3f2f2;
+        }
+
+        .left {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #274C77;
+        }
+
+        button {
+            border-radius: 6px;
+            background-color: gainsboro;
+            font-size: 17px;
+            font-weight: 700;
+            margin-left:180px;
+            margin-top:15px;
+        }
+
+        h4 {
+            font-family: 'Lucida Sans Typewriter';
+            font-size: 25px;
+            color: darkslategrey;
+            margin-left: 3px;
+            margin-top: 0px;
+        }
+
+        .logo {
+            margin-left: 15px;
+            margin-top: 15px;
+        }
+
+        img {
+            width: 4%;
+            height: auto;
+        }
+
+        input{
+            margin-bottom:5px;
+        }
+
+        .inputs{
+            text-align:center;
+        }
+
 	</style>
 </head>
 
 <body>
-	<div id="accountCreation" class="contentpanel accountCreation">
-		<div class="newAccountBox">
+    <div id="accountCreation" class="contentpanel accountCreation">
+        <div class="logo">
+            <img src="timer.png">
+            <h4>Timr&reg;</h4>
+        </div>
+        <div class="newAccountBox">
             <form onsubmit="CreateAccount($('#newLogonUserId').val(), $('#newLogonPassword').val(), $('#newLogonFirstName').val(), $('#newLogonLastName').val()); return false;">
-                <div class="left">Account Creation</div>
+                <div class="left"><h1>Create New Account</h1></div>
                 <!-- Gotta link back to login
-        <div><a href="#" onclick="showPanel('logonPanel')" class="tinyLink">Back to login</a></div> -->
-                <hr />
+            <div><a href="#" onclick="showPanel('logonPanel')" class="tinyLink">Back to login</a></div> -->
+                <div class="inputs">
                 <div>
                     User ID: <input type="text" id="newLogonUserId" />
                 </div>
@@ -64,13 +143,13 @@
                 <div>
                     Last Name: <input type="text" id="newLogonLastName" />
                 </div>
-                <hr />
+                    </div>
                 <div>
-                    <button type="submit">Submit</button>
+                    <button type="submit">Create Account</button>
                 </div>
             </form>
-		</div>
-	</div>
+        </div>
+    </div>
 
 </body>
 
