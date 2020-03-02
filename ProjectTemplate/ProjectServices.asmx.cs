@@ -70,10 +70,10 @@ namespace ProjectTemplate
             bool success = false;
 
             //***failed test code for admin login
-            //***bool isAdmin = false;
-            //***bool[] loggedOn = new bool[2];
-            //***loggedOn[0] = success;
-            //***loggedOn[1] = isAdmin;
+            bool isAdmin = false;
+            bool[] loggedOn = new bool[2];
+            loggedOn[0] = success;
+            loggedOn[1] = isAdmin;
 
             //our connection string comes from our web.config file like we talked about earlier
             string sqlConnectString = getConString();
