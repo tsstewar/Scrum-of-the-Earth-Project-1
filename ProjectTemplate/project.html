@@ -8,8 +8,7 @@
 
 		function CreateProject(project_name, billable_rate, user_id) {
 			var webMethod = "ProjectServices.asmx/CreateProject";
-			var parameters = "{\"\":\"project_name" + encodeURI(project_name) + "\",\"billable_rate\":\"" + encodeURI(billable_rate) + "\",\"user_id\":\"" + encodeURI(user_id) + "\"}";
-
+            var parameters = "{\"project_name\":\"" + encodeURI(project_name) + "\",\"billable_rate\":\"" + encodeURI(billable_rate) + "\",\"user_id\":\"" + encodeURI(user_id) + "\"}";
 			$.ajax({
 				type: "POST",
 				url: webMethod,
