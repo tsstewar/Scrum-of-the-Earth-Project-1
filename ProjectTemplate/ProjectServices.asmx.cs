@@ -176,6 +176,7 @@ namespace ProjectTemplate
             }
             sqlConnection.Close();
         }
+
         [WebMethod(EnableSession = true)]
         public void AddTime(string project_name, string time_logged)
         {

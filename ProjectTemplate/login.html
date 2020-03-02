@@ -32,10 +32,8 @@
         function logon() {
             var id = document.getElementById("logonId").value;
             var pass = document.getElementById("logonPass").value;
-
             var webMethod = "ProjectServices.asmx/logon";
             var parameters = "{\"uid\":\"" + encodeURI(id) + "\", \"pass\":\"" + encodeURI(pass) + "\"} ";
-
             //jQuery ajax method
             $.ajax({
                 type: "POST",
@@ -45,9 +43,6 @@
                 dataType: "json",
                 success: function (msg) {
                     var responseFromServer = msg.d;
-                    if (responseFromServer == true) {
-                        alert("logged in!");
-                        window.location.replace("/index.html");
                     if (responseFromServer[0] == true && responseFromServer[1] == false) {
                         alert("User logged in!")
                         window.location.replace("/index.html")
@@ -57,7 +52,7 @@
                         window.location.replace("/adminIndex.html")
                     }
                     else {
-                        alert("bad credentials");
+                        alert("bad credentials")
                     }
                 },
                 error: function (e) {
