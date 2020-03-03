@@ -120,6 +120,7 @@
             var cell5 = row.insertCell(4);
             var cell6 = row.insertCell(5);
 
+            cell1.innerHTML = document.getElementById("name").value;
             cell2.innerHTML = document.getElementById("timeComment").value;
             cell3.innerHTML = '<button onclick="editComment(this)">Edit</button>';
             cell4.innerHTML = document.getElementById("h5").innerHTML;
@@ -155,16 +156,16 @@
 
 
 
-            ///////////////////////WHATTTTTTTTTTTTTTTTT
-            if (document.getElementById("h5").innerHTML = "00:00:00") {
-                alert("Don't forget to start the timer!");
+            ////alert if user doesn't click start
+            //if (document.getElementById("h5").innerHTML = "00:00:00") {
+            //    alert("Don't forget to start the timer!");
 
-            }
-            else if (document.getElementById("h5").innerHTML != "00:00:00") {
-                totalTime = ("Total Time Spent: " + totals[0] + " hrs " + totals[1] + " mins " + totals[2] + " secs");
-                document.getElementById("total").innerHTML = totalTime;
-            }
-            //////////////////////
+            //}
+            //else if (document.getElementById("h5").innerHTML != "00:00:00") {
+            //    totalTime = ("Total Time Spent: " + totals[0] + " hrs " + totals[1] + " mins " + totals[2] + " secs");
+            //    document.getElementById("total").innerHTML = totalTime;
+            //}
+
         }
 
         function logtimeOnLoad() {
@@ -182,7 +183,7 @@
             var cell5;
             var cell6;
 
-            console.log("!!!!")
+
             console.log(timeObject)
 
             let firstNames = timeObject.map(a => a.firstname);
@@ -439,6 +440,7 @@
             <button id="start" onclick="timer()">start</button>
             <button id="stop" onclick="plzstop()">stop</button>
             <button id="clear" onclick="clearnow()">clear</button>
+            <input id="name" placeholder="Enter first name">
             <input id="timeComment" placeholder="Enter a project name">
             <button id="logBtn" onclick="logtime()">Log Time</button>
 
