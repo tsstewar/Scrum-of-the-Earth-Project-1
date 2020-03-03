@@ -8,17 +8,18 @@
 
     <!--YOUR OWN JAVASCRIPT CAN GO RIGHT HERE-->
     <script type="text/javascript">
-		var h5 = document.getElementsByTagName('h5'),
-			start = document.getElementById('start'),
-			stop = document.getElementById('stop'),
-			clear = document.getElementById('clear'),
-			seconds = 0, minutes = 0, hours = 0,
-			t;
+        var h5 = document.getElementsByTagName('h5'),
+            start = document.getElementById('start'),
+            stop = document.getElementById('stop'),
+            clear = document.getElementById('clear'),
+            seconds = 0, minutes = 0, hours = 0,
+            t;
 
         //TIMER PORTION JS
 
         var totals = [0, 0, 0];
         var totalTime = "00:00:00";
+        var timeObject;
 
 
         function add() {
@@ -125,6 +126,13 @@
             cell5.innerHTML = '<button onclick="editTime(this)">Edit</button>';
             cell6.innerHTML = '<button onclick="itemDelete(this)">Delete</button>';
 
+            console.log(timeObject);
+            let firstNames = timeObject.map(a => a.firstname);
+            console.log(firstNames)
+            let timeLogged = timeObject.map(a => a.time_logged);
+            console.log(timeLogged)
+            let projectNames = timeObject.map(a => a.project_name);
+            console.log(projectNames)
 
             //code for getting total
             time = document.getElementById("h5").innerHTML.split(":");
@@ -144,10 +152,68 @@
             else
                 totals[0] += parseInt(time[0]);
 
-            
-            totalTime = ("Total Time Spent: " + totals[0] + " hrs " + totals[1] + " mins " + totals[2] + " secs");
-            console.log(totalTime);
-            document.getElementById("total").innerHTML = totalTime;
+
+
+
+            ///////////////////////WHATTTTTTTTTTTTTTTTT
+            if (document.getElementById("h5").innerHTML = "00:00:00") {
+                alert("Don't forget to start the timer!");
+
+            }
+            else if (document.getElementById("h5").innerHTML != "00:00:00") {
+                totalTime = ("Total Time Spent: " + totals[0] + " hrs " + totals[1] + " mins " + totals[2] + " secs");
+                document.getElementById("total").innerHTML = totalTime;
+            }
+            //////////////////////
+        }
+
+        function logtimeOnLoad() {
+
+            //var table = document.getElementById("logTable");
+            //var row = table.insertRow(1);
+
+            //for from 0 length of one of the arrays
+            //insert cell index number
+            //innerHTML person name,time, project name
+            var cell1;
+            var cell2;
+            var cell3;
+            var cell4;
+            var cell5;
+            var cell6;
+
+            console.log("!!!!")
+            console.log(timeObject)
+
+            let firstNames = timeObject.map(a => a.firstname);
+            let timeLogged = timeObject.map(a => a.time_logged);
+            let projectNames = timeObject.map(a => a.project_name);
+
+
+
+            for (i = 0; i < timeLogged.length; i++) {
+                let count = 0;
+                var table = document.getElementById("logTable");
+                var row = table.insertRow(1);
+
+                cell1 = row.insertCell(count);
+                cell2 = row.insertCell(count += 1);
+                cell3 = row.insertCell(count += 1);
+                cell4 = row.insertCell(count += 1);
+                cell5 = row.insertCell(count += 1);
+                cell6 = row.insertCell(count += 1);
+
+                cell1.innerHTML = firstNames[i];
+                cell2.innerHTML = projectNames[i];
+                cell3.innerHTML = '<button onclick="editComment(this)">Edit</button>';
+                cell4.innerHTML = timeLogged[i];
+                cell5.innerHTML = '<button onclick="editTime(this)">Edit</button>';
+                cell6.innerHTML = '<button onclick="itemDelete(this)">Delete</button>';
+
+
+            }
+
+
         }
 
         //logs the user off both at the client and at the server
@@ -174,6 +240,73 @@
                 }
             });
         }
+
+        //gets all data from user_times table
+        function getAllUserData() {
+            $.ajax({
+                url: "ProjectServices.asmx/getTime",
+                data: $(this).serialize(),
+                type: 'POST', // or 'GET'
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                success: function (result) {
+                    console.log("g")
+                    let timeString = result.d;
+                    timeObject = JSON.parse(timeString);
+                    console.log(timeObject)
+
+                    logtimeOnLoad();
+                },
+                error: function () {
+                    alert("Error while calling the server!");
+                }
+            });
+        };
+
+        //gets TIME data from user_times table
+        $(document).ready(function getAllTimeData() {
+            $.ajax({
+                url: "ProjectServices.asmx/GetTotalTime",
+                data: $(this).serialize(),
+                type: 'POST', // or 'GET'
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                success: function (result) {
+                    let timeString = result.d;
+                    timeObject = JSON.parse(timeString);
+                    let timesArray = timeObject.map(a => a.time_logged);
+
+                    for (i = 0; i < timesArray.length; i++) {
+                        //time = document.getElementById("h5").innerHTML.split(":");
+                        time = timesArray[i].split(":");
+
+                        totals[2] += parseInt(time[2]);
+                        if (totals[2] > 60) {
+                            totals[2] %= 60;
+                            totals[1] += parseInt(time[1]) + 1;
+                        }
+                        else
+                            totals[1] += parseInt(time[1]);
+
+                        if (totals[1] > 60) {
+                            totals[1] %= 60;
+                            totals[0] += parseInt(time[0]) + 1;
+                        }
+                        else
+                            totals[0] += parseInt(time[0]);
+
+                    }
+                    console.log("Total Time Spent: " + totals[0] + " hrs " + totals[1] + " mins " + totals[2] + " secs")
+                    totalTime = ("Total Time Spent: " + totals[0] + " hrs " + totals[1] + " mins " + totals[2] + " secs");
+                    document.getElementById("total").innerHTML = totalTime;
+
+                },
+                error: function () {
+                    alert("Error while calling the server!");
+                }
+            });
+        });
+
 
 
     </script>
@@ -266,8 +399,8 @@
 
         h2 {
             float: right;
-            margin-top:0px;
-            margin-right:30px;
+            margin-top: 0px;
+            margin-right: 30px;
             margin-left: 0px;
             padding: 15px;
             font-family: 'Lucida Sans Typewriter';
@@ -275,25 +408,25 @@
         }
 
         .download {
-            float:right;
-            clear:both;
-            margin-right:40px;
+            float: right;
+            clear: both;
+            margin-right: 40px;
         }
 
         .head {
             margin-right: 75px;
         }
-
     </style>
     <!--END OF YOUR OWN CSS-->
 </head>
-<body>
+<body onload="getAllUserData()">
     <!--TIMER HTML-->
     <div class="page">
         <div class="logo">
             <img src="timer.png">
             <h4>Timr&reg;</h4>
         </div>
+        <form onload="logtimeOnLoad()"></form>
         <div class="head">
             <h2><a href="login.html" onclick="logOff()">Log Off</a></h2>
             <h2><a href="user.html">Users</a></h2>
@@ -309,6 +442,8 @@
             <input id="timeComment" placeholder="Enter a project name">
             <button id="logBtn" onclick="logtime()">Log Time</button>
 
+
+
             <!--Table for the timer log-->
             <br /><br /><br />
             <table id="logTable">
@@ -321,13 +456,13 @@
                     <th>Delete</th>
                 </tr>
                 <!--<tr>
-                <td>Team meeting</td>
-                <td>00:01:23</td>
-            </tr>
-            <tr>
-                <td>Contract negotitions</td>
-                <td>00:04:12</td>
-            </tr>-->
+                    <td>Team meeting</td>
+                    <td>00:01:23</td>
+                </tr>
+                <tr>
+                    <td>Contract negotitions</td>
+                    <td>00:04:12</td>
+                </tr>-->
             </table>
             <br />
         </div>
