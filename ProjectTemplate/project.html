@@ -25,7 +25,21 @@
 			});
 		}
 		function getAllProjects() {
-
+			var webMethod = "ProjectServices.asmx/getProject";
+			var parameters = "{\"project_name\":\"" + encodeURI(project_name) + "\",\"billable_rate\":\"" + encodeURI(billable_rate) + "\"}";
+			$.ajax({
+				type: "GET",
+				url: webMethod,
+				data: parameters,
+				contentType: "application/json; charset=utf-8",
+				dataType: "json",
+				success: function (msg) {
+					alert("Successful!");
+				},
+				error: function (e) {
+					alert("Not Successful");
+				}
+			});
 		}
 	</script>
 	<style>
