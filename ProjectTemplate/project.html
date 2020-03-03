@@ -29,14 +29,21 @@
             $.ajax({
                 url: "ProjectServices.asmx/getProject",
                 data: $(this).serialize(),
-                type: 'POST', // or 'GET'
+                type: 'POST',
                 contentType: "application/json; charset=utf-8",
                 dataType: 'json',
                 success: function (result) {
                     console.log(result.d)
+                    var data = JSON.parse(result.d);
+                    var table = '<tr><th>Project Name</th><th>Billable Rate</th></tr>'
+                    for (i = 0; i < data.length; i++) {
+                        table = table + '<tr><td>' + data[i]['project_name'] + '</td><td>' + data[i]['billable_rate'] + '</td><td><button id="Edit">Edit</button></td><td><button id="Delete">Delete</button></tr>';
+                    }
+                    var rows = document.getElementById('projTable');
+                    rows.innerHTML = table;
                 },
                 error: function () {
-                    alert("Error while calling the server!");
+                    alert("Something went wrong");
                 }
             });
         }
@@ -151,6 +158,9 @@
 				<th>Project Name</th>
 				<th>Billable Rate</th>
 			</tr>
+            <div id="insert">
+
+            </div>
 
 		</table>
 	</div>
