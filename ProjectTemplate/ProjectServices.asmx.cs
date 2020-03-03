@@ -99,7 +99,7 @@ namespace ProjectTemplate
 				Session["Admin"] = sqlDt.Rows[0]["Admin"];
 				loggedOn[0] = true;
                 userID = uid;
-				if (sqlDt.Rows[0]["Admin"].ToString() == "y")
+				if (sqlDt.Rows[0]["Admin"].ToString() == "Y")
 				{
 					loggedOn[1] = true;
 				}
