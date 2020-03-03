@@ -35,9 +35,9 @@
                 success: function (result) {
                     console.log(result.d)
                     var data = JSON.parse(result.d);
-                    var table = '<tr><th>Project Name</th><th>Billable Rate</th></tr>'
+                    var table = '<tr><th>Project Name</th><th>Billable Rate</th><th></th><th></th></tr>'
                     for (i = 0; i < data.length; i++) {
-                        table = table + '<tr><td>' + data[i]['project_name'] + '</td><td>' + data[i]['billable_rate'] + '</td><td><button id="Edit">Edit</button></td><td><button id="Delete">Delete</button></tr>';
+                        table = table + '<tr><td>' + data[i]['project_name'] + '</td><td>$' + data[i]['billable_rate']+'/hour</td><td><button id="Edit">Edit</button></td><td><button id="Delete">Delete</button></tr>';
                     }
                     var rows = document.getElementById('projTable');
                     rows.innerHTML = table;
@@ -70,7 +70,7 @@
 			}
 
 		.cProjects {
-			margin-left: 700px;
+			margin-left: 350px;
 			float: left;
 			margin-top: 15px;
 		}
@@ -120,6 +120,42 @@
 			width: 4%;
 			height: auto;
 		}
+
+        #projTable {
+            font-family: Poppins-Regular, sans-serif;
+            font-size: 18px;
+            color: #333333;
+            border-width: 1px;
+            border-color: #3A3A3A;
+            border-collapse: collapse;
+            margin: 0px 0px;
+            margin-right:0px;
+            float:left;
+        }
+
+        #projTable th {
+            border-width: 1px;
+            padding: 10px 15px;
+            border-style: solid;
+            border-color: #517994;
+            background-color: #B2CFD8;
+        }
+
+        #projTable tr:hover td {
+            background-color: #DFEBF1;
+        }
+
+        #projTable td {
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            border-color: #517994;
+            background-color: #ffffff;
+        }
+
+        #cpro {
+            margin-left:150px;
+        }
 	</style>
 </head>
 
@@ -152,16 +188,8 @@
 		</div>
 	</div>
 	<div class="cProjects">
-		<h1>Current Projects</h1>
+		<h1 id="cpro">Current Projects</h1>
 		<table id="projTable">
-			<tr>
-				<th>Project Name</th>
-				<th>Billable Rate</th>
-			</tr>
-            <div id="insert">
-
-            </div>
-
 		</table>
 	</div>
 
