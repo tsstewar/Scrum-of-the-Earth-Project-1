@@ -222,7 +222,7 @@ namespace ProjectTemplate
 		}
 
 		[WebMethod(EnableSession = true)]
-		public string getProject()
+		public string GetProject()
 		{
 			try
 			{
