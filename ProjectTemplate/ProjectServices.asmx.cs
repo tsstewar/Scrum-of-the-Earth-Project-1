@@ -296,12 +296,59 @@ namespace ProjectTemplate
             }
         }
 
+<<<<<<< HEAD
         [WebMethod(EnableSession = true)]
         public string GetUsers()
         {
             try
             {
                 string testQuery = "select * from users";
+=======
+
+        [WebMethod(EnableSession = true)]
+        public string GetTime()
+        {
+            try
+            {
+                string testQuery = "select user_times.project_name, user_times.time_logged, users.firstname from user_times, users where user_id = userid";
+                ////////////////////////////////////////////////////////////////////////
+                ///here's an example of using the getConString method!
+                ////////////////////////////////////////////////////////////////////////
+                MySqlConnection con = new MySqlConnection(getConString());
+                ////////////////////////////////////////////////////////////////////////
+                MySqlCommand cmd = new MySqlCommand(testQuery, con);
+                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                DataTable table = new DataTable();
+                adapter.Fill(table);
+
+                System.Web.Script.Serialization.JavaScriptSerializer serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+                List<Dictionary<string, object>> rows = new List<Dictionary<string, object>>();
+                Dictionary<string, object> row;
+                foreach (DataRow dr in table.Rows)
+                {
+                    row = new Dictionary<string, object>();
+                    foreach (DataColumn col in table.Columns)
+                    {
+                        row.Add(col.ColumnName, dr[col]);
+                    }
+                    rows.Add(row);
+                }
+                return serializer.Serialize(rows);
+            }
+            catch (Exception e)
+            {
+                return "Something went wrong, please check your credentials and db name and try again.  Error: " + e.Message;
+            }
+        }
+
+
+        [WebMethod(EnableSession = true)]
+        public string GetTotalTime()
+        {
+            try
+            {
+                string testQuery = "select time_logged from user_times";
+>>>>>>> 185344d39b40f6c5be74c81d4dae15f76e731c9c
                 ////////////////////////////////////////////////////////////////////////
                 ///here's an example of using the getConString method!
                 ////////////////////////////////////////////////////////////////////////
