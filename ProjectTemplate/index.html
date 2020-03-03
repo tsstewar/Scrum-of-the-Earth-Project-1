@@ -131,6 +131,29 @@
                 }
             });
 
+            $(document).ready(function getAllUserTime() {
+                $.ajax({
+                    url: "ProjectServices.asmx/getUserTime",
+                    data: $(this).serialize(),
+                    type: 'POST',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: 'json',
+                    success: function (result) {
+                        console.log(result.d)
+                        var data = JSON.parse(result.d);
+                        var table = '<tr><th>Project</th><th>Time Logged</th></tr>'
+                        for (i = 0; i < data.length; i++) {
+                            table = table + '<tr><td>' + data[i]['project_name'] + '</td><td>' + data[i]['time_logged'];
+                        }
+                        var rows = document.getElementById('logTable');
+                        rows.innerHTML = table;
+                    },
+                    error: function () {
+                        alert("Something went wrong");
+                    }
+                });
+            }
+
 
     </script>
     <!--END OF YOUR OWN JAVASCRIPT-->
