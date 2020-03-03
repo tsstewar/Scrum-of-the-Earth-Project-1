@@ -98,6 +98,7 @@
     <Content Include="login.html" />
     <Content Include="project.html" />
     <Content Include="ProjectServices.asmx" />
+    <Content Include="sorttable.js" />
     <Content Include="user.html" />
     <Content Include="Web.config" />
   </ItemGroup>

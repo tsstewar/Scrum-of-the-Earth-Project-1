@@ -1,10 +1,11 @@
-﻿﻿<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <title>Timr</title>
     <!--DO NOT FORGET THIS SCRIPT TAG SO YOU CAN USE JQUERY!!!!!-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
     <!--YOUR OWN JAVASCRIPT CAN GO RIGHT HERE-->
     <script type="text/javascript">
         var h5 = document.getElementsByTagName('h5'),
@@ -13,7 +14,10 @@
             clear = document.getElementById('clear'),
             seconds = 0, minutes = 0, hours = 0,
             t;
+
         //TIMER PORTION JS
+
+
 
         function add() {
             seconds++;
@@ -27,133 +31,51 @@
             }
             document.getElementById("h5").innerHTML = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
             //h5.textContent = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
+
             timer();
         }
+
         function timer() {
             t = setTimeout(add, 1000);
         }
         //timer();
+
+
         /* Start button */
         //start.onclick = timer();
+
+
         /* Stop button */
         function plzstop() {
             clearTimeout(t);
         }
+
         /* Clear button */
         function clearnow() {
             document.getElementById("h5").innerHTML = "00:00:00";
             seconds = 0; minutes = 0; hours = 0;
         }
         //END TIMER PORTION
-        function itemDelete(r) {
-            var i = r.parentNode.parentNode.rowIndex;
-            document.getElementById("logTable").deleteRow(i);
-            //if 'edit log comment' is pressed
-            //var lc = r.parentNode.parentNode.rowIndex.cell1;
-            //lc.text = "";
-        }
-        function editComment(r) {
-            var comment = window.prompt("Enter new Log Comment", "");
-            if (comment != null) {
-                var table = document.getElementById("logTable");
-                var rowNum = r.parentNode.parentNode.rowIndex;
-                //confirm if user wants to change
-                var confirms = window.confirm("Are you sure you want to change the comment?")
-                //yes
-                if (confirms == true) {
-                    table.rows[rowNum].cells[0].innerHTML = comment;
-                }
-            }
-        }
-        function editTime(r) {
-            var comment = window.prompt("Enter new Time Logged", "00:00:00");
-            if (comment != null) {
-                var table = document.getElementById("logTable");
-                var rowNum = r.parentNode.parentNode.rowIndex;
-                //confirm if user wants to change
-                var confirms = window.confirm("Are you sure you want to change the time?")
-                //yes
-                if (confirms == true) {
-                    table.rows[rowNum].cells[2].innerHTML = comment;
-                }
-            }
-        }
+
+
+
+
         //function to clear the timer and show a log entry with the recorded time and comment in a table below the timer
         function logtime() {
             var table = document.getElementById("logTable");
             var row = table.insertRow(1);
+
             var cell1 = row.insertCell(0);
             var cell2 = row.insertCell(1);
+
             //cell2.innerHTML = $("#timeComment").value;
             //cell2.innerHTML = $("#h5").value;
+
             cell1.innerHTML = document.getElementById("timeComment").value;
             cell2.innerHTML = document.getElementById("h5").innerHTML;
+
+
         }
-        function CreateProject(project_name, time_logged) {
-            var webMethod = "ProjectServices.asmx/AddTime";
-            var parameters = "{\"project_name\":\"" + encodeURI(project_name) + "\",\"time_logged\":\"" + encodeURI(time_logged) + "\"}";
-            $.ajax({
-                type: "POST",
-                url: webMethod,
-                data: parameters,
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (msg) {
-                    alert("Time & Project Added!");
-                },
-                error: function (e) {
-                    alert("Something went wrong");
-                }
-            });
-        };
-
-        //logs the user off both at the client and at the server
-        function logOff() {
-
-            var webMethod = "AccountServices.asmx/LogOff";
-            $.ajax({
-                type: "POST",
-                url: webMethod,
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (msg) {
-                    if (msg.d == true) {
-                        //we logged off, so go back to logon page,
-                        //stop checking messages
-                        //and clear the chat panel
-                        window.location.replace("/login.html")
-                    }
-                    else {
-                    }
-                },
-                error: function (e) {
-                    alert("Log Off failed");
-                }
-            });
-
-            $(document).ready(function getAllUserTime() {
-                $.ajax({
-                    url: "ProjectServices.asmx/getUserTime",
-                    data: $(this).serialize(),
-                    type: 'POST',
-                    contentType: "application/json; charset=utf-8",
-                    dataType: 'json',
-                    success: function (result) {
-                        console.log(result.d)
-                        var data = JSON.parse(result.d);
-                        var table = '<tr><th>Project</th><th>Time Logged</th></tr>'
-                        for (i = 0; i < data.length; i++) {
-                            table = table + '<tr><td>' + data[i]['project_name'] + '</td><td>' + data[i]['time_logged'];
-                        }
-                        var rows = document.getElementById('logTable');
-                        rows.innerHTML = table;
-                    },
-                    error: function () {
-                        alert("Something went wrong");
-                    }
-                });
-            }
-
 
     </script>
     <!--END OF YOUR OWN JAVASCRIPT-->
@@ -270,35 +192,35 @@
             <img src="timer.png">
             <h4>Timr&reg;</h4>
         </div>
-        <div class="table">
-            <br />
-            <br />
-            <h3><em>Hello, </em></h3>
-            <br />
-            <h5 id="h5"><time>00:00:00</time></h5>
-            <button id="start" onclick="timer()">start</button>
-            <button id="stop" onclick="plzstop()">stop</button>
-            <button id="clear" onclick="clearnow()">clear</button>
-            <input id="timeComment" placeholder="Enter a project name">
-            <button id="logBtn" onclick="logtime(); CreateProject($('#timeComment').val(), $('#h5').val()); return false;">Log Time</button>
-            <!--Table for the timer log-->
-            <br /><br /><br />
-            <table id="logTable">
-                <tr>
-                    <th>Project</th>
-                    <th>Time Logged</th>
-                </tr>
-                <!--<tr>
-                    <td>Team meeting</td>
-                    <td>00:01:23</td>
-                </tr>
-                <tr>
-                    <td>Contract negotitions</td>
-                    <td>00:04:12</td>
-                </tr>-->
-            </table>
-            <br />
-        </div>
     </div>
+    <br />
+    <br />
+    <h3><em>Hello </em></h3>
+    <br />
+    <h5 id="h5"><time>00:00:00</time></h5>
+    <button id="start" onclick="timer()">start</button>
+    <button id="stop" onclick="plzstop()">stop</button>
+    <button id="clear" onclick="clearnow()">clear</button>
+    <input id="timeComment" placeholder="Enter a comment">
+    <button id="logBtn" onclick="logtime()">Log Time</button>
+
+    <!--Table for the timer log-->
+    <br /><br /><br /><br />
+    <table id="logTable">
+        <tr>
+            <th>Log Comment</th>
+            <th>Time Logged</th>
+
+        </tr>
+        <!--<tr>
+            <td>Team meeting</td>
+            <td>00:01:23</td>
+        </tr>
+        <tr>
+            <td>Contract negotitions</td>
+            <td>00:04:12</td>
+        </tr>-->
+    </table>
+    <br />
 </body>
 </html>
