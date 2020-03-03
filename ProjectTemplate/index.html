@@ -73,9 +73,31 @@
 
             cell1.innerHTML = document.getElementById("timeComment").value;
             cell2.innerHTML = document.getElementById("h5").innerHTML;
-
-
         }
+
+        //logs the user off both at the client and at the server
+        function logOff() {
+
+            var webMethod = "AccountServices.asmx/LogOff";
+            $.ajax({
+                type: "POST",
+                url: webMethod,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (msg) {
+                    if (msg.d == true) {
+                        //we logged off, so go back to logon page,
+                        //stop checking messages
+                        //and clear the chat panel
+                        window.location.replace("/login.html")
+                    }
+                    else {
+                    }
+                },
+                error: function (e) {
+                    alert("Log Off failed");
+                }
+            });
 
     </script>
     <!--END OF YOUR OWN JAVASCRIPT-->
@@ -192,6 +214,9 @@
             <img src="timer.png">
             <h4>Timr&reg;</h4>
         </div>
+    </div>
+    <div class="head">
+        <h2><a href="login.html" onclick="logOff()">Log Off</a></h2>
     </div>
     <br />
     <br />
