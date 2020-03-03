@@ -37,7 +37,7 @@
                     var data = JSON.parse(result.d);
                     var table = '<tr><th>Project Name</th><th>Billable Rate</th><th></th><th></th></tr>'
                     for (i = 0; i < data.length; i++) {
-                        table = table + '<tr><td>' + data[i]['project_name'] + '</td><td>$' + data[i]['billable_rate']+'/hour</td><td><button id="Edit">Edit</button></td><td><button id="Delete">Delete</button></tr>';
+                        table = table + '<tr><td>' + data[i]['project_name'] + '</td><td>$' + data[i]['billable_rate']+'/hour</td><td><button id="edit">Edit</button></td><td><button id="delete">Delete</button></tr>';
                     }
                     var rows = document.getElementById('projTable');
                     rows.innerHTML = table;
@@ -155,6 +155,24 @@
 
         #cpro {
             margin-left:150px;
+        }
+
+        #edit {
+            border-radius: 6px;
+            background-color: gainsboro;
+            font-size: 14px;
+            font-weight: 700;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        #delete {
+            border-radius: 6px;
+            background-color: gainsboro;
+            font-size: 14px;
+            font-weight: 700;
+            justify-content: center;
+            margin-top: 10px;
         }
 	</style>
 </head>
