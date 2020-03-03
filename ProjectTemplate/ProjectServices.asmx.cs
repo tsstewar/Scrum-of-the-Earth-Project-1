@@ -14,6 +14,8 @@ namespace ProjectTemplate
 	[System.Web.Script.Services.ScriptService]
 	public class ProjectServices : System.Web.Services.WebService
 	{
+
+        public string userID = "";
 		////////////////////////////////////////////////////////////////////////
 		///replace the values of these variables with your database credentials
 		////////////////////////////////////////////////////////////////////////
@@ -96,6 +98,7 @@ namespace ProjectTemplate
 				Session["id"] = sqlDt.Rows[0]["id"];
 				Session["Admin"] = sqlDt.Rows[0]["Admin"];
 				loggedOn[0] = true;
+                userID = uid;
 				if (sqlDt.Rows[0]["Admin"].ToString() == "y")
 				{
 					loggedOn[1] = true;
@@ -257,5 +260,41 @@ namespace ProjectTemplate
 			}
 		}
 
-	}
+        [WebMethod(EnableSession = true)]
+        public string GetUserTime()
+        {
+            try
+            {
+                string testQuery = "select * from user_times where user_id = " + userID;
+                ////////////////////////////////////////////////////////////////////////
+                ///here's an example of using the getConString method!
+                ////////////////////////////////////////////////////////////////////////
+                MySqlConnection con = new MySqlConnection(getConString());
+                ////////////////////////////////////////////////////////////////////////
+                MySqlCommand cmd = new MySqlCommand(testQuery, con);
+                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                DataTable table = new DataTable();
+                adapter.Fill(table);
+
+                System.Web.Script.Serialization.JavaScriptSerializer serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+                List<Dictionary<string, object>> rows = new List<Dictionary<string, object>>();
+                Dictionary<string, object> row;
+                foreach (DataRow dr in table.Rows)
+                {
+                    row = new Dictionary<string, object>();
+                    foreach (DataColumn col in table.Columns)
+                    {
+                        row.Add(col.ColumnName, dr[col]);
+                    }
+                    rows.Add(row);
+                }
+                return serializer.Serialize(rows);
+            }
+            catch (Exception e)
+            {
+                return "Something went wrong, please check your credentials and db name and try again.  Error: " + e.Message;
+            }
+        }
+
+    }
 }
