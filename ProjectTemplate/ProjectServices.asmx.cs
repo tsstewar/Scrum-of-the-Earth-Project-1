@@ -186,8 +186,8 @@ namespace ProjectTemplate
 			string sqlConnectString = getConString();
 			//the only thing fancy about this query is SELECT LAST_INSERT_ID() at the end.  All that
 			//does is tell mySql server to return the primary key of the last inserted row.
-			string sqlSelect = "insert into users_times (project_name, time_logged, user_id) " +
-                "values(@project_nameValue, @time_loggedValue, " + userID + "); SELECT LAST_INSERT_ID();";
+			string sqlSelect = "insert into users_times (project_name, time_logged) " +
+                "values(@project_nameValue, @time_loggedValue); SELECT LAST_INSERT_ID();";
 			MySqlConnection sqlConnection = new MySqlConnection(sqlConnectString);
 			MySqlCommand sqlCommand = new MySqlCommand(sqlSelect, sqlConnection);
 			//sqlCommand.Parameters.AddWithValue("@idNumValue", HttpUtility.UrlDecode(id));
