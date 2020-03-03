@@ -4,26 +4,46 @@
 <head>
     <meta charset="utf-8" />
     <title>Timr</title>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
+            $(document).ready(function getAllUsers() {
+                $.ajax({
+                    url: "ProjectServices.asmx/getUsers",
+                    data: $(this).serialize(),
+                    type: 'POST',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: 'json',
+                    success: function (result) {
+                        console.log(result.d)
+                        var data = JSON.parse(result.d);
+                        var table = '<tr><th> Firstname</th><th>Lastname</th><th>Username</th><th>Admin?</th><th>Edit</th><th>Delete</th></tr >'
+                        for (i = 0; i < data.length; i++) {
+                            table = table + '<tr><td>' + data[i]['firstname'] + '</td><td>' + data[i]['lastname'] + '</td><td>' + data[i]['userid'] + '</td><td><select><option value ="yes">Y</option><option value ="no">N</option><option value ="selected" selected>' + data[i]['admin'] + '</option></select></td><td><button id="edit">Edit</button></td><td><button id="delete">Delete</button></tr>';
+                        }
+                        var rows = document.getElementById('userTable');
+                        rows.innerHTML = table;
+                    },
+                    error: function () {
+                        alert("Something went wrong");
+                    }
+                });
+            }
+            );
+    </script>
     <style>
-        * {
-            margin: 0px;
-            padding: 0px;
-            box-sizing: border-box;
-        }
 
         body, html {
             font-family: Poppins-Regular, sans-serif;
         }
 
         .page {
-            margin-left: 575px;
-            margin-top:50px;
+            margin-left: 450px;
+            margin-top: 50px;
             background: white;
         }
 
-        h1{
-            margin-left:190px;
+        h1 {
+            margin-left: 350px;
             margin-bottom: 10px;
         }
 
@@ -33,7 +53,7 @@
             border-style: solid;
             border-color: #517994;
             background-color: #B2CFD8;
-            font-size:20px;
+            font-size: 20px;
         }
 
         h4 {
@@ -54,6 +74,42 @@
             height: auto;
         }
 
+        #userjTable {
+            font-family: Poppins-Regular, sans-serif;
+            font-size: 18px;
+            color: #333333;
+            border-color: #3A3A3A;
+            float: left;
+        }
+
+            #userjTable th {
+                border-width: 1px;
+                padding: 10px 15px;
+                border-style: solid;
+                border-color: #517994;
+                background-color: #B2CFD8;
+            }
+
+            #userjTable tr:hover td {
+                background-color: #DFEBF1;
+            }
+
+            #userTable td {
+                border-width: 1px;
+                padding: 8px;
+                border-style: solid;
+                border-color: #517994;
+                background-color: #ffffff;
+            }
+
+        button {
+            border-radius: 6px;
+            background-color: gainsboro;
+            font-size: 17px;
+            font-weight: 700;
+            justify-content: center;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -64,12 +120,6 @@
     <div class="page">
         <h1>All Users</h1>
         <table id="userTable">
-            <tr>
-                <th>Name</th>
-                <th>Username</th>
-                <th>Edit</th>
-                <th>Delete</th>
-            </tr>
         </table>
     </div>
 </body>
