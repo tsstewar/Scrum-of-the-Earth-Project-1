@@ -67,7 +67,7 @@ namespace ProjectTemplate
 			string sqlConnectString = getConString();
 			//here's our query.  A basic select with nothing fancy.  Note the parameters that begin with @
 			//NOTICE: we added admin to what we pull, so that we can store it along with the id in the session
-			string sqlSelect = "SELECT id FROM users WHERE id=@idValue and pass=@passValue";
+			string sqlSelect = "SELECT id FROM users WHERE userid=@idValue and pass=@passValue";
 			//set up our connection object to be ready to use our connection string
 			MySqlConnection sqlConnection = new MySqlConnection(sqlConnectString);
 			//set up our command object to use our connection, and our query
@@ -93,7 +93,6 @@ namespace ProjectTemplate
 				//are 1) logged in at all, and 2) and admin or not
 				Session["id"] = sqlDt.Rows[0]["id"];
                 success = true;
-                userID = uid;
 			}
 			//return the result!
 			return success;
