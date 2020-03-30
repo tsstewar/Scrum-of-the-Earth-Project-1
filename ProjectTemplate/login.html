@@ -2,7 +2,32 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Timr</title>
+    <title>Connect</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!--===============================================================================================-->
+
     <!--DO NOT FORGET THIS SCRIPT TAG SO YOU CAN USE JQUERY!!!!!-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -60,164 +85,100 @@
     </script>
     <!--END OF YOUR OWN JAVASCRIPT-->
     <!--AND YOUR OWN CSS CAN GO HERE AS WELL-->
-        <style>
-            @font-face {
-                font-family: Poppins-Regular;
-                src: url('../fonts/poppins/Poppins-Regular.ttf');
-            }
-
-            @font-face {
-                font-family: Poppins-Bold;
-                src: url('../fonts/poppins/Poppins-Bold.ttf');
-            }
-
-            @font-face {
-                font-family: Poppins-Medium;
-                src: url('../fonts/poppins/Poppins-Medium.ttf');
-            }
-
-            @font-face {
-                font-family: Montserrat-Bold;
-                src: url('../fonts/montserrat/Montserrat-Bold.ttf');
-            }
-
-            * {
-                margin: 0px;
-                padding: 0px;
-                box-sizing: border-box;
-            }
-
-            body, html {
-                height: 100%;
-                font-family: Poppins-Regular, sans-serif;
-            }
-
-            .page {
-                width: 100%;
-                margin: 0 auto;
-                height: 100%;
-                display: grid;
-                background: #f3f2f2;
-            }
-
-            .loginbox {
-                width: 960px;
-                border-radius: 10px;
-                background: white;
-                box-shadow: 20px 20px 50px grey;
-            }
-
-            .header {
-                color: #2a7886;
-                text-align: center;
-            }
-
-            .text {
-                padding-left:300px;
-                margin: 0px 0px 50px 50px;
-            }
-
-            .logo {
-                margin-left: 15px;
-                margin-top: 15px;
-            }
-
-            input {
-                border-radius: 6px;
-                background-color: ghostwhite;
-                height: 30px;
-                width: 200px;
-                border-color: aliceblue;
-                border-width: .25px;
-                border-style:inset;
-                box-shadow: 5px 5px 5px lightgrey;
-                margin-left: 15px;
-                padding-left:10px;
-            }
-
-            #login {
-                background-color: #6096BA;
-                border: none;
-                color: white;
-                width: 150px;
-                padding: 10px 20px;
-                margin: 4px 2px;
-                cursor: pointer;
-                border-radius: 8px;
-                font-weight: bold;
-                margin: 15px 40px;
-
-            }
-
-            h3 {
-                padding-bottom: 5px;
-                padding-top: 40px;
-                font-size: 15px;
-                color: darkslategrey;
-                margin-left: 15px;
-            }
-
-            h1 {
-                font-size: 50px;
-                color: #274C77;
-                padding-top: 30px;
-            }
-
-            h2 {
-                font-size: 20px;
-                color: #6096BA;
-            }
-
-            img {
-                width: 4%;
-                height: auto;
-            }
-
-            h4 {
-                font-family: 'Lucida Sans Typewriter';
-                font-size:25px;
-                color: darkslategrey;
-                margin-left:3px;
-            }
-
-            h5 {
-                color: dimgrey;
-                margin: 5px 47px;
-                padding-bottom: 50px;
-            }
-
-        </style>
+    <style>
+    </style>
     <!--END OF YOUR OWN CSS-->
 </head>
-<body>
-    <div class="page">
-        <div class="logo">
-            <img src="timer.png">
-            <h4>Timr&reg;</h4>
-        </div>
-        <div class="text">
-            <div class="loginbox">
-                <div class="header">
-                    <h1>Want to track time?</h1>
-                    <h2>Log in to your Timr Account.</h2>
-                    <br />
-                </div>
-                <div class="text">
-                    <div class="input">
-                        <h3>Username</h3>
-                        <input type="text" :focus id="logonId" />
-                        <h3>Password</h3>
-                        <input type="password" :focus id="logonPass" />
-                        <br />
-                        <button id="login" onclick="javascript: logon();">Log In</button>
-                        <h5>
-                            <em><a href="createAcc.html">New User? Sign Up!</a></em>
-                        </h5>
+<body style="background-color: #666666;">
+
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <form class="login100-form validate-form">
+                    <span class="login100-form-title p-b-43">
+                        Login!
+                    </span>
+
+
+                    <div class="wrap-input100 validate-input" data-validate="Valid username is required">
+                        <input class="input100" type="text" :focus id="logonId" name="username">
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">Username</span>
                     </div>
+
+
+                    <div class="wrap-input100 validate-input" data-validate="Password is required">
+                        <input class="input100" type="password" :focus id="logonPass" name="pass">
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">Password</span>
+                    </div>
+
+                    <div class="flex-sb-m w-full p-t-3 p-b-32">
+                        <div class="contact100-form-checkbox">
+                            <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+                            <label class="label-checkbox100" for="ckb1">
+                                Remember me
+                            </label>
+                        </div>
+
+                        <div>
+                            <a href="createAcc.html">
+                                Don't have an account? Sign up!
+                            </a>
+                        </div>
+                    </div>
+
+
+                    <div class="container-login100-form-btn" id="login" onclick="javascript: logon();">
+                        <button class="login100-form-btn">
+                            Login
+                        </button>
+                    </div>
+
+                    <div class="text-center p-t-46 p-b-20">
+                        <span class="txt2">
+                            or sign up using
+                        </span>
+                    </div>
+
+                    <div class="login100-form-social flex-c-m">
+                        <a href="#" class="login100-form-social-item flex-c-m bg1 m-r-5">
+                            <i class="fa fa-facebook-f" aria-hidden="true"></i>
+                        </a>
+
+                        <a href="#" class="login100-form-social-item flex-c-m bg2 m-r-5">
+                            <i class="fa fa-twitter" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </form>
+
+                <div class="login100-more" style="background-image: url('images/bg-01.jpg');">
                 </div>
             </div>
         </div>
-        </div>
-    </body>
+    </div>
+
+
+
+
+
+    <!--===============================================================================================-->
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/daterangepicker/moment.min.js"></script>
+    <script src="vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script src="js/main.js"></script>
+
+</body>
 </html>
 
