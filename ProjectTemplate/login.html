@@ -43,13 +43,9 @@
                 dataType: "json",
                 success: function (msg) {
                     var responseFromServer = msg.d;
-                    if (responseFromServer[0] == true && responseFromServer[1] == false) {
+                    if (responseFromServer == true) {
                         alert("User logged in!")
                         window.location.replace("/index.html")
-                    }
-                    else if (responseFromServer[0] == true && responseFromServer[1] == true) {
-                        alert("Admin logged in!")
-                        window.location.replace("/adminIndex.html")
                     }
                     else {
                         alert("bad credentials")

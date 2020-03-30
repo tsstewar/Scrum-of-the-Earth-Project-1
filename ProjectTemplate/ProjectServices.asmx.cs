@@ -58,20 +58,16 @@ namespace ProjectTemplate
 			}
 		}
 		[WebMethod(EnableSession = true)] //NOTICE: gotta enable session on each individual method
-		public bool[] LogOn(string uid, string pass)
+		public bool LogOn(string uid, string pass)
 		{
 			//we return this flag to tell them if they logged in or not
 			bool success = false;
-			//bool[] parameters so that if function can determine addmin from user
-			bool isAdmin = false;
-			bool[] loggedOn = new bool[2];
-			loggedOn[0] = success;
-			loggedOn[1] = isAdmin;
+			
 			//our connection string comes from our web.config file like we talked about earlier
 			string sqlConnectString = getConString();
 			//here's our query.  A basic select with nothing fancy.  Note the parameters that begin with @
 			//NOTICE: we added admin to what we pull, so that we can store it along with the id in the session
-			string sqlSelect = "SELECT id, admin FROM users WHERE userid=@idValue and pass=@passValue";
+			string sqlSelect = "SELECT id FROM users WHERE id=@idValue and pass=@passValue";
 			//set up our connection object to be ready to use our connection string
 			MySqlConnection sqlConnection = new MySqlConnection(sqlConnectString);
 			//set up our command object to use our connection, and our query
@@ -96,16 +92,11 @@ namespace ProjectTemplate
 				//so we can check those values later on other method calls to see if they 
 				//are 1) logged in at all, and 2) and admin or not
 				Session["id"] = sqlDt.Rows[0]["id"];
-				Session["Admin"] = sqlDt.Rows[0]["Admin"];
-				loggedOn[0] = true;
+                success = true;
                 userID = uid;
-				if (sqlDt.Rows[0]["Admin"].ToString() == "Y")
-				{
-					loggedOn[1] = true;
-				}
 			}
 			//return the result!
-			return loggedOn;
+			return success;
 		}
 		//EXAMPLE OF AN INSERT QUERY WITH PARAMS PASSED IN.  BONUS GETTING THE INSERTED ID FROM THE DB!
 		[WebMethod(EnableSession = true)]
