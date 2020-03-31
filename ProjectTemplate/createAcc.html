@@ -23,10 +23,18 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript">
+        function displayRadioValue() {
+            var ele = document.getElementsByName('mentorship');
 
-        function CreateAccount(userid, pass, firstname, lastname) {
+            for (i = 0; i < ele.length; i++) {
+                if (ele[i].checked)
+                    return ele[i].value; 
+            }
+        }
+
+        function CreateAccount(userid, pass, firstname, lastname, mentorshiptype) {
             var webMethod = "ProjectServices.asmx/RequestAccount";
-            var parameters = "{\"userid\":\"" + encodeURI(userid) + "\",\"pass\":\"" + encodeURI(pass) + "\",\"firstname\":\"" + encodeURI(firstname) + "\",\"lastname\":\"" + encodeURI(lastname) + "\"}";
+            var parameters = "{\"userid\":\"" + encodeURI(userid) + "\",\"pass\":\"" + encodeURI(pass) + "\",\"firstname\":\"" + encodeURI(firstname) + "\",\"lastname\":\"" + encodeURI(lastname) + "\",\"mentorshiptype\":\"" + encodeURI(mentorshiptype) + "\"}";
 
             $.ajax({
                 type: "POST",
@@ -49,13 +57,12 @@
 </head>
 
 <body>
-
     <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
         <div class="wrapper wrapper--w680">
             <div class="card card-4">
                 <div class="card-body">
                     <h2 class="title">Create a new account!</h2>
-                    <form method="POST" onsubmit="CreateAccount($('#newLogonUserId').val(), $('#newLogonPassword').val(), $('#newLogonFirstName').val(), $('#newLogonLastName').val()); return false;">
+                    <form method="POST" onsubmit="CreateAccount($('#newLogonUserId').val(), $('#newLogonPassword').val(), $('#newLogonFirstName').val(), $('#newLogonLastName').val(), displayRadioValue()); return false;">
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
@@ -102,12 +109,12 @@
                                     <div class="p-t-10">
                                         <label class="radio-container m-r-45">
                                             Mentee
-                                            <input type="radio" checked="checked" name="gender">
+                                            <input type="radio" checked="checked" name="mentorship" value="Mentee">
                                             <span class="checkmark"></span>
                                         </label>
                                         <label class="radio-container">
                                             Mentor
-                                            <input type="radio" name="gender">
+                                            <input type="radio" name="mentorship" value="Mentor">
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
