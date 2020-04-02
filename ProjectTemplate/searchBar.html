@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Search Bar Test</title>
+
+    <script>
+        // need to figure out how to make a function that will search mentors/mentees from the database
+        //without having a list of users there
+        function searchUsers() {
+            let input = document.getElementById('searchBar').value
+            input = input.toLowerCase();
+            let x = document.getElementsByClassName('users');
+
+            for (i = 0; i < x.length; i++) {
+                if (!x[i].innerHTML.toLowerCase().includes(input)) {
+                    x[i].style.display = "none";
+                }
+                else {
+                    x[i].style.display = "list-item";
+                }
+            }
+        } 
+    </script>
+
+    <style>
+        #searchBar {
+            margin-left: 15%;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        input[type=text] {
+            width: 30%;
+            -webkit-transition: width 0.15s ease-in-out;
+            transition: width 0.15s ease-in-out;
+        }
+
+            /* When the input field gets focus, 
+        change its width to 100% */
+            input[type=text]:focus {
+                width: 70%;
+            }
+
+        #list {
+            font-size: 1.5em;
+            margin-left: 90px;
+        }
+
+        .users {
+            display: list-item;
+        }
+
+    </style>
+</head>
+
+<body>
+    <!-- input tag -->
+    <input id="searchBar" onkeyup="searchUsers()" type="text" name="search" placeholder="Search users" />
+
+    <ol id="list">
+        <li class="users">Randy</li>
+        <li class="users">Susan</li>
+        <li class="users">Jorge</li>
+        <li class="users">Gabe</li>
+        <li class="users">Rachel</li>
+        <li class="users">Mary</li>
+    </ol>
+</body>
+</html>
