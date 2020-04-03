@@ -10,6 +10,11 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
     <!--YOUR OWN JAVASCRIPT CAN GO RIGHT HERE-->
     <script type="text/javascript">
         $(document).ready(function () {
@@ -86,11 +91,48 @@
         }
 
 
+
+        function readOnlyFunction() {
+            document.getElementById('degreetext').readOnly = false;
+            document.getElementById('currentyearofstudytext').readOnly = false;
+            document.getElementById('expectedgraddatetext').readOnly = false;
+            document.getElementById('intereststext').readOnly = false;
+            document.getElementById('goalstext').readOnly = false;
+            document.getElementById('savebutton').style.display = "block";
+            document.getElementById('currentyearoptions').disabled = false;
+            document.getElementById('currentyearoptions2').disabled = false;
+            document.getElementById('currentyearoptions3').disabled = false;
+            document.getElementById('currentyearoptions4').disabled = false;
+
+        };
+
+        function saveButton() {
+            document.getElementById('savebutton').style.display = "none";
+            document.getElementById('currentyearoptions').disabled = true;
+            document.getElementById('currentyearoptions2').disabled = true;
+            document.getElementById('currentyearoptions3').disabled = true;
+            document.getElementById('currentyearoptions4').disabled = true;
+            document.getElementById('degreetext').readOnly = true;
+            document.getElementById('currentyearofstudytext').readOnly = true;
+            document.getElementById('expectedgraddatetext').readOnly = true;
+            document.getElementById('intereststext').readOnly = true;
+            document.getElementById('goalstext').readOnly = true;
+        }
+
+
     </script>
 
 
     <!--AND YOUR OWN CSS CAN GO HERE AS WELL-->
     <style>
+        #savebutton {
+            float: right;
+        }
+
+        #editbutton {
+            float: left;
+        }
+
         .navbar .dropdown-toggle, .navbar .dropdown-menu a {
             cursor: pointer;
         }
@@ -187,6 +229,46 @@
             <h1>Profile</h1>
             <p class="lead text-info">Profile</p>
         </div>
+
+        <div class="text-center">
+            <input type="button" id="editbutton" class="btn btn-primary" value="Edit Your Profile" onclick="readOnlyFunction()">
+            <input type="button" id="savebutton" class="btn btn-success" value="Save Your Profile" style="display: none;" onclick="saveButton()">
+        </div>
+
+        <div class="form-group">
+            <br /><br /><br />
+            <label for="exampleFormControlTextarea1">Degree:</label>
+
+            <input type="text" class="form-control" id="degreetext" rows="1" readonly="readonly">
+
+            <br />
+
+            <label for="exampleFormControlSelect2">Current Year of Study:</label>
+            <select multiple class="form-control" id="currentyearofstudytext">
+                <option disabled="disabled" id="currentyearoptions">Freshman</option>
+                <option disabled="disabled" id="currentyearoptions2">Sophomore</option>
+                <option disabled="disabled" id="currentyearoptions3">Junior</option>
+                <option disabled="disabled" id="currentyearoptions4">Senior</option>
+            </select>
+
+            <br />
+
+            <label for="exampleFormControlTextarea1">Expected Graduation Date:</label>
+            <textarea class="form-control" id="expectedgraddatetext" rows="1" readonly="readonly"></textarea>
+
+            <br />
+
+            <label for="exampleFormControlTextarea1">Interests:</label>
+            <textarea class="form-control" id="intereststext" rows="1" readonly="readonly"></textarea>
+
+            <br />
+
+            <label for="exampleFormControlTextarea1">Goals:</label>
+            <textarea class="form-control" id="goalstext" rows="3" readonly="readonly"></textarea>
+
+
+        </div>
+
     </main>
 </body>
 </html>
