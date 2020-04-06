@@ -65,6 +65,75 @@
         //    });
         //}
 
+        function AddNewGoal(goal) {
+			var webMethod = "ProjectServices.asmx/CreateNewGoal";
+            var parameters = "{\"goal\":\"" + encodeURI(goal) + "\"}";
+
+			$.ajax({
+				type: "POST",
+				url: webMethod,
+				data: parameters,
+				contentType: "application/json; charset=utf-8",
+				dataType: "json",
+				success: function (msg) {
+					alert("Goal Created!");
+					//window.location.replace("/profile.html")
+				},
+				error: function (e) {
+					alert("Something went wrong");
+				}
+			});
+        }
+
+        $(document).ready(function getAllInProgressGoals() {
+                $.ajax({
+                    url: "ProjectServices.asmx/GetInProgressGoals",
+                    data: $(this).serialize(),
+                    type: 'POST',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: 'json',
+                    success: function (result) {
+                        console.log(result.d)
+                        var data = JSON.parse(result.d);
+                        var table = '<tr><th>Goal</th></tr>'
+                        for (i = 0; i < data.length; i++) {
+                            table = table + '<tr><td>' + data[i]['goal'] + '</td></tr>';
+                        }
+                        var rows = document.getElementById('inProgressTable');
+                        rows.innerHTML = table;
+                    },
+                    error: function () {
+                        alert("Something went wrong");
+                    }
+                });
+            }
+         );
+
+        $(document).ready(function getAllCompletedGoals() {
+                $.ajax({
+                    url: "ProjectServices.asmx/GetCompletedGoals",
+                    data: $(this).serialize(),
+                    type: 'POST',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: 'json',
+                    success: function (result) {
+                        console.log(result.d)
+                        var data = JSON.parse(result.d);
+                        var table = '<tr><th>Goal</th></tr>'
+                        for (i = 0; i < data.length; i++) {
+                            table = table + '<tr><td>' + data[i]['goal'] + '</td></tr>';
+                        }
+                        var rows = document.getElementById('completedTable');
+                        rows.innerHTML = table;
+                    },
+                    error: function () {
+                        alert("Something went wrong");
+                    }
+                });
+            }
+         );
+
+
         //logs the user off both at the client and at the server
         function logOff() {
 
@@ -89,6 +158,8 @@
                 }
             });
         }
+
+
 
 
 
@@ -160,6 +231,48 @@
                 border-top: .3em solid transparent;
                 border-left: .3em solid;
             }
+        }
+        input{
+            margin-bottom:5px;
+            padding: 10px;
+        }
+
+        .inputs{
+            text-align:center;
+        }
+                .newAccountBox {
+            width: 500px;
+            height:300px;
+            border-radius: 10px;
+            background: white;
+            box-shadow: 20px 20px 50px grey;
+            margin-left:600px;
+            margin-top: 0px;
+            
+        }
+
+            .newAccountBox input {
+            border-radius: 6px;
+            width: 200px;
+            height: 25px;
+            font-size: 17px;
+			}
+
+			.newAccountBox hr {
+				padding: 0px;
+				margin: 0px;
+			}
+
+            form {
+               margin-left:15px;
+               margin-top: 20px;
+
+            }
+
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
         }
     </style>
     <!--END OF YOUR OWN CSS-->
@@ -263,8 +376,28 @@
 
             <br />
 
-            <label for="exampleFormControlTextarea1">Goals:</label>
-            <textarea class="form-control" id="goalstext" rows="3" readonly="readonly"></textarea>
+            <label for="exampleFormControlTextarea1">Goals in Progress</label>
+            <!-- Where user input should go into 'goal' column in DB
+            <form onsubmit="AddNewGoal($('#goalText').val());">
+                <div>
+                    Add a new  goal: <input type="text" class="form-control" id="goalText" />
+                </div>
+                <div>
+                    <button type="submit">Enter</button>
+                </div>
+                <div>
+                    References function that should print out all in progress goals in a table
+                    <table id="inProgressTable"></table>
+                </div>
+            </form>
+
+            <br />
+
+            <label for="exampleFormControlTextarea1">Completed Goals</label>
+            <div>
+                References function that should print out all in progress goals in a table
+                <table id="completedTable"></table>
+            </div>-->
 
 
         </div>

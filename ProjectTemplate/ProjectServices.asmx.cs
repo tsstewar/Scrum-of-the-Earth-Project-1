@@ -396,5 +396,112 @@ namespace ProjectTemplate
             }
         }
 
-    }
+		[WebMethod(EnableSession = true)]
+		public void CreateNewGoal(string goal)
+		{
+			//string sqlConnectString = System.Configuration.ConfigurationManager.ConnectionStrings["myDB"].ConnectionString;
+			string sqlConnectString = getConString();
+			//the only thing fancy about this query is SELECT LAST_INSERT_ID() at the end.  All that
+			//does is tell mySql server to return the primary key of the last inserted row.
+			string sqlSelect = "insert into Goals (goal) " +
+				"values(@goal_Value); SELECT LAST_INSERT_ID();";
+			MySqlConnection sqlConnection = new MySqlConnection(sqlConnectString);
+			MySqlCommand sqlCommand = new MySqlCommand(sqlSelect, sqlConnection);
+			//sqlCommand.Parameters.AddWithValue("@idNumValue", HttpUtility.UrlDecode(id));
+			sqlCommand.Parameters.AddWithValue("@goal_Value", HttpUtility.UrlDecode(goal));
+			//this time, we're not using a data adapter to fill a data table.  We're just
+			//opening the connection, telling our command to "executescalar" which says basically
+			//execute the query and just hand me back the number the query returns (the ID, remember?).
+			//don't forget to close the connection!
+			sqlConnection.Open();
+			//we're using a try/catch so that if the query errors out we can handle it gracefully
+			//by closing the connection and moving on
+			try
+			{
+				int accountID = Convert.ToInt32(sqlCommand.ExecuteScalar());
+				//here, you could use this accountID for additional queries regarding
+				//the requested account.  Really this is just an example to show you
+				//a query where you get the primary key of the inserted row back from
+				//the database!
+			}
+			catch (Exception e)
+			{
+			}
+			sqlConnection.Close();
+		}
+
+
+		[WebMethod(EnableSession = true)]
+		public string GetInProgressGoals()
+		{
+			try
+			{
+				string testQuery = "select goal From Goals Where completed=0";
+				////////////////////////////////////////////////////////////////////////
+				///here's an example of using the getConString method!
+				////////////////////////////////////////////////////////////////////////
+				MySqlConnection con = new MySqlConnection(getConString());
+				////////////////////////////////////////////////////////////////////////
+				MySqlCommand cmd = new MySqlCommand(testQuery, con);
+				MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+				DataTable table = new DataTable();
+				adapter.Fill(table);
+
+				System.Web.Script.Serialization.JavaScriptSerializer serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+				List<Dictionary<string, object>> rows = new List<Dictionary<string, object>>();
+				Dictionary<string, object> row;
+				foreach (DataRow dr in table.Rows)
+				{
+					row = new Dictionary<string, object>();
+					foreach (DataColumn col in table.Columns)
+					{
+						row.Add(col.ColumnName, dr[col]);
+					}
+					rows.Add(row);
+				}
+				return serializer.Serialize(rows);
+			}
+			catch (Exception e)
+			{
+				return "Something went wrong, please check your credentials and db name and try again.  Error: " + e.Message;
+			}
+		}
+
+		[WebMethod(EnableSession = true)]
+		public string GetCompletedGoals()
+		{
+			try
+			{
+				string testQuery = "select goal From Goals Where completed=1";
+				////////////////////////////////////////////////////////////////////////
+				///here's an example of using the getConString method!
+				////////////////////////////////////////////////////////////////////////
+				MySqlConnection con = new MySqlConnection(getConString());
+				////////////////////////////////////////////////////////////////////////
+				MySqlCommand cmd = new MySqlCommand(testQuery, con);
+				MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+				DataTable table = new DataTable();
+				adapter.Fill(table);
+
+				System.Web.Script.Serialization.JavaScriptSerializer serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+				List<Dictionary<string, object>> rows = new List<Dictionary<string, object>>();
+				Dictionary<string, object> row;
+				foreach (DataRow dr in table.Rows)
+				{
+					row = new Dictionary<string, object>();
+					foreach (DataColumn col in table.Columns)
+					{
+						row.Add(col.ColumnName, dr[col]);
+					}
+					rows.Add(row);
+				}
+				return serializer.Serialize(rows);
+			}
+			catch (Exception e)
+			{
+				return "Something went wrong, please check your credentials and db name and try again.  Error: " + e.Message;
+			}
+		}
+
+	}
 }
