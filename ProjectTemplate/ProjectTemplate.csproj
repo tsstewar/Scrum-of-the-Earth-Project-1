@@ -96,6 +96,7 @@
     <Content Include="Global.asax" />
     <Content Include="index.html" />
     <Content Include="login.html" />
+    <Content Include="profile.html" />
     <Content Include="project.html" />
     <Content Include="ProjectServices.asmx" />
     <Content Include="searchBar.html" />
