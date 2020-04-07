@@ -504,7 +504,6 @@ namespace ProjectTemplate
         }
 
         [WebMethod(EnableSession = true)]
-        public Account[] SearchResult(string searchInput)
-
-	}
+        public Account[]
+    }
 }
