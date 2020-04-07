@@ -233,7 +233,6 @@
             }
         }
         input{
-            margin-bottom:5px;
             padding: 10px;
         }
 
@@ -263,16 +262,17 @@
 				margin: 0px;
 			}
 
-            form {
-               margin-left:15px;
-               margin-top: 20px;
-
-            }
-
         * {
             margin: 0px;
             padding: 0px;
             box-sizing: border-box;
+        }
+
+        #messages {
+            height: 30px;
+            width: 35px;
+            padding-right: 8px;
+            margin-right: 8px;
         }
     </style>
     <!--END OF YOUR OWN CSS-->
@@ -281,7 +281,7 @@
 </head>
 <body>
     <div class="navbar navbar-expand-md navbar-dark bg-dark mb-4" role="navigation">
-        <a class="navbar-brand" href="#">Mentr</a>
+        <a class="navbar-brand" href="#">Mentr&copy;</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -295,29 +295,34 @@
                     <a class="nav-link" href="profile.html">Profile <span class="sr-only"></span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link 3 <span class="sr-only"></span></a>
+                    <a class="nav-link" href="#">Goals <span class="sr-only"></span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Calendar <span class="sr-only"></span></a>
                 </li>
 
                 <!--<li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown1</a>
-                    <ul class="dropdown-menu" aria-labelledby="dropdown1">
-                        <li class="dropdown-item" href="#"><a>Action 1</a></li>
+            <a class="nav-link dropdown-toggle" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown1</a>
+            <ul class="dropdown-menu" aria-labelledby="dropdown1">
+                <li class="dropdown-item" href="#"><a>Action 1</a></li>
+                <li class="dropdown-item dropdown">
+                    <a class="dropdown-toggle" id="dropdown1-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown1.1</a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdown1-1">
+                        <li class="dropdown-item" href="#"><a>Action 1.1</a></li>
                         <li class="dropdown-item dropdown">
-                            <a class="dropdown-toggle" id="dropdown1-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown1.1</a>
-                            <ul class="dropdown-menu" aria-labelledby="dropdown1-1">
-                                <li class="dropdown-item" href="#"><a>Action 1.1</a></li>
-                                <li class="dropdown-item dropdown">
-                                    <a class="dropdown-toggle" id="dropdown1-1-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown1.1.1</a>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdown1-1-1">
-                                        <li class="dropdown-item" href="#"><a>Action 1.1.1</a></li>
-                                    </ul>
-                                </li>
+                            <a class="dropdown-toggle" id="dropdown1-1-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown1.1.1</a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdown1-1-1">
+                                <li class="dropdown-item" href="#"><a>Action 1.1.1</a></li>
                             </ul>
                         </li>
                     </ul>
-                </li>-->
+                </li>
+            </ul>
+        </li>-->
 
             </ul>
+
+            <a href="profile.html"><img id="messages" src="envelope.png" /></a>
             <form class="form-inline mt-2 mt-md-0">
                 <!--SEARCH TEXTBOX-->
                 <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
