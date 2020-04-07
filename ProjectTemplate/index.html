@@ -10,6 +10,12 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
     <!--YOUR OWN JAVASCRIPT CAN GO RIGHT HERE-->
     <script type="text/javascript">
         $(document).ready(function () {
@@ -120,13 +126,12 @@
             }
         }
 
-        #messages{
-            height:30px;
-            width:35px;
-            padding-right:8px;
-            margin-right:8px;
+        #messages {
+            height: 30px;
+            width: 35px;
+            padding-right: 8px;
+            margin-right: 8px;
         }
-
     </style>
     <!--END OF YOUR OWN CSS-->
 
@@ -202,19 +207,42 @@
             <a href="profile.html">Go to your profile</a>
         </div>
 
-        <div class="searchResults">
-            <div id="searchResults">
-                <div>
-                    <h3>Sarah Garbinski</h3>
-                    <h5>Business is cool blah</h5>
-                    <img src="tag.png" />
-                    <p>Tech</p>
-                    <img src="breifcase.png"/>
-                    <p>Business Analyst</p>
-                    <img src="location.png"/>
-                    <p>Tempe, AZ</p>
-                    <button>Connect</button>
-                    <button>Full Profile</button>
+        <div class="col-lg-3">
+            <div class="card" style="width: 18rem;">
+                <div id="searchResults">
+                    <img class="card-img-top" src="grayBackground.jpg" alt="Card image cap" />
+                    <div class="card-body">
+                        <h3 class="card-title">Sarah Garbinski</h3>
+                        <h5 class="card-text">Business is cool blah</h5>
+                        <img src="tag.png" style="width: 25px; height:25px; float: left;" />
+                        <p class="card-text"> &nbsp Tech</p>
+                        <img src="breifcase.png" style="width: 25px; height:25px; float: left;" />
+                        <p class="card-text"> &nbsp Business Analyst</p>
+                        <img src="location.png" style="width: 25px; height:25px; float: left;" />
+                        <p class="card-text"> &nbsp Tempe, AZ</p>
+                        <a href="#" class="btn btn-primary" style="margin-right:15px;">&nbsp Connect &nbsp</a>
+                        <a href="#" class="btn btn-primary">Full Profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+            <div class="card" style="width: 18rem;">
+                <div id="searchResults">
+                    <img class="card-img-top" src="grayBackground.jpg" alt="Card image cap" />
+                    <div class="card-body">
+                        <h3 class="card-title">Yumira Chung</h3>
+                        <h5 class="card-text">Business is cool blah</h5>
+                        <img src="tag.png" style="width: 25px; height:25px; float: left;" />
+                        <p class="card-text"> &nbsp Tech</p>
+                        <img src="breifcase.png" style="width: 25px; height:25px; float: left;" />
+                        <p class="card-text"> &nbsp Business Analyst</p>
+                        <img src="location.png" style="width: 25px; height:25px; float: left;" />
+                        <p class="card-text"> &nbsp Tempe, AZ</p>
+                        <a href="#" class="btn btn-primary" style="margin-right:15px;">&nbsp Connect &nbsp</a>
+                        <a href="#" class="btn btn-primary">Full Profile</a>
+                    </div>
                 </div>
             </div>
         </div>
