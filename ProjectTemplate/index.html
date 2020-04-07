@@ -91,6 +91,31 @@
             });
         }
 
+        function Search(searchInput) {
+            var webethod = "AccountServices.asmx/SearchResults";
+            $.ajax({
+                type: "POST",
+                url: webMethod,
+                contentType: "application/json; charset=utf-8"
+                dataType: "json",
+                success: function (msg) {
+                    if (msg.d.length > 0) {
+                        //puts accounts we get from server into an array variable to use in functions
+                        accountsArray = msg.d;
+                        //this clears the search bar
+                        $("#searchBar").empty();
+
+                        //insert into a variable all the info
+                        for (var i = 0; i < accountsArray.Length; i++) {
+                            acct = "<div class='searchRow'>" + accountsArray[i].userid + accountsArray[i].firstname + accountsArray[i].lastname + accountsArray[i].mentorshiptype + "</div><hr>"
+                            console.log(acct);
+                        }
+                        //add the content to the div that holds the info of the search result
+                        $("#searchResults").append(acct);
+                    }
+                }
+            });
+        }
 
     </script>
 
@@ -183,8 +208,8 @@
             <a href="profile.html"><img id="messages" src="envelope.png" /></a>
             <form class="form-inline mt-2 mt-md-0">
                 <!--SEARCH TEXTBOX-->
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <input class="form-control mr-sm-2" id ="searchBar" type="text" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="Search($('#searchBar').val()">Search</button>
 
                 <!--SETTINGS, LOG OFF DROP DOWN BUTTON-->
                 <ul class="navbar-nav mr-auto">
@@ -205,6 +230,10 @@
             <h1>Welcome to Mentr!</h1>
             <p class="lead text-info">Stay connected. Become a mentor or connect with mentors.</p>
             <a href="profile.html">Go to your profile</a>
+        </div>
+
+        <div id="searchResults">
+
         </div>
 
         <div class="col-lg-3">

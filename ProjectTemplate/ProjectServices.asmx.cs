@@ -504,6 +504,33 @@ namespace ProjectTemplate
         }
 
         [WebMethod(EnableSession = true)]
-        public Account[]
+        public Account[] searchResults(string searchInput)
+        {
+            DataTable sqlDt = new DataTable("accounts");
+
+            string sqlQuery = "select userid, firstname, lastname, mentorshiptype from users where name=@searchInputValue";
+
+            MySqlConnection con = new MySqlConnection(getConString());
+            MySqlCommand cmd = new MySqlCommand(sqlQuery, con);
+
+            //use this to fill a data table
+            MySqlDataAdapter sqlDa = new MySqlDataAdapter(cmd);
+            sqlDa.Fill(sqlDt);
+
+            //creates a list of accounts that fit the search criteria
+            List<Account> accounts = new List<Account>();
+            for (int i = 0; i < sqlDt.Rows.Count; i++)
+            {
+                accounts.Add(new Account
+                {
+                    userid = sqlDt.Rows[i]["userid"].ToString(),
+                    firstname = sqlDt.Rows[i]["firstname"].ToString(),
+                    lastname = sqlDt.Rows[i]["lastname"].ToString(),
+                    mentorshiptype = sqlDt.Rows[i]["mentorshiptype"].ToString()
+                });
+            }
+            //convert the list of accounts searched to an array and return it
+            return accounts.ToArray();
+        }
     }
 }
