@@ -42,7 +42,7 @@
 
         });
 
-        //function CreateProject(project_name, time_logged) {
+        //function getProject(project_name, time_logged) {
         //    var webMethod = "ProjectServices.asmx/AddTime";
         //    var parameters = "{\"project_name\":\"" + encodeURI(project_name) + "\",\"time_logged\":\"" + encodeURI(time_logged) + "\"}";
         //    $.ajax({
@@ -119,6 +119,14 @@
                 border-left: .3em solid;
             }
         }
+
+        #messages{
+            height:30px;
+            width:35px;
+            padding-right:8px;
+            margin-right:8px;
+        }
+
     </style>
     <!--END OF YOUR OWN CSS-->
 
@@ -126,7 +134,7 @@
 </head>
 <body>
     <div class="navbar navbar-expand-md navbar-dark bg-dark mb-4" role="navigation">
-        <a class="navbar-brand" href="#">Mentr&copy;</a>
+        <a class="navbar-brand" href="index.html">Mentr&copy;</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -167,6 +175,7 @@
     </li>-->
 
             </ul>
+            <img id="messages" src="envelope.png"/>
             <form class="form-inline mt-2 mt-md-0">
                 <!--SEARCH TEXTBOX-->
                 <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
@@ -194,7 +203,20 @@
         </div>
 
         <div class="searchResults">
-            <p id="searchResults">howdy</p>
+            <div id="searchResults">
+                <div>
+                    <h3>Sarah Garbinski</h3>
+                    <h5>Business is cool blah</h5>
+                    <img src="tag.png" />
+                    <p>Tech</p>
+                    <img src="breifcase.png"/>
+                    <p>Business Analyst</p>
+                    <img src="location.png"/>
+                    <p>Tempe, AZ</p>
+                    <button>Connect</button>
+                    <button>Full Profile</button>
+                </div>
+            </div>
         </div>
     </main>
 </body>
