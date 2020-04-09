@@ -92,44 +92,34 @@
             });
         }
 
-        //
-        //Non-working search function, commented out for search page.
-        //
-        //function Search(searchInput) {
-        //    var webethod = "AccountServices.asmx/SearchResults";
-        //    $.ajax({
-        //        type: "POST",
-        //        url: webMethod,
-        //        contentType: "application/json; charset=utf-8"
-        //        dataType: "json",
-        //        success: function (msg) {
-        //            if (msg.d.length > 0) {
-        //                //puts accounts we get from server into an array variable to use in functions
-        //                accountsArray = msg.d;
-        //                //this clears the search bar
-        //                $("#searchBar").empty();
+            //
+            //Non-working search function, commented out for search page.
+            //
+            //function Search(searchInput) {
+            //    var webethod = "AccountServices.asmx/SearchResults";
+            //    $.ajax({
+            //        type: "POST",
+            //        url: webMethod,
+            //        contentType: "application/json; charset=utf-8"
+            //        dataType: "json",
+            //        success: function (msg) {
+            //            if (msg.d.length > 0) {
+            //                //puts accounts we get from server into an array variable to use in functions
+            //                accountsArray = msg.d;
+            //                //this clears the search bar
+            //                $("#searchBar").empty();
 
-        //                //insert into a variable all the info
-        //                for (var i = 0; i < accountsArray.Length; i++) {
-        //                    acct = "<div class='searchRow'>" + accountsArray[i].userid + accountsArray[i].firstname + accountsArray[i].lastname + accountsArray[i].mentorshiptype + "</div><hr>"
-        //                    console.log(acct);
-        //                }
-        //                //add the content to the div that holds the info of the search result
-        //                $("#searchResults").append(acct);
-        //            }
-        //        }
-        //    });
-        //}
-
-        function Search(searchInput) {
-            console.log(searchInput);
-            if (searchInput == "Developer") {
-                location.replace("/DeveloperSearch.html");
+            //                //insert into a variable all the info
+            //                for (var i = 0; i < accountsArray.Length; i++) {
+            //                    acct = "<div class='searchRow'>" + accountsArray[i].userid + accountsArray[i].firstname + accountsArray[i].lastname + accountsArray[i].mentorshiptype + "</div><hr>"
+            //                    console.log(acct);
+            //                }
+            //                //add the content to the div that holds the info of the search result
+            //                $("#searchResults").append(acct);
+            //            }
+            //        }
+            //    });
             }
-            else if (searchInput == "Sarah") {
-                location.replace("/NameSearch.html");
-            }
-        }
 
     </script>
 
@@ -179,9 +169,9 @@
             margin-right: 10px;
         }
 
-        .logo:hover {
-            text-decoration: none;
-         }
+            .logo:hover {
+                text-decoration: none;
+            }
 
         .card {
             margin-bottom: 30px;
@@ -191,9 +181,6 @@
             float: left;
             margin-right: 30px;
         }
-
-        
-
     </style>
     <!--END OF YOUR OWN CSS-->
 
@@ -223,31 +210,30 @@
 
 
                 <!--<li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown1</a>
-        <ul class="dropdown-menu" aria-labelledby="dropdown1">
-            <li class="dropdown-item" href="#"><a>Action 1</a></li>
-            <li class="dropdown-item dropdown">
-                <a class="dropdown-toggle" id="dropdown1-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown1.1</a>
-                <ul class="dropdown-menu" aria-labelledby="dropdown1-1">
-                    <li class="dropdown-item" href="#"><a>Action 1.1</a></li>
-                    <li class="dropdown-item dropdown">
-                        <a class="dropdown-toggle" id="dropdown1-1-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown1.1.1</a>
-                        <ul class="dropdown-menu" aria-labelledby="dropdown1-1-1">
-                            <li class="dropdown-item" href="#"><a>Action 1.1.1</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </li>-->
-                <!--(document.getElementById('searchBar').value)-->
+                    <a class="nav-link dropdown-toggle" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown1</a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdown1">
+                        <li class="dropdown-item" href="#"><a>Action 1</a></li>
+                        <li class="dropdown-item dropdown">
+                            <a class="dropdown-toggle" id="dropdown1-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown1.1</a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdown1-1">
+                                <li class="dropdown-item" href="#"><a>Action 1.1</a></li>
+                                <li class="dropdown-item dropdown">
+                                    <a class="dropdown-toggle" id="dropdown1-1-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown1.1.1</a>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdown1-1-1">
+                                        <li class="dropdown-item" href="#"><a>Action 1.1.1</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>-->
 
             </ul>
             <a href="chatroom.html"><img id="messages" src="envelope.png" /></a>
             <form class="form-inline mt-2 mt-md-0">
                 <!--SEARCH TEXTBOX-->
-                <input class="form-control mr-sm-2" id ="searchBar" type="text" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="Search((document.getElementById('searchBar').value))">Search</button>
+                <input class="form-control mr-sm-2" id="searchBar" type="text" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="Search($('#searchBar').val()">Search</button>
 
                 <!--SETTINGS, LOG OFF DROP DOWN BUTTON-->
                 <ul class="navbar-nav mr-auto">
@@ -260,15 +246,10 @@
                 </ul>
 
             </form>
-           
+
         </div>
     </div>
     <main role="main" class="container">
-        <div class="jumbotron text-center">
-            <h1>Welcome to Mentr!</h1>
-            <p class="lead text-info">Stay connected. Become a mentor or connect with mentors.</p>
-            <a href="profile.html">Go to your profile</a>
-        </div>
 
         <!--div space to display search results from search bar-->
         <!--not in use since search bar functions are commented out-->
@@ -281,12 +262,12 @@
                 <div id="searchResults">
                     <img class="card-img-top" src="grayBackground.jpg" alt="Card image cap" />
                     <div class="card-body">
-                        <h3 class="card-title">Sarah Garbinski</h3>
-                        <h5 class="card-text">Business is cool blah</h5>
+                        <h3 class="card-title">Marshall Hinze</h3>
+                        <h5 class="card-text">Tech Guru</h5>
                         <img src="tag.png" style="width: 25px; height:25px; float: left;" />
-                        <p class="card-text"> &nbsp Tech</p>
+                        <p class="card-text"> &nbsp IBM</p>
                         <img src="breifcase.png" style="width: 25px; height:25px; float: left;" />
-                        <p class="card-text"> &nbsp Business Analyst</p>
+                        <p class="card-text"> &nbsp Developer</p>
                         <img src="location.png" style="width: 25px; height:25px; float: left;" />
                         <p class="card-text"> &nbsp Tempe, AZ</p>
                         <a href="#" class="btn btn-primary" style="margin-right:15px;">&nbsp Connect &nbsp</a>
@@ -302,11 +283,31 @@
                     <img class="card-img-top" src="grayBackground.jpg" alt="Card image cap" />
                     <div class="card-body">
                         <h3 class="card-title">Yumira Chung</h3>
-                        <h5 class="card-text">Business is cool blah</h5>
+                        <h5 class="card-text">Framework Genius</h5>
                         <img src="tag.png" style="width: 25px; height:25px; float: left;" />
-                        <p class="card-text"> &nbsp Tech</p>
+                        <p class="card-text"> &nbsp Microsoft</p>
                         <img src="breifcase.png" style="width: 25px; height:25px; float: left;" />
-                        <p class="card-text"> &nbsp Business Analyst</p>
+                        <p class="card-text"> &nbsp Developer</p>
+                        <img src="location.png" style="width: 25px; height:25px; float: left;" />
+                        <p class="card-text"> &nbsp Tempe, AZ</p>
+                        <a href="#" class="btn btn-primary" style="margin-right:15px;">&nbsp Connect &nbsp</a>
+                        <a href="#" class="btn btn-primary">Full Profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+            <div class="card" style="width: 18rem;">
+                <div id="searchResults">
+                    <img class="card-img-top" src="grayBackground.jpg" alt="Card image cap" />
+                    <div class="card-body">
+                        <h3 class="card-title">Sam Massey</h3>
+                        <h5 class="card-text">Champion Coder</h5>
+                        <img src="tag.png" style="width: 25px; height:25px; float: left;" />
+                        <p class="card-text"> &nbsp Accenture</p>
+                        <img src="breifcase.png" style="width: 25px; height:25px; float: left;" />
+                        <p class="card-text"> &nbsp Developer</p>
                         <img src="location.png" style="width: 25px; height:25px; float: left;" />
                         <p class="card-text"> &nbsp Tempe, AZ</p>
                         <a href="#" class="btn btn-primary" style="margin-right:15px;">&nbsp Connect &nbsp</a>

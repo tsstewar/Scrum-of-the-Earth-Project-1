@@ -96,10 +96,12 @@
     <Content Include="Global.asax" />
     <Content Include="index.html" />
     <Content Include="login.html" />
+    <Content Include="NameSearch.html" />
     <Content Include="profile.html" />
     <Content Include="project.html" />
     <Content Include="ProjectServices.asmx" />
     <Content Include="searchBar.html" />
+    <Content Include="DeveloperSearch.html" />
     <Content Include="sorttable.js" />
     <Content Include="user.html" />
     <Content Include="Web.config" />
