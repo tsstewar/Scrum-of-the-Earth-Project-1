@@ -131,6 +131,36 @@
             }
         }
 
+
+			function userInfo() {
+			console.log(localStorage.getItem("username"));
+			let userData = document.getElementById("eyedee");
+			let userId = localStorage.getItem("username");
+			var userName;
+				switch(userId){
+					case "sm":
+						userName = "Sam";
+						break;
+					case "ts":
+						userName = "Tanner";
+						break;
+					case "sg":
+						userName = "Sarah";
+						break;
+					case "yc":
+						userName = "Yumira";
+						break;
+					case "jh":
+						userName = "Marshall";
+						break;
+				}
+			userData.innerHTML = userName;
+		}
+
+		window.addEventListener('load', event => {
+			userInfo();
+		});
+
     </script>
 
 
@@ -264,11 +294,11 @@
         </div>
     </div>
     <main role="main" class="container">
-        <div class="jumbotron text-center">
-            <h1>Welcome to Mentr!</h1>
-            <p class="lead text-info">Stay connected. Become a mentor or connect with mentors.</p>
-            <a href="profile.html">Go to your profile</a>
-        </div>
+		<div class="jumbotron text-center">
+			<h1>Welcome to Mentr, <span id="eyedee"></span>!</h1>
+			<p class="lead text-info">Stay connected. Become a mentor or connect with mentors.</p>
+			<a href="profile.html">Go to your profile</a>
+		</div>
 
         <!--div space to display search results from search bar-->
         <!--not in use since search bar functions are commented out-->
