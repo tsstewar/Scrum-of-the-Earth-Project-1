@@ -1,0 +1,435 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Mentr</title>
+    <!--DO NOT FORGET THIS SCRIPT TAG SO YOU CAN USE JQUERY!!!!!-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!--YOUR OWN JAVASCRIPT CAN GO RIGHT HERE-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('.navbar .dropdown-item').on('click', function (e) {
+                var $el = $(this).children('.dropdown-toggle');
+                var $parent = $el.offsetParent(".dropdown-menu");
+                $(this).parent("li").toggleClass('open');
+
+                if (!$parent.parent().hasClass('navbar-nav')) {
+                    if ($parent.hasClass('show')) {
+                        $parent.removeClass('show');
+                        $el.next().removeClass('show');
+                        $el.next().css({ "top": -999, "left": -999 });
+                    } else {
+                        $parent.parent().find('.show').removeClass('show');
+                        $parent.addClass('show');
+                        $el.next().addClass('show');
+                        $el.next().css({ "top": $el[0].offsetTop, "left": $parent.outerWidth() - 4 });
+                    }
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+            });
+
+            $('.navbar .dropdown').on('hidden.bs.dropdown', function () {
+                $(this).find('li.dropdown').removeClass('show open');
+                $(this).find('ul.dropdown-menu').removeClass('show open');
+            });
+
+        });
+
+        //function CreateProject(project_name, time_logged) {
+        //    var webMethod = "ProjectServices.asmx/AddTime";
+        //    var parameters = "{\"project_name\":\"" + encodeURI(project_name) + "\",\"time_logged\":\"" + encodeURI(time_logged) + "\"}";
+        //    $.ajax({
+        //        type: "POST",
+        //        url: webMethod,
+        //        data: parameters,
+        //        contentType: "application/json; charset=utf-8",
+        //        dataType: "json",
+        //        success: function (msg) {
+        //            alert("Time & Project Added!");
+        //        },
+        //        error: function (e) {
+        //            alert("Something went wrong");
+        //        }
+        //    });
+        //}
+
+        function AddNewGoal(goal) {
+			var webMethod = "ProjectServices.asmx/CreateNewGoal";
+            var parameters = "{\"goal\":\"" + encodeURI(goal) + "\"}";
+
+			$.ajax({
+				type: "POST",
+				url: webMethod,
+				data: parameters,
+				contentType: "application/json; charset=utf-8",
+				dataType: "json",
+				success: function (msg) {
+					alert("Goal Created!");
+					//window.location.replace("/profile.html")
+				},
+				error: function (e) {
+					alert("Something went wrong");
+				}
+			});
+        }
+
+        $(document).ready(function getAllInProgressGoals() {
+                $.ajax({
+                    url: "ProjectServices.asmx/GetInProgressGoals",
+                    data: $(this).serialize(),
+                    type: 'POST',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: 'json',
+                    success: function (result) {
+                        console.log(result.d)
+                        var data = JSON.parse(result.d);
+                        var table = '<tr><th>Goal</th></tr>'
+                        for (i = 0; i < data.length; i++) {
+                            table = table + '<tr><td>' + data[i]['goal'] + '</td></tr>';
+                        }
+                        var rows = document.getElementById('inProgressTable');
+                        rows.innerHTML = table;
+                    },
+                    error: function () {
+                        alert("Something went wrong");
+                    }
+                });
+            }
+         );
+
+        $(document).ready(function getAllCompletedGoals() {
+                $.ajax({
+                    url: "ProjectServices.asmx/GetCompletedGoals",
+                    data: $(this).serialize(),
+                    type: 'POST',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: 'json',
+                    success: function (result) {
+                        console.log(result.d)
+                        var data = JSON.parse(result.d);
+                        var table = '<tr><th>Goal</th></tr>'
+                        for (i = 0; i < data.length; i++) {
+                            table = table + '<tr><td>' + data[i]['goal'] + '</td></tr>';
+                        }
+                        var rows = document.getElementById('completedTable');
+                        rows.innerHTML = table;
+                    },
+                    error: function () {
+                        alert("Something went wrong");
+                    }
+                });
+            }
+         );
+
+
+        //logs the user off both at the client and at the server
+        function logOff() {
+
+            var webMethod = "AccountServices.asmx/LogOff";
+            $.ajax({
+                type: "POST",
+                url: webMethod,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (msg) {
+                    if (msg.d == true) {
+                        //we logged off, so go back to logon page,
+                        //stop checking messages
+                        //and clear the chat panel
+                        window.location.replace("/login.html")
+                    }
+                    else {
+                    }
+                },
+                error: function (e) {
+                    alert("Log Off failed");
+                }
+            });
+        }
+
+
+
+
+
+        function readOnlyFunction() {
+            document.getElementById('degreetext').readOnly = false;
+            document.getElementById('graduationyeartext').readOnly = false;
+            document.getElementById('professiontext').readOnly = false;
+            document.getElementById('yearsinfieldtext').readOnly = false;
+            document.getElementById('specialtiestext').readOnly = false;
+            document.getElementById('intereststext').readOnly = false;
+            document.getElementById('phonetext').readOnly = false;
+        };
+
+        function saveButton() {
+            document.getElementById('degreetext').readOnly = true;
+            document.getElementById('graduationyeartext').readOnly = true;
+            document.getElementById('professiontext').readOnly = true;
+            document.getElementById('yearsinfieldtext').readOnly = true;
+            document.getElementById('specialtiestext').readOnly = true;
+            document.getElementById('intereststext').readOnly = true;
+            document.getElementById('phonetext').readOnly = true;
+		}
+
+	//	function userInfo() {
+		//	console.log(localStorage.getItem("username"));
+		//	let userData = document.getElementById("eyedee");
+		//	let userId = localStorage.getItem("username");
+		//	userData.innerHTML = userId;
+		//}
+
+		//window.addEventListener('load', event => {
+			//userInfo();
+		//});
+
+    </script>
+
+
+    <!--AND YOUR OWN CSS CAN GO HERE AS WELL-->
+    <style>
+        #savebutton {
+            float: right;
+        }
+
+        #editbutton {
+            float: left;
+        }
+
+        .navbar .dropdown-toggle, .navbar .dropdown-menu a {
+            cursor: pointer;
+        }
+
+        .navbar .dropdown-item.active, .navbar .dropdown-item:active {
+            color: inherit;
+            text-decoration: none;
+            background-color: inherit;
+        }
+
+        .navbar .dropdown-item:focus, .navbar .dropdown-item:hover {
+            color: #16181b;
+            text-decoration: none;
+            background-color: #f8f9fa;
+        }
+
+        @media (min-width: 767px) {
+            .navbar .dropdown-toggle:not(.nav-link)::after {
+                display: inline-block;
+                width: 0;
+                height: 0;
+                margin-left: .5em;
+                vertical-align: 0;
+                border-bottom: .3em solid transparent;
+                border-top: .3em solid transparent;
+                border-left: .3em solid;
+            }
+        }
+
+        .logo {
+            font-family: 'Pacifico', cursive;
+            color: white;
+            font-size: 25px;
+            margin-right: 10px;
+        }
+
+            .logo:hover {
+                text-decoration: none;
+            }
+
+        input {
+            padding: 10px;
+        }
+
+        .inputs {
+            text-align: center;
+        }
+
+        .newAccountBox {
+            width: 500px;
+            height: 300px;
+            border-radius: 10px;
+            background: white;
+            box-shadow: 20px 20px 50px grey;
+            margin-left: 600px;
+            margin-top: 0px;
+        }
+
+            .newAccountBox input {
+                border-radius: 6px;
+                width: 200px;
+                height: 25px;
+                font-size: 17px;
+            }
+
+            .newAccountBox hr {
+                padding: 0px;
+                margin: 0px;
+            }
+
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+
+        #link {
+            width: 200px;
+            height: 30px;
+            border-radius: 6px;
+        }
+
+        #messages {
+            height: 30px;
+            width: 35px;
+            padding-right: 8px;
+            margin-right: 8px;
+        }
+
+        #pictureInput {
+            margin-top: 10px;
+        }
+
+        img {
+            height: 250px;
+            width: auto;
+        }
+    </style>
+    <!--END OF YOUR OWN CSS-->
+
+
+</head>
+<body>
+    <div class="navbar navbar-expand-md navbar-dark bg-dark mb-4" role="navigation">
+        <a class="logo" href="index.html">Mentr&copy;</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="profile.html">Profile <span class="sr-only"></span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Goals <span class="sr-only"></span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Calendar <span class="sr-only"></span></a>
+                </li>
+
+                <!--<li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown1</a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdown1">
+                        <li class="dropdown-item" href="#"><a>Action 1</a></li>
+                        <li class="dropdown-item dropdown">
+                            <a class="dropdown-toggle" id="dropdown1-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown1.1</a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdown1-1">
+                                <li class="dropdown-item" href="#"><a>Action 1.1</a></li>
+                                <li class="dropdown-item dropdown">
+                                    <a class="dropdown-toggle" id="dropdown1-1-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown1.1.1</a>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdown1-1-1">
+                                        <li class="dropdown-item" href="#"><a>Action 1.1.1</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>-->
+
+            </ul>
+
+            <a href="chatroom.html"><img id="messages" src="envelope.png" /></a>
+            <form class="form-inline mt-2 mt-md-0">
+                <!--SEARCH TEXTBOX-->
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+
+                <!--SETTINGS, LOG OFF DROP DOWN BUTTON-->
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Settings</a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdown1">
+                            <li class="dropdown-item" href="login.html" onclick="logOff()"><a>Log Off</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </form>
+
+        </div>
+    </div>
+    <main role="main" class="container">
+        <div class="jumbotron text-center">
+            <h1>Profile</h1>
+            <img src="stock.jpg" />
+            <form id="pictureInput" action="" method="post" enctype="multipart/form-data">
+                <label for="exampleFormControlSelect2">Link to Picture:</label>
+                <input id="link" type="text" />
+                <input class="btn btn-primary" type="submit" name="submit" />
+            </form>
+        </div>
+
+        <div class="text-center">
+            <input type="button" id="editbutton" class="btn btn-primary" value="Edit Your Profile" onclick="readOnlyFunction()">
+            <input type="button" id="savebutton" class="btn btn-success" value="Save Your Profile" onclick="saveButton()">
+        </div>
+
+        <div class="form-group">
+            <br /><br /><br />
+            <label for="exampleFormControlTextarea1">Degree:</label>
+
+            <input type="text" class="form-control" id="degreetext" rows="1" readonly="readonly">
+
+            <br />
+
+            <label for="exampleFormControlTextarea1">Graduation Year:</label>
+            <textarea class="form-control" id="graduationyeartext" rows="1" readonly="readonly"></textarea>
+
+            <br />
+
+            <label for="exampleFormControlTextarea1">Profession:</label>
+            <textarea class="form-control" id="professiontext" rows="1" readonly="readonly"></textarea>
+
+            <br />
+
+            <label for="exampleFormControlTextarea1">Years in Field:</label>
+            <textarea class="form-control" id="yearsinfieldtext" rows="1" readonly="readonly"></textarea>
+
+            <br />
+
+            <label for="exampleFormControlTextarea1">Specialties:</label>
+            <textarea class="form-control" id="specialtiestext" rows="1" readonly="readonly"></textarea>
+
+            <br />
+
+            <label for="exampleFormControlTextarea1">Interests:</label>
+            <textarea class="form-control" id="intereststext" rows="1" readonly="readonly"></textarea>
+
+            <br />
+
+            <label for="exampleFormControlTextarea1">Phone:</label>
+            <textarea class="form-control" id="phonetext" rows="1" readonly="readonly"></textarea>
+
+            <br />
+
+        </div>
+
+    </main>
+</body>
+</html>
