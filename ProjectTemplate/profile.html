@@ -395,61 +395,63 @@
             <input type="button" id="savebutton" class="btn btn-success" value="Save Your Profile" onclick="saveButton()">
         </div>
 
-		<div class="form-group">
-			<br /><br /><br />
-			<label for="exampleFormControlTextarea1">Degree:</label>
+        <div class="form-group">
+            <br /><br /><br />
+            <label for="exampleFormControlTextarea1">Degree:</label>
 
-			<input type="text" class="form-control" id="degreetext" rows="1" readonly="readonly">
+            <input type="text" class="form-control" id="degreetext" rows="1" readonly="readonly" value="CIS">
 
-			<br />
+            <br />
 
-			<label for="exampleFormControlSelect2">Current Year of Study:</label>
-			<select multiple class="form-control" id="currentyearofstudytext">
-				<option disabled="disabled" id="currentyearoptions">Freshman</option>
-				<option disabled="disabled" id="currentyearoptions2">Sophomore</option>
-				<option disabled="disabled" id="currentyearoptions3">Junior</option>
-				<option disabled="disabled" id="currentyearoptions4">Senior</option>
-			</select>
+            <label for="exampleFormControlSelect2">Current Year of Study:</label>
+            <select multiple class="form-control" id="currentyearofstudytext">
+                <option disabled="disabled" id="currentyearoptions">Freshman</option>
+                <option disabled="disabled" id="currentyearoptions2">Sophomore</option>
+                <option disabled="disabled" id="currentyearoptions3">Junior</option>
+                <option disabled="disabled" id="currentyearoptions4" selected>Senior</option>
+                <option disabled="disabled" id="currentyearoptions4">Graduate</option>
+            </select>
 
-			<br />
+            <br />
 
-			<label for="exampleFormControlTextarea1">Expected Graduation Date:</label>
-			<textarea class="form-control" id="expectedgraddatetext" rows="1" readonly="readonly"></textarea>
+            <label for="exampleFormControlTextarea1">Expected Graduation Date:</label>
+            <input type="text" class="form-control" id="expectedgraddatetext" rows="1" readonly="readonly" value="May 2020"></input>
 
-			<br />
+            <br />
 
-			<label for="exampleFormControlTextarea1">Interests:</label>
-			<textarea class="form-control" id="intereststext" rows="1" readonly="readonly"></textarea>
+            <label for="exampleFormControlTextarea1">Interests:</label>
+            <input type="text" class="form-control" id="intereststext" rows="1" readonly="readonly" value="Web Development"></input>
 
-			<br />
+            <br />
 
-			<!--Welcome <div id="eyedee"></div>-->
+            <!--Welcome <div id="eyedee"></div>-->
 
-			<label for="exampleFormControlTextarea1">Goals in Progress</label>
-			<!-- Where user input should go into 'goal' column in DB
-	<form onsubmit="AddNewGoal($('#goalText').val());">
-		<div>
-			Add a new  goal: <input type="text" class="form-control" id="goalText" />
-		</div>
-		<div>
-			<button type="submit">Enter</button>
-		</div>
-		<div>
-			References function that should print out all in progress goals in a table
-			<table id="inProgressTable"></table>
-		</div>
-	</form>
+            <!--<label for="exampleFormControlTextarea1">Goals in Progress</label>-->
 
-	<br />
+            <!-- Where user input should go into 'goal' column in DB
+    <form onsubmit="AddNewGoal($('#goalText').val());">
+        <div>
+            Add a new  goal: <input type="text" class="form-control" id="goalText" />
+        </div>
+        <div>
+            <button type="submit">Enter</button>
+        </div>
+        <div>
+            References function that should print out all in progress goals in a table
+            <table id="inProgressTable"></table>
+        </div>
+    </form>
 
-	<label for="exampleFormControlTextarea1">Completed Goals</label>
-	<div>
-		References function that should print out all in progress goals in a table
-		<table id="completedTable"></table>
-	</div>-->
+    <br />
+
+    <label for="exampleFormControlTextarea1">Completed Goals</label>
+    <div>
+        References function that should print out all in progress goals in a table
+        <table id="completedTable"></table>
+    </div>-->
 
 
-		</div>
+        </div>
 
     </main>
 </body>

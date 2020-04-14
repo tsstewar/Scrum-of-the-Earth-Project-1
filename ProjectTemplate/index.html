@@ -159,7 +159,17 @@
 
 		window.addEventListener('load', event => {
 			userInfo();
-		});
+            });
+
+        function konnect() {
+            alert("Request has been sent!");
+
+            $('#connect').removeClass('btn btn-primary');
+            $('#connect').addClass('btn btn-outline-warning');
+
+            document.getElementById("connect").innerHTML = "Connected";
+            
+        }
 
     </script>
 
@@ -319,7 +329,7 @@
                         <p class="card-text"> &nbsp Business Analyst</p>
                         <img src="location.png" style="width: 25px; height:25px; float: left;" />
                         <p class="card-text"> &nbsp Tempe, AZ</p>
-                        <a href="#" class="btn btn-primary" style="margin-right:15px;">&nbsp Connect &nbsp</a>
+                        <a href="#" id="connect" onclick="konnect()" class="btn btn-primary" style="margin-right:15px;">&nbsp Connect &nbsp</a>
                         <a href="profilementor.html" class="btn btn-primary">Full Profile</a>
                     </div>
                 </div>
@@ -339,7 +349,7 @@
                         <p class="card-text"> &nbsp Business Analyst</p>
                         <img src="location.png" style="width: 25px; height:25px; float: left;" />
                         <p class="card-text"> &nbsp Tempe, AZ</p>
-                        <a href="#" class="btn btn-primary" style="margin-right:15px;">&nbsp Connect &nbsp</a>
+                        <a href="#" id="connect" onclick="konnect()" class="btn btn-primary" style="margin-right:15px;">&nbsp Connect &nbsp</a>
                         <a href="profilementor.html" class="btn btn-primary">Full Profile</a>
                     </div>
                 </div>
