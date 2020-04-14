@@ -307,9 +307,24 @@
             margin-top:10px;
         }
 
-        img{
-            height:250px;
-            width:auto;
+
+        .image-cropper {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            object-fit: cover;
+            width: 300px;
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 50%;
+        }
+
+        img {
+            object-fit: cover;
+            border-radius: 75%;
+            height: 300px;
+            width: 300px;
         }
     </style>
     <!--END OF YOUR OWN CSS-->
@@ -382,10 +397,11 @@
     <main role="main" class="container">
         <div class="jumbotron text-center">
             <h1>Profile</h1>
-            <img src="stock.jpg" />
+            <div class="image-cropper">
+                <img src="stock.jpg" class="rounded" />
+            </div>
             <form id="pictureInput" action="" method="post" enctype="multipart/form-data">
-                <label for="exampleFormControlSelect2">Link to Picture:</label>
-                <input id="link" type="text" />
+                <input type="file" name="file" />
                 <input class="btn btn-primary" type="submit" name="submit" />
             </form>
         </div>
@@ -397,6 +413,12 @@
 
         <div class="form-group">
             <br /><br /><br />
+            <label for="exampleFormControlTextarea1">Bio <em>(20 character max)</em>:</label>
+
+            <input type="text" class="form-control" id="biotext" rows="1" readonly="readonly" value="Bio">
+
+            <br />
+
             <label for="exampleFormControlTextarea1">Degree:</label>
 
             <input type="text" class="form-control" id="degreetext" rows="1" readonly="readonly" value="CIS">
@@ -424,10 +446,13 @@
 
             <br />
 
+            <label for="exampleFormControlTextarea1">Location:</label>
+            <input type="text" class="form-control" id="locationtext" rows="1" readonly="readonly" value="Tempe, AZ"></input>
+
+            <br />
+
             <!--Welcome <div id="eyedee"></div>-->
-
             <!--<label for="exampleFormControlTextarea1">Goals in Progress</label>-->
-
             <!-- Where user input should go into 'goal' column in DB
     <form onsubmit="AddNewGoal($('#goalText').val());">
         <div>
