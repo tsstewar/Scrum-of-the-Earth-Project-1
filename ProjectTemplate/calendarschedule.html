@@ -167,6 +167,16 @@
             });
         }
 
+        function Search(searchInput) {
+            console.log(searchInput);
+            if (searchInput == "developer") {
+                window.location.replace("/DeveloperSearch.html");
+            }
+            else if (searchInput == "sarah") {
+                window.location.replace("/NameSearch.html");
+            }
+        }
+
         //calendar
 
         $(document).ready(function () {
@@ -7367,10 +7377,10 @@
                     <a class="nav-link" href="profile.html">Profile <span class="sr-only"></span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Goals <span class="sr-only"></span></a>
+                    <a class="nav-link" href="goals.html">Goals <span class="sr-only"></span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Calendar <span class="sr-only"></span></a>
+                    <a class="nav-link" href="calendarschedule.html">Calendar <span class="sr-only"></span></a>
                 </li>
 
                 <!--<li class="nav-item dropdown">
@@ -7397,8 +7407,8 @@
             <a href="chatroom.html"><img id="messages" src="envelope.png" /></a>
             <form class="form-inline mt-2 mt-md-0">
                 <!--SEARCH TEXTBOX-->
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <input class="form-control mr-sm-2" id="searchBar" type="text" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="Search((document.getElementById('searchBar').value))">Search</button>
 
                 <!--SETTINGS, LOG OFF DROP DOWN BUTTON-->
                 <ul class="navbar-nav mr-auto">

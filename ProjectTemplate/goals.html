@@ -125,11 +125,11 @@
 
         function Search(searchInput) {
             console.log(searchInput);
-            if (searchInput == "Developer") {
-                location.replace("/DeveloperSearch.html");
+            if (searchInput == "developer") {
+                window.location.replace("/DeveloperSearch.html");
             }
-            else if (searchInput == "Sarah") {
-                location.replace("/NameSearch.html");
+            else if (searchInput == "sarah") {
+                window.location.replace("/NameSearch.html");
             }
         }
 
@@ -401,7 +401,7 @@
             <form class="form-inline mt-2 mt-md-0">
                 <!--SEARCH TEXTBOX-->
                 <input class="form-control mr-sm-2" id="searchBar" type="text" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="Search((document.getElementById('searchBar').value))">Search</button>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="Search((document.getElementById('searchBar').value))">Search</button>
 
                 <!--SETTINGS, LOG OFF DROP DOWN BUTTON-->
                 <ul class="navbar-nav mr-auto">

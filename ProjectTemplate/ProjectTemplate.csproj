@@ -91,6 +91,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="adminIndex.html" />
+    <Content Include="calendarschedule.html" />
+    <Content Include="chatroom.html" />
     <Content Include="client.html" />
     <Content Include="createAcc.html" />
     <Content Include="Global.asax" />
