@@ -32,7 +32,6 @@
                 var parentDiv = document.createElement("div"),
                     listTitle = document.createElement("div"),
                     title = document.createElement("div"),
-                    dotIcon = document.createElement("a"),
                     newTextNode = document.createTextNode(textValue),
                     addCardLink = document.createElement("a"),
                     addText = document.createTextNode("Add a card..."),
@@ -42,7 +41,7 @@
 
                 data.lists.push({
                     title: textValue,
-                    cards: []
+                    cards: ["test"]
                 });
         
                 lists = data.lists.map(function (e) {
@@ -52,12 +51,9 @@
                 for (x = 0; x < lists.length; x += 1) {
                     parentDiv.setAttribute("class", "add-card-container");
                     parentDiv.setAttribute("id", "list-container" + x);
-                    dotIcon.setAttribute("class", "fa fa-ellipsis-h ellipsis");
-                    dotIcon.setAttribute("id", "del" + x);
                     title.setAttribute("contenteditable", "true");
                     title.setAttribute("class", "text");
                     title.appendChild(newTextNode);
-                    listTitle.appendChild(dotIcon);
                     listTitle.setAttribute("class", "list-title");
                     listTitle.appendChild(title);
                     addCardLink.setAttribute("href", "#");
