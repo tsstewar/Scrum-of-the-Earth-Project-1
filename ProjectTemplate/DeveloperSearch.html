@@ -119,7 +119,17 @@
             //            }
             //        }
             //    });
+            //}
+
+        function Search(searchInput) {
+            console.log(searchInput);
+            if (searchInput == "developer") {
+                window.location.replace("/DeveloperSearch.html");
             }
+            else if (searchInput == "sarah") {
+                window.location.replace("/NameSearch.html");
+            }
+        }
 
     </script>
 
@@ -181,6 +191,37 @@
             float: left;
             margin-right: 30px;
         }
+
+        img {
+            display: inline;
+            margin: 0 auto;
+            height: 100%;
+            width: auto;
+            position: relative;
+            top: 0;
+            left: 0;
+        }
+
+        #profilePic {
+            height: 150px;
+            width: 175px;
+            position: absolute;
+            border: solid;
+            border-width: 2px;
+            border-color: lightgray;
+            top: 50px;
+            left: 60px;
+        }
+
+        .image-cropper {
+            align-content: center;
+            object-fit: cover;
+            width: 250px;
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 50%;
+        }
     </style>
     <!--END OF YOUR OWN CSS-->
 
@@ -233,7 +274,7 @@
             <form class="form-inline mt-2 mt-md-0">
                 <!--SEARCH TEXTBOX-->
                 <input class="form-control mr-sm-2" id="searchBar" type="text" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="Search($('#searchBar').val()">Search</button>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="Search((document.getElementById('searchBar').value))">Search</button>
 
                 <!--SETTINGS, LOG OFF DROP DOWN BUTTON-->
                 <ul class="navbar-nav mr-auto">
@@ -260,7 +301,10 @@
         <div class="col-lg-3">
             <div class="card" style="width: 18rem;">
                 <div id="searchResults">
-                    <img class="card-img-top" src="grayBackground.jpg" alt="Card image cap" />
+                    <div>
+                        <img class="card-img-top" src="grayBackground.jpg" alt="Card image cap" />
+                        <img id="profilePic" class="image-cropper" src="stock3.jpg" />
+                    </div>
                     <div class="card-body">
                         <h3 class="card-title">Marshall Hinze</h3>
                         <h5 class="card-text">Tech Guru</h5>
@@ -280,7 +324,10 @@
         <div class="col-lg-3">
             <div class="card" style="width: 18rem;">
                 <div id="searchResults">
-                    <img class="card-img-top" src="grayBackground.jpg" alt="Card image cap" />
+                    <div>
+                        <img class="card-img-top" src="grayBackground.jpg" alt="Card image cap" />
+                        <img id="profilePic" class="image-cropper" src="stock2.jpg" />
+                    </div>
                     <div class="card-body">
                         <h3 class="card-title">Yumira Chung</h3>
                         <h5 class="card-text">Framework Genius</h5>
@@ -300,7 +347,10 @@
         <div class="col-lg-3">
             <div class="card" style="width: 18rem;">
                 <div id="searchResults">
-                    <img class="card-img-top" src="grayBackground.jpg" alt="Card image cap" />
+                    <div>
+                        <img class="card-img-top" src="grayBackground.jpg" alt="Card image cap" />
+                        <img id="profilePic" class="image-cropper" src="stock4.jpg" />
+                    </div>
                     <div class="card-body">
                         <h3 class="card-title">Sam Massey</h3>
                         <h5 class="card-text">Champion Coder</h5>
