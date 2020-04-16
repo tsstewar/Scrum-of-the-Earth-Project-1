@@ -100,7 +100,9 @@
     <Content Include="index.html" />
     <Content Include="login.html" />
     <Content Include="NameSearch.html" />
+    <Content Include="notifications.html" />
     <Content Include="profile.html" />
+    <Content Include="profilementor.html" />
     <Content Include="project.html" />
     <Content Include="ProjectServices.asmx" />
     <Content Include="searchBar.html" />

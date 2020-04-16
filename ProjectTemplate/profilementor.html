@@ -195,6 +195,45 @@
 			//userInfo();
 		//});
 
+                //
+        //Non-working search function, commented out for search page.
+        //
+        //function Search(searchInput) {
+        //    var webethod = "AccountServices.asmx/SearchResults";
+        //    $.ajax({
+        //        type: "POST",
+        //        url: webMethod,
+        //        contentType: "application/json; charset=utf-8"
+        //        dataType: "json",
+        //        success: function (msg) {
+        //            if (msg.d.length > 0) {
+        //                //puts accounts we get from server into an array variable to use in functions
+        //                accountsArray = msg.d;
+        //                //this clears the search bar
+        //                $("#searchBar").empty();
+
+        //                //insert into a variable all the info
+        //                for (var i = 0; i < accountsArray.Length; i++) {
+        //                    acct = "<div class='searchRow'>" + accountsArray[i].userid + accountsArray[i].firstname + accountsArray[i].lastname + accountsArray[i].mentorshiptype + "</div><hr>"
+        //                    console.log(acct);
+        //                }
+        //                //add the content to the div that holds the info of the search result
+        //                $("#searchResults").append(acct);
+        //            }
+        //        }
+        //    });
+        //}
+
+        function Search(searchInput) {
+            console.log(searchInput);
+            if (searchInput == "developer") {
+                window.location.replace("/DeveloperSearch.html");
+            }
+            else if (searchInput == "sarah") {
+                window.location.replace("/NameSearch.html");
+            }
+        }
+
     </script>
 
 
@@ -332,33 +371,36 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Calendar <span class="sr-only"></span></a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="notifications.html">Notifications <span class="sr-only"></span></a>
+                </li>
 
                 <!--<li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown1</a>
-                    <ul class="dropdown-menu" aria-labelledby="dropdown1">
-                        <li class="dropdown-item" href="#"><a>Action 1</a></li>
-                        <li class="dropdown-item dropdown">
-                            <a class="dropdown-toggle" id="dropdown1-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown1.1</a>
-                            <ul class="dropdown-menu" aria-labelledby="dropdown1-1">
-                                <li class="dropdown-item" href="#"><a>Action 1.1</a></li>
-                                <li class="dropdown-item dropdown">
-                                    <a class="dropdown-toggle" id="dropdown1-1-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown1.1.1</a>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdown1-1-1">
-                                        <li class="dropdown-item" href="#"><a>Action 1.1.1</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>-->
+        <a class="nav-link dropdown-toggle" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown1</a>
+        <ul class="dropdown-menu" aria-labelledby="dropdown1">
+            <li class="dropdown-item" href="#"><a>Action 1</a></li>
+            <li class="dropdown-item dropdown">
+                <a class="dropdown-toggle" id="dropdown1-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown1.1</a>
+                <ul class="dropdown-menu" aria-labelledby="dropdown1-1">
+                    <li class="dropdown-item" href="#"><a>Action 1.1</a></li>
+                    <li class="dropdown-item dropdown">
+                        <a class="dropdown-toggle" id="dropdown1-1-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown1.1.1</a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdown1-1-1">
+                            <li class="dropdown-item" href="#"><a>Action 1.1.1</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>-->
 
             </ul>
 
             <a href="chatroom.html"><img id="messages" src="envelope.png" /></a>
             <form class="form-inline mt-2 mt-md-0">
                 <!--SEARCH TEXTBOX-->
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <input class="form-control mr-sm-2" id="searchBar" type="text" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="Search((document.getElementById('searchBar').value))">Search</button>
 
                 <!--SETTINGS, LOG OFF DROP DOWN BUTTON-->
                 <ul class="navbar-nav mr-auto">
@@ -377,7 +419,7 @@
     <main role="main" class="container">
         <div class="jumbotron text-center">
             <h1>Profile</h1>
-            <img src="stock.jpg" />
+            <img src="stock1.jpg" />
             <form id="pictureInput" action="" method="post" enctype="multipart/form-data">
                 <label for="exampleFormControlSelect2">Link to Picture:</label>
                 <input id="link" type="text" />
