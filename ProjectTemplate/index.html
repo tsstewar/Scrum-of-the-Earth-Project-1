@@ -135,26 +135,34 @@
 			function userInfo() {
 			console.log(localStorage.getItem("username"));
 			let userData = document.getElementById("eyedee");
+			let type = document.getElementById("mentType");
 			let userId = localStorage.getItem("username");
 			var userName;
+			var mentorType;
 				switch(userId){
 					case "sm":
 						userName = "Sam";
+						mentorType = "Mentee"
 						break;
 					case "ts":
 						userName = "Tanner";
+						mentorType = "Mentor"
 						break;
 					case "sg":
 						userName = "Sarah";
+						mentorType = "Mentor"
 						break;
 					case "yc":
 						userName = "Yumira";
+						mentorType = "Mentee"
 						break;
 					case "jh":
 						userName = "Marshall";
+						mentorType = "Mentee"
 						break;
 				}
 			userData.innerHTML = userName;
+			type.innerHTML = mentorType;
 		}
 
 		window.addEventListener('load', event => {
@@ -338,7 +346,7 @@
     <main role="main" class="container">
 		<div class="jumbotron text-center">
 			<h1>Welcome to Mentr, <span id="eyedee"></span>!</h1>
-			<p class="lead text-info">Stay connected. Become a mentor or connect with mentors.</p>
+			<p class="lead text-info">You are a <span id="mentType"></span></p>
 			<a href="profile.html">Go to your profile</a>
 		</div>
 
