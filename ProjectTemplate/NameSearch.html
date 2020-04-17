@@ -49,25 +49,7 @@
 
         });
 
-        //function getProject(project_name, time_logged) {
-        //    var webMethod = "ProjectServices.asmx/AddTime";
-        //    var parameters = "{\"project_name\":\"" + encodeURI(project_name) + "\",\"time_logged\":\"" + encodeURI(time_logged) + "\"}";
-        //    $.ajax({
-        //        type: "POST",
-        //        url: webMethod,
-        //        data: parameters,
-        //        contentType: "application/json; charset=utf-8",
-        //        dataType: "json",
-        //        success: function (msg) {
-        //            alert("Time & Project Added!");
-        //        },
-        //        error: function (e) {
-        //            alert("Something went wrong");
-        //        }
-        //    });
-        //}
-
-        //logs the user off both at the client and at the server
+         //logs the user off both at the client and at the server
         function logOff() {
 
             var webMethod = "AccountServices.asmx/LogOff";
@@ -87,7 +69,6 @@
                     }
                 },
                 error: function (e) {
-                    alert("Log Off failed");
                 }
             });
         }
