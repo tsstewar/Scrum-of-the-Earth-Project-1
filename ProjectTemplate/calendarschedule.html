@@ -245,7 +245,7 @@
                 allDaySlot: false,
                 selectHelper: true,
                 select: function (start, end, allDay) {
-                    var title = prompt('Event Title:');
+                    var title = prompt('Schedule: (Please include Time Range & Name)');
                     if (title) {
                         calendar.fullCalendar('renderEvent',
                             {
@@ -6513,22 +6513,22 @@
                     position: relative;
                 }
 
-                .fc-first th {
-                    font-family: 'Roboto', sans-serif;
-                    background: #9675ce !important;
-                    color: #FFF;
-                    font-size: 14px !important;
-                    font-weight: 500 !important;
-                }
+        .fc-first th {
+            font-family: 'Roboto', sans-serif;
+            background: #446082 !important;
+            color: #FFF;
+            font-size: 14px !important;
+            font-weight: 500 !important;
+        }
 
-                .fc-event-inner {
-                    font-family: 'Roboto', sans-serif;
-                    background: #03a9f3 !important;
-                    color: #FFF !important;
-                    font-size: 12px !important;
-                    font-weight: 500 !important;
-                    padding: 5px 0px !important;
-                }
+        .fc-event-inner {
+            font-family: 'Roboto', sans-serif;
+            background: #79a356 !important;
+            color: #FFF !important;
+            font-size: 12px !important;
+            font-weight: 500 !important;
+            padding: 5px 0px !important;
+        }
 
                 .fc {
                     direction: ltr;
@@ -6591,16 +6591,16 @@
                         font-family: 'Roboto', sans-serif;
                     }
 
-                span.fc-button {
-                    font-family: 'Roboto', sans-serif;
-                    border-color: #9675ce;
-                    color: #9675ce;
-                }
+        span.fc-button {
+            font-family: 'Roboto', sans-serif;
+            border-color: #446082;
+            color: #446082;
+        }
 
-                .fc-state-down, .fc-state-active {
-                    background-color: #9675ce !important;
-                    color: #FFF !important;
-                }
+        .fc-state-down, .fc-state-active {
+            background-color: #446082 !important;
+            color: #FFF !important;
+        }
 
                 .fc .fc-header-space {
                     padding-left: 10px;
@@ -6760,13 +6760,13 @@
                     -webkit-transition: all 0.2s;
                 }
 
-                .fc-state-hover,
-                .fc-state-down,
-                .fc-state-active,
-                .fc-state-disabled {
-                    color: #333333;
-                    background-color: #FFE3E3;
-                }
+        .fc-state-hover,
+        .fc-state-down,
+        .fc-state-active,
+        .fc-state-disabled {
+            color: #333333;
+            background-color: #C0C0C0; 
+        }
 
                 .fc-state-hover {
                     color: #ff3b30;
@@ -6786,15 +6786,15 @@
                     color: #FFFFFF;
                 }
 
-                .fc-state-disabled {
-                    cursor: default;
-                    background-image: none;
-                    background-color: #FFE3E3;
-                    filter: alpha(opacity=65);
-                    box-shadow: none;
-                    border: 1px solid #FFE3E3;
-                    color: #ff3b30;
-                }
+        .fc-state-disabled {
+            cursor: default;
+            background-image: none;
+            background-color: #C0C0C0;
+            filter: alpha(opacity=65);
+            box-shadow: none;
+            border: 1px solid #C0C0C0;
+            color: #ff3b30;
+        }
 
 
 
@@ -7386,24 +7386,6 @@
                     <a class="nav-link" href="notifications.html">Notifications <span class="sr-only"></span></a>
                 </li>
 
-                <!--<li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown1</a>
-        <ul class="dropdown-menu" aria-labelledby="dropdown1">
-            <li class="dropdown-item" href="#"><a>Action 1</a></li>
-            <li class="dropdown-item dropdown">
-                <a class="dropdown-toggle" id="dropdown1-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown1.1</a>
-                <ul class="dropdown-menu" aria-labelledby="dropdown1-1">
-                    <li class="dropdown-item" href="#"><a>Action 1.1</a></li>
-                    <li class="dropdown-item dropdown">
-                        <a class="dropdown-toggle" id="dropdown1-1-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown1.1.1</a>
-                        <ul class="dropdown-menu" aria-labelledby="dropdown1-1-1">
-                            <li class="dropdown-item" href="#"><a>Action 1.1.1</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </li>-->
 
             </ul>
 
