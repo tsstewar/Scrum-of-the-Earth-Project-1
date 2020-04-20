@@ -123,6 +123,29 @@
         //    });
         //}
 
+        function addItem() {
+            var add = document.getElementById('add-a-list-btn');
+            var save = document.getElementById('save-list-box');
+
+            add.style.display = 'none';
+            save.style.display = 'inline';
+        }
+
+        function addGoal() {
+            var input = document.getElementById('list-input-box').value;
+            var list = document.getElementById('list1');
+
+            g = document.createElement('div');
+            g.setAttribute("id", "card6");
+            g.setAttribute("class", "goal-card");
+            g.setAttribute("src", "")
+            g.setAttribute("draggable", "true");
+            g.setAttribute("ondragstart", "dragStart(event)");
+            g.innerHTML = input;
+            list.appendChild(g);
+
+        }
+
         function Search(searchInput) {
             console.log(searchInput);
             if (searchInput == "developer") {
@@ -193,6 +216,9 @@
             let sourceIdParentEl = sourceIdEl.parentElement;
             // ev.target.id here is the id of target Object of the drop
             let targetEl = document.getElementById(ev.target.id)
+            if (sourceIdEl == "list4") {
+                 
+            }
             let targetParentEl = targetEl.parentElement;
 
             // Compare List names to see if we are going between lists
@@ -347,6 +373,9 @@
             cursor: pointer;
         }
 
+        #save-list-box{
+            display:none;
+        }
 
     </style>
     <!--END OF YOUR OWN CSS-->
@@ -421,51 +450,60 @@
         </div>
     </div>
     <main role="main" class="container">
-            <div class="board-layout">
+        <div class="board-layout">
 
-                <div class="left">
-                    <div class="board-text">Goals</div>
+            <div class="left">
+                <div class="board-text">Goals</div>
+
+            </div>
+
+            <div id='boardlists' class="board-lists">
+                <div id='list1' class="board-list" ondrop="dropIt(event)" ondragover="allowDrop(event)">
+                    <div class="list-title">
+                        To Do
+                    </div>
+
+                    <div id="container">
+                        <div onclick="addItem()" id="add-a-list-btn">Add an item...</div>
+                        <div id="save-list-box">
+                            <input id="list-input-box" placeholder="Add an item..." />
+                            <button onclick="addGoal()" type="button" id="save-list-btn">Save</button>
+                        </div>
+                    </div>
+
+                    <div id='card1' class="goal-card" draggable="true" ondragstart="dragStart(event)">
+                        Work on article
+                    </div>
+                    <div id='card2' class="goal-card" draggable="true" ondragstart="dragStart(event)">
+                        Back up database
+                    </div>
+                    <div id='card3' class="goal-card" draggable="true" ondragstart="dragStart(event)">
+                        Build Lambda function
+                    </div>
+                    <div id='card4' class="goal-card" draggable="true" ondragstart="dragStart(event)">
+                        Work on course content
+                    </div>
+                    <div id='card5' class="goal-card" draggable="true" ondragstart="dragStart(event)">
+                        Debug SQL code
+                    </div>
 
                 </div>
-
-                <div id='boardlists' class="board-lists">
-                    <div id='list1' class="board-list" ondrop="dropIt(event)" ondragover="allowDrop(event)">
-                        <div class="list-title">
-                            To Do
-                        </div>
-
-                        <div id='card1' class="goal-card" draggable="true" ondragstart="dragStart(event)">
-                            Work on article
-                        </div>
-                        <div id='card2' class="goal-card" draggable="true" ondragstart="dragStart(event)">
-                            Back up database
-                        </div>
-                        <div id='card3' class="goal-card" draggable="true" ondragstart="dragStart(event)">
-                            Build Lambda function
-                        </div>
-                        <div id='card4' class="goal-card" draggable="true" ondragstart="dragStart(event)">
-                            Work on course content
-                        </div>
-                        <div id='card5' class="goal-card" draggable="true" ondragstart="dragStart(event)">
-                            Debug SQL code
-                        </div>
-
+                <div id='list2' class="board-list" ondrop="dropIt(event)" ondragover="allowDrop(event)">
+                    <div class="list-title">
+                        In Progress
                     </div>
-                    <div id='list2' class="board-list" ondrop="dropIt(event)" ondragover="allowDrop(event)">
-                        <div class="list-title">
-                            In Progress
-                        </div>
 
 
+                </div>
+                <div id='list3' class="board-list" ondrop="dropIt(event)" ondragover="allowDrop(event)">
+                    <div class="list-title">
+                        Done
                     </div>
-                    <div id='list3' class="board-list" ondrop="dropIt(event)" ondragover="allowDrop(event)">
-                        <div class="list-title">
-                            Done
-                        </div>
 
-                    </div>
                 </div>
             </div>
+            <div id="list4" ondrop="dropIt(event)" ondragover="allowDrop(event)">Delete</div>
+        </div>
     </main>
 </body>
 </html>
