@@ -226,6 +226,7 @@
 
         .card {
             width: 875px;
+            margin:30px;
         }
 
         .col-lg-3 {
@@ -277,6 +278,7 @@
 
         .btn {
             float:right;
+            margin-top:20px;
         }
 
         #profile{
@@ -364,22 +366,47 @@
         <div id="searchResults">
 
         </div>
-
+        <h4>You have 3 invitiations:</h4>
         <div class="col-lg-3">
             <div class="card">
                 <div id="searchResults">
                     <div class="card-body">
                         <img id="profilePic" class="image-cropper" src="stock1.jpg" />
                         <div id="info">
-                            <h3 class="card-title">Sarah Garbinski</h3>
+                            <h3 class="card-title"><a id="profile" href="profilementor.html"> Sarah Garbinski</a></h3>
                             <h5 class="card-text">Message: <i>Hello, I'd love to connect!</i></h5>
                         </div>
-                        <a href="#" id="connect" onclick="konnect()" class="btn btn-primary" style="margin-right:15px;">&nbsp Connect &nbsp</a>
                         <a href="#" id="connect" onclick="konnect()" class="btn btn-primary" style="margin-right:15px;">&nbsp Reject &nbsp</a>
+                        <a href="#" id="connect" onclick="konnect()" class="btn btn-primary" style="margin-right:15px;">&nbsp Connect &nbsp</a>
                         <br />
                         <br />
-                        <a id="profile" href="profilementor.html" class="btn btn-primary">Full Profile</a>
-                    </div> 
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <img id="profilePic" class="image-cropper" src="stock3.jpg" />
+                    <div id="info">
+                        <h3 class="card-title"><a id="profile" href="profilementor.html">Marshall Hinze</a></h3>
+                        <h5 class="card-text">Message: <i>Hey Sam!</i></h5>
+                    </div>
+                    <a href="#" id="connect" onclick="konnect()" class="btn btn-primary" style="margin-right:15px;">&nbsp Reject &nbsp</a>
+                    <a href="#" id="connect" onclick="konnect()" class="btn btn-primary" style="margin-right:15px;">&nbsp Connect &nbsp</a>
+                    <br />
+                    <br />
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <img id="profilePic" class="image-cropper" src="stock2.jpg" />
+                    <div id="info">
+                        <h3 class="card-title"><a id="profile" href="profilementor.html">Yumira Chung</a></h3>
+                        <h5 class="card-text">Message: <i>Hi! We should connect.</i></h5>
+                    </div>
+                    <a href="#" id="connect" onclick="konnect()" class="btn btn-primary" style="margin-right:15px;">&nbsp Reject &nbsp</a>
+                    <a href="#" id="connect" onclick="konnect()" class="btn btn-primary" style="margin-right:15px;">&nbsp Connect &nbsp</a>
+                    <br />
+                    <br />
                 </div>
             </div>
         </div>
