@@ -120,64 +120,69 @@
 				let userId = localStorage.getItem("username");
 				var userName;
 				var mentorType;
-				var samUnhide = false;
-				var tanUnhide = false;
-				var sarUnhide = false;
-				var yumUnhide = false;
-				var marUnhide = false;
+				var samCon = false;
+				var tanCon = false;
+				var sarCon = false;
+				var yumCon = false;
+				var marCon = false;
 				var samID = document.getElementById("sam");
 				var tanID = document.getElementById("tan");
 				var sarID = document.getElementById("sar");
 				var yumID = document.getElementById("yum");
 				var marID = document.getElementById("mar");
-				samID.style.display = "none";
-				tanID.style.display = "none";
-				sarID.style.display = "none";
-				yumID.style.display = "none";
-				marID.style.display = "none";
-		//		$("#samID").hide();
-		//		$("#tanID").hide();
-		//		$("#sarID").hide();
-		//		$("#yumID").hide();
-		//		$("#marID").hide();
 				switch (userId) {
 					case "sm":
 						userName = "Sam";
 						mentorType = "Mentee"
-						sarUnhide = true;
+						sarCon = true;
 						break;
 					case "ts":
 						userName = "Tanner";
 						mentorType = "Mentor"
-						yumUnhide = true;
-						marUnhide = true;
+						yumCon = true;
+						marCon = true;
 						break;
 					case "sg":
 						userName = "Sarah";
 						mentorType = "Mentor"
-						samUnhide = true;
+						samCon = true;
 						break;
 					case "yc":
 						userName = "Yumira";
 						mentorType = "Mentee"
-						tanUnhide = true;
+						tanCon = true;
 						break;
 					case "jh":
 						userName = "Marshall";
 						mentorType = "Mentee"
-						tanUnhide = true;
+						tanCon = true;
 						break;
 				}
-				if (sarUnhide == true) {
-					sarID.style.display = "block";
-				} else if (samUnhide == true) {
-					samID.style.display = "block";
-				} else if (tanUnhide == true) {
-					tanID.style.display = "block";
-				} else if (yumUnhide == true) {
-					yumID.style.display = "block";
-				} else if (marUnhide == true) {
-					marID.style.display = "block";
+				if (sarCon == true) {
+					$('#sar').removeClass('btn btn-primary');
+					$('#sar').addClass('btn btn-outline-warning');
+
+					document.getElementById("sar").innerHTML = "Connected";
+				} else if (samCon == true) {
+					$('#sam').removeClass('btn btn-primary');
+					$('#sam').addClass('btn btn-outline-warning');
+
+					document.getElementById("sam").innerHTML = "Connected";
+				} else if (tanCon == true) {
+					$('#tan').removeClass('btn btn-primary');
+					$('#tan').addClass('btn btn-outline-warning');
+
+					document.getElementById("tan").innerHTML = "Connected";
+				} else if (yumCon == true) {
+					$('#yum').removeClass('btn btn-primary');
+					$('#yum').addClass('btn btn-outline-warning');
+
+					document.getElementById("yum").innerHTML = "Connected";
+				} else if (marCon == true) {
+					$('#mar').removeClass('btn btn-primary');
+					$('#mar').addClass('btn btn-outline-warning');
+
+					document.getElementById("mar").innerHTML = "Connected";
 				}
 
 				userData.innerHTML = userName;
@@ -190,13 +195,13 @@
 			userInfo();
             });
 
-        function konnect() {
-            $('#connect').removeClass('btn btn-primary');
-            $('#connect').addClass('btn btn-outline-warning');
-
-            document.getElementById("connect").innerHTML = "Connected";
-            
-        }
+     //   function konnect() {
+   //         $('#connect').removeClass('btn btn-primary');
+ //           $('#connect').addClass('btn btn-outline-warning');
+//
+        //    document.getElementById("connect").innerHTML = "Connected";
+       //     
+     //   }
 
     </script>
 
@@ -375,7 +380,7 @@
 
 		</div>
 
-		<div class="col-lg-3" id="sar">
+		<div class="col-lg-3" >
 			<div class="card" style="width: 18rem;">
 				<div id="searchResults">
 					<div>
@@ -391,14 +396,14 @@
 						<p class="card-text"> &nbsp Software Engineer</p>
 						<img src="location.png" style="width: 25px; height:25px; float: left;" />
 						<p class="card-text"> &nbsp Tempe, AZ</p>
-						<a href="#" id="connect" onclick="konnect()" class="btn btn-primary" style="margin-right:15px;">&nbsp Connect &nbsp</a>
+						<a href="#" id="sar" onclick="konnect()" class="btn btn-primary" style="margin-right:15px;">&nbsp Connect &nbsp</a>
 						<a href="profilementor.html" class="btn btn-primary">Full Profile</a>
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<div class="col-lg-3" id="yum">
+		<div class="col-lg-3" >
 			<div class="card" style="width: 18rem;">
 				<div id="searchResults">
 					<div>
@@ -414,7 +419,7 @@
 						<p class="card-text"> &nbsp Business Analyst</p>
 						<img src="location.png" style="width: 25px; height:25px; float: left;" />
 						<p class="card-text"> &nbsp Tempe, AZ</p>
-						<a href="#" id="connect" onclick="konnect()" class="btn btn-primary" style="margin-right:15px;">&nbsp Connect &nbsp</a>
+						<a href="#" id="yum" onclick="konnect()" class="btn btn-primary" style="margin-right:15px;">&nbsp Connect &nbsp</a>
 						<a href="profilementor.html" class="btn btn-primary">Full Profile</a>
 					</div>
 				</div>
@@ -422,7 +427,7 @@
 		</div>
 
 
-		<div class="col-lg-3" id="mar">
+		<div class="col-lg-3" >
 			<div class="card" style="width: 18rem;">
 				<div id="searchResults">
 					<div>
@@ -438,14 +443,14 @@
 						<p class="card-text"> &nbsp Developer</p>
 						<img src="location.png" style="width: 25px; height:25px; float: left;" />
 						<p class="card-text"> &nbsp Tempe, AZ</p>
-						<a href="#" class="btn btn-primary" style="margin-right:15px;">&nbsp Connect &nbsp</a>
+						<a href="#" class="btn btn-primary" id="mar" style="margin-right:15px;">&nbsp Connect &nbsp</a>
 						<a href="#" class="btn btn-primary">Full Profile</a>
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<div class="col-lg-3" id="tan">
+		<div class="col-lg-3">
 			<div class="card" style="width: 18rem;">
 				<div id="searchResults">
 					<div>
@@ -461,14 +466,14 @@
 						<p class="card-text"> &nbsp Scrum Master</p>
 						<img src="location.png" style="width: 25px; height:25px; float: left;" />
 						<p class="card-text"> &nbsp Tempe, AZ</p>
-						<a href="#" class="btn btn-primary" style="margin-right:15px;">&nbsp Connect &nbsp</a>
+						<a href="#" class="btn btn-primary" id="tan" style="margin-right:15px;">&nbsp Connect &nbsp</a>
 						<a href="#" class="btn btn-primary">Full Profile</a>
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<div class="col-lg-3" id="sam">
+		<div class="col-lg-3" >
 			<div class="card" style="width: 18rem;">
 				<div id="searchResults">
 					<div>
@@ -484,7 +489,7 @@
 						<p class="card-text"> &nbsp Developer</p>
 						<img src="location.png" style="width: 25px; height:25px; float: left;" />
 						<p class="card-text"> &nbsp Tempe, AZ</p>
-						<a href="#" class="btn btn-primary" style="margin-right:15px;">&nbsp Connect &nbsp</a>
+						<a href="#" id="sam" class="btn btn-primary" style="margin-right:15px;">&nbsp Connect &nbsp</a>
 						<a href="#" class="btn btn-primary">Full Profile</a>
 					</div>
 				</div>
