@@ -46,10 +46,8 @@
                 dataType: "json",
                 success: function (msg) {
                     var responseFromServer = msg.d;
-                    alert(responseFromServer);
                 },
                 error: function (e) {
-                    alert("this code will only execute if javascript is unable to access the webservice");
                 }
             });
 		}
@@ -87,15 +85,12 @@
 					var responseFromServer = msg.d;
 					if (responseFromServer == true) {
 						getUserInfo();
-                        alert("User logged in!")
-                        window.location.replace("/index.html")
+						window.location.replace("/index.html");
                     }
                     else {
-                        alert("bad credentials")
                     }
                 },
                 error: function (e) {
-                    alert("this code will only execute if javascript is unable to access the webservice");
                 }
             });
         }

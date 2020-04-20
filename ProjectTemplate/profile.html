@@ -48,24 +48,6 @@
 
         });
 
-        //function CreateProject(project_name, time_logged) {
-        //    var webMethod = "ProjectServices.asmx/AddTime";
-        //    var parameters = "{\"project_name\":\"" + encodeURI(project_name) + "\",\"time_logged\":\"" + encodeURI(time_logged) + "\"}";
-        //    $.ajax({
-        //        type: "POST",
-        //        url: webMethod,
-        //        data: parameters,
-        //        contentType: "application/json; charset=utf-8",
-        //        dataType: "json",
-        //        success: function (msg) {
-        //            alert("Time & Project Added!");
-        //        },
-        //        error: function (e) {
-        //            alert("Something went wrong");
-        //        }
-        //    });
-        //}
-
         function AddNewGoal(goal) {
 			var webMethod = "ProjectServices.asmx/CreateNewGoal";
             var parameters = "{\"goal\":\"" + encodeURI(goal) + "\"}";
@@ -77,11 +59,9 @@
 				contentType: "application/json; charset=utf-8",
 				dataType: "json",
 				success: function (msg) {
-					alert("Goal Created!");
 					//window.location.replace("/profile.html")
 				},
 				error: function (e) {
-					alert("Something went wrong");
 				}
 			});
         }
@@ -104,7 +84,6 @@
                         rows.innerHTML = table;
                     },
                     error: function () {
-                        alert("Something went wrong");
                     }
                 });
             }
@@ -128,7 +107,6 @@
                         rows.innerHTML = table;
                     },
                     error: function () {
-                        alert("Something went wrong");
                     }
                 });
             }
@@ -155,7 +133,6 @@
                     }
                 },
                 error: function (e) {
-                    alert("Log Off failed");
                 }
             });
         }
@@ -199,6 +176,16 @@
 		//window.addEventListener('load', event => {
 			//userInfo();
 		//});
+
+        function Search(searchInput) {
+            console.log(searchInput);
+            if (searchInput == "developer") {
+                window.location.replace("/DeveloperSearch.html");
+            }
+            else if (searchInput == "sarah") {
+                window.location.replace("/NameSearch.html");
+            }
+        }
 
     </script>
 
@@ -352,33 +339,36 @@
                 <li class="nav-item">
                     <a class="nav-link" href="calendarschedule.html">Calendar <span class="sr-only"></span></a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="notifications.html">Notifications <span class="sr-only"></span></a>
+                </li>
 
                 <!--<li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown1</a>
-            <ul class="dropdown-menu" aria-labelledby="dropdown1">
-                <li class="dropdown-item" href="#"><a>Action 1</a></li>
-                <li class="dropdown-item dropdown">
-                    <a class="dropdown-toggle" id="dropdown1-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown1.1</a>
-                    <ul class="dropdown-menu" aria-labelledby="dropdown1-1">
-                        <li class="dropdown-item" href="#"><a>Action 1.1</a></li>
-                        <li class="dropdown-item dropdown">
-                            <a class="dropdown-toggle" id="dropdown1-1-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown1.1.1</a>
-                            <ul class="dropdown-menu" aria-labelledby="dropdown1-1-1">
-                                <li class="dropdown-item" href="#"><a>Action 1.1.1</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </li>-->
+        <a class="nav-link dropdown-toggle" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown1</a>
+        <ul class="dropdown-menu" aria-labelledby="dropdown1">
+            <li class="dropdown-item" href="#"><a>Action 1</a></li>
+            <li class="dropdown-item dropdown">
+                <a class="dropdown-toggle" id="dropdown1-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown1.1</a>
+                <ul class="dropdown-menu" aria-labelledby="dropdown1-1">
+                    <li class="dropdown-item" href="#"><a>Action 1.1</a></li>
+                    <li class="dropdown-item dropdown">
+                        <a class="dropdown-toggle" id="dropdown1-1-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown1.1.1</a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdown1-1-1">
+                            <li class="dropdown-item" href="#"><a>Action 1.1.1</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>-->
 
             </ul>
 
             <a href="chatroom.html"><img id="messages" src="envelope.png" /></a>
             <form class="form-inline mt-2 mt-md-0">
                 <!--SEARCH TEXTBOX-->
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <input class="form-control mr-sm-2" id="searchBar" type="text" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="Search((document.getElementById('searchBar').value))">Search</button>
 
                 <!--SETTINGS, LOG OFF DROP DOWN BUTTON-->
                 <ul class="navbar-nav mr-auto">
