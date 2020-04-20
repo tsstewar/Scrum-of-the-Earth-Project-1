@@ -260,6 +260,11 @@
 
         }
 
+        function remove(el) {
+            var element = el;
+            element.remove();
+        }
+
     </script>
 
 
@@ -379,6 +384,11 @@
             display:none;
         }
 
+        #deletebutton{
+            float: right;
+            font-size: 8px;
+        }
+
     </style>
     <!--END OF YOUR OWN CSS-->
 
@@ -482,20 +492,25 @@
 </div>
                     </div>
 
-                    <div id='card1' class="goal-card" draggable="true" ondragstart="dragStart(event)">
+                    <div id='card1' class="goal-card" draggable="true" ondragstart="dragStart(event)" onclick="remove(this)">
                         Work on article
+                        <button id="deletebutton" class="btn btn-outline-secondary">x</button>
                     </div>
-                    <div id='card2' class="goal-card" draggable="true" ondragstart="dragStart(event)">
+                    <div id='card2' class="goal-card" draggable="true" ondragstart="dragStart(event)" onclick="remove(this)">
                         Back up database
+                        <button id="deletebutton" class="btn btn-outline-secondary">x</button>
                     </div>
-                    <div id='card3' class="goal-card" draggable="true" ondragstart="dragStart(event)">
+                    <div id='card3' class="goal-card" draggable="true" ondragstart="dragStart(event)" onclick="remove(this)">
                         Build Lambda function
+                        <button id="deletebutton" class="btn btn-outline-secondary">x</button>
                     </div>
-                    <div id='card4' class="goal-card" draggable="true" ondragstart="dragStart(event)">
+                    <div id='card4' class="goal-card" draggable="true" ondragstart="dragStart(event)" onclick="remove(this)">
                         Work on course content
+                        <button id="deletebutton" class="btn btn-outline-secondary">x</button>
                     </div>
-                    <div id='card5' class="goal-card" draggable="true" ondragstart="dragStart(event)">
+                    <div id='card5' class="goal-card" draggable="true" ondragstart="dragStart(event)" onclick="remove(this)">
                         Debug SQL code
+                        <button id="deletebutton" class="btn btn-outline-secondary">x</button>
                     </div>
 
                 </div>
@@ -513,8 +528,8 @@
 
                 </div>
             </div>
-            <div id="list4" ondrop="dropIt(event)" ondragover="allowDrop(event)">Delete</div>
-        </div>
+            <!--<div id="list4" ondrop="dropIt(event)" ondragover="allowDrop(event)">Delete</div>
+        </div>-->
     </main>
 </body>
 </html>
