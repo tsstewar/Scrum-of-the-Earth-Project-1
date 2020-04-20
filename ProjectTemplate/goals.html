@@ -144,6 +144,8 @@
             g.innerHTML = input;
             list.appendChild(g);
 
+            document.getElementById("myform").reset();
+
         }
 
         function Search(searchInput) {
@@ -464,11 +466,13 @@
                     </div>
 
                     <div id="container">
-                        <div onclick="addItem()" id="add-a-list-btn">Add an item...</div>
-                        <div id="save-list-box">
-                            <input id="list-input-box" placeholder="Add an item..." />
-                            <button onclick="addGoal()" type="button" id="save-list-btn">Save</button>
-                        </div>
+                            <div onclick="addItem()" id="add-a-list-btn">Add an item...</div>
+                            <div id="save-list-box">
+                                <form id="myform" name="myform">
+                                    <input id="list-input-box" placeholder="Add an item..." />        
+                                <button onclick="addGoal()" type="button" id="save-list-btn">Save</button>
+                                </form>  
+</div>
                     </div>
 
                     <div id='card1' class="goal-card" draggable="true" ondragstart="dragStart(event)">
