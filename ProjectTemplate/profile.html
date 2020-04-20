@@ -375,22 +375,28 @@
             </ul>
 
             <a href="chatroom.html"><img id="messages" src="envelope.png" /></a>
-            <form class="form-inline mt-2 mt-md-0">
+            <div class="form-inline mt-2 mt-md-0">
                 <!--SEARCH TEXTBOX-->
                 <input class="form-control mr-sm-2" id="searchBar" type="text" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="Search((document.getElementById('searchBar').value))">Search</button>
 
                 <!--SETTINGS, LOG OFF DROP DOWN BUTTON-->
+                <!--<ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Settings</a>
+            <ul class="dropdown-menu" aria-labelledby="dropdown1">
+                <li class="dropdown-item" href="login.html" onclick="logOff()"><a>Log Off</a></li>
+            </ul>
+        </li>
+    </ul>-->
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Settings</a>
-                        <ul class="dropdown-menu" aria-labelledby="dropdown1">
-                            <li class="dropdown-item" href="login.html" onclick="logOff()"><a>Log Off</a></li>
-                        </ul>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="login.html">Log Off <span class="sr-only">(current)</span></a>
+
                     </li>
                 </ul>
 
-            </form>
+            </div>
 
         </div>
     </div>
