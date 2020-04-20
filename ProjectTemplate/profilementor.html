@@ -341,9 +341,24 @@
             margin-top: 10px;
         }
 
-        img {
+
+        .image-cropper {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            object-fit: cover;
+            width: 300px;
             height: 250px;
-            width: auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 50%;
+        }
+
+        img {
+            object-fit: cover;
+            border-radius: 75%;
+            height: 300px;
+            width: 300px;
         }
     </style>
     <!--END OF YOUR OWN CSS-->
@@ -419,7 +434,20 @@
     <main role="main" class="container">
         <div class="jumbotron text-center">
             <h1>Profile</h1>
-            <img src="stock1.jpg" />
+            <br />
+            <h3>Sarah Garbinski</h3>
+            <div class="image-cropper">
+                <img src="stock1.jpg" class="rounded" />
+            </div>
+            <form id="pictureInput" action="" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" />
+                <input class="btn btn-primary" type="submit" name="submit" />
+            </form>
+        </div>
+
+        <div class="text-center">
+            <input type="button" id="editbutton" class="btn btn-primary" value="Edit Your Profile" onclick="readOnlyFunction()">
+            <input type="button" id="savebutton" class="btn btn-success" value="Save Your Profile" onclick="saveButton()">
         </div>
 
         <div class="form-group">
@@ -456,7 +484,7 @@
             <br />
 
             <label for="exampleFormControlTextarea1">Phone:</label>
-            <input type="text" class="form-control" id="phonetext" rows="1" readonly="readonly" value="(602)123-456"></input>
+            <input type="text" class="form-control" id="phonetext" rows="1" readonly="readonly" value="(602)123-4567"></input>
 
             <br />
 
