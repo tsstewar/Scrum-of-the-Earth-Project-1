@@ -142,6 +142,8 @@
 
 
         function readOnlyFunction() {
+            document.getElementById('biotext').readOnly = false;
+            document.getElementById('locationtext').readOnly = false;
             document.getElementById('degreetext').readOnly = false;
             document.getElementById('currentyearofstudytext').readOnly = false;
             document.getElementById('expectedgraddatetext').readOnly = false;
@@ -151,10 +153,17 @@
             document.getElementById('currentyearoptions2').disabled = false;
             document.getElementById('currentyearoptions3').disabled = false;
             document.getElementById('currentyearoptions4').disabled = false;
+            
+
+            
+
+            
 
         };
 
         function saveButton() {
+            document.getElementById('biotext').readOnly = true;
+            document.getElementById('locationtext').readOnly = true;
             document.getElementById('currentyearoptions').disabled = true;
             document.getElementById('currentyearoptions2').disabled = true;
             document.getElementById('currentyearoptions3').disabled = true;
@@ -164,6 +173,7 @@
             document.getElementById('expectedgraddatetext').readOnly = true;
             document.getElementById('intereststext').readOnly = true;
             document.getElementById('goalstext').readOnly = true;
+            
 		}
 
 	//	function userInfo() {
