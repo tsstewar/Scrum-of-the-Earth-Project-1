@@ -163,7 +163,6 @@
             });
 
         function konnect() {
-            alert("Request has been sent!");
 
             $('#connect').removeClass('btn btn-primary');
             $('#connect').addClass('btn btn-outline-warning');
@@ -171,6 +170,16 @@
             document.getElementById("connect").innerHTML = "Connected";
 
         }
+
+        function reject() {
+
+            $('#reject').removeClass('btn btn-primary');
+            $('#reject').addClass('btn btn-outline-danger');
+
+            document.getElementById("reject").innerHTML = "Rejected";
+
+        }
+
 
     </script>
 
@@ -369,19 +378,17 @@
         <h4>You have 3 invitiations:</h4>
         <div class="col-lg-3">
             <div class="card">
-                <div id="searchResults">
                     <div class="card-body">
                         <img id="profilePic" class="image-cropper" src="stock1.jpg" />
                         <div id="info">
                             <h3 class="card-title"><a id="profile" href="profilementor.html"> Sarah Garbinski</a></h3>
                             <h5 class="card-text">Message: <i>Hello, I'd love to connect!</i></h5>
                         </div>
-                        <a href="#" id="connect" onclick="konnect()" class="btn btn-primary" style="margin-right:15px;">&nbsp Reject &nbsp</a>
+                        <a href="#" id="reject" onclick="reject()" class="btn btn-primary" style="margin-right:15px;">&nbsp Reject &nbsp</a>
                         <a href="#" id="connect" onclick="konnect()" class="btn btn-primary" style="margin-right:15px;">&nbsp Connect &nbsp</a>
                         <br />
                         <br />
                     </div>
-                </div>
             </div>
             <div class="card">
                 <div class="card-body">
@@ -390,7 +397,7 @@
                         <h3 class="card-title"><a id="profile" href="profilementor.html">Marshall Hinze</a></h3>
                         <h5 class="card-text">Message: <i>Hey Sam!</i></h5>
                     </div>
-                    <a href="#" id="connect" onclick="konnect()" class="btn btn-primary" style="margin-right:15px;">&nbsp Reject &nbsp</a>
+                    <a href="#" id="reject" onclick="reject()" class="btn btn-primary" style="margin-right:15px;">&nbsp Reject &nbsp</a>
                     <a href="#" id="connect" onclick="konnect()" class="btn btn-primary" style="margin-right:15px;">&nbsp Connect &nbsp</a>
                     <br />
                     <br />
@@ -403,7 +410,7 @@
                         <h3 class="card-title"><a id="profile" href="profilementor.html">Yumira Chung</a></h3>
                         <h5 class="card-text">Message: <i>Hi! We should connect.</i></h5>
                     </div>
-                    <a href="#" id="connect" onclick="konnect()" class="btn btn-primary" style="margin-right:15px;">&nbsp Reject &nbsp</a>
+                    <a href="#" id="reject" onclick="reject()" class="btn btn-primary" style="margin-right:15px;">&nbsp Reject &nbsp</a>
                     <a href="#" id="connect" onclick="konnect()" class="btn btn-primary" style="margin-right:15px;">&nbsp Connect &nbsp</a>
                     <br />
                     <br />
