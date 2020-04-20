@@ -153,7 +153,8 @@
 					case "jh":
 						userName = "Marshall";
 						break;
-				}
+                }
+                
 			userData.innerHTML = userName;
 		}
 
@@ -224,33 +225,30 @@
             }
 
         .card {
-            margin-bottom: 30px;
+            width: 875px;
         }
 
         .col-lg-3 {
             float: left;
             margin-right: 30px;
+            margin-left: 100px;
         }
 
         img {
             display: inline;
             margin: 0 auto;
+            margin-bottom:15px;
             height: 100%;
             width: auto;
-            position: relative;
-            top: 0;
-            left: 0;
+            float:left;
         }
 
         #profilePic {
-            height: 150px;
-            width: 175px;
-            position: absolute;
+            height: 100px;
+            width: 125px;
             border: solid;
             border-width: 2px;
             border-color: lightgray;
-            top: 50px;
-            left: 60px;
         }
 
         .image-cropper {
@@ -261,6 +259,28 @@
             position: relative;
             overflow: hidden;
             border-radius: 50%;
+        }
+
+        h3{
+            font-size: 20px;
+        }
+
+        h5{
+            font-size:15px;
+        }
+
+        #message{
+            float:left;
+            margin:15px;
+
+        }
+
+        .btn {
+            float:right;
+        }
+
+        #profile{
+            margin-right:75px;
         }
     </style>
     <!--END OF YOUR OWN CSS-->
@@ -337,8 +357,6 @@
     <main role="main" class="container">
         <div class="jumbotron text-center">
             <h1><span id="eyedee"></span>, here are people that want to connect with you!</h1>
-            <p class="lead text-info">Stay connected. Become a mentor or connect with mentors.</p>
-            <a href="profile.html">Go to your profile</a>
         </div>
 
         <!--div space to display search results from search bar-->
@@ -348,24 +366,20 @@
         </div>
 
         <div class="col-lg-3">
-            <div class="card" style="width: 18rem;">
+            <div class="card">
                 <div id="searchResults">
-                    <div>
-                        <img class="card-img-top" src="grayBackground.jpg" alt="Card image cap" />
-                        <img id="profilePic" class="image-cropper" src="stock1.jpg" />
-                    </div>
                     <div class="card-body">
-                        <h3 class="card-title">Sarah Garbinski</h3>
-                        <h5 class="card-text">I'd love to connect!</h5>
-                        <img src="tag.png" style="width: 25px; height:25px; float: left;" />
-                        <p class="card-text"> &nbsp Tech</p>
-                        <img src="breifcase.png" style="width: 25px; height:25px; float: left;" />
-                        <p class="card-text"> &nbsp Software Engineer</p>
-                        <img src="location.png" style="width: 25px; height:25px; float: left;" />
-                        <p class="card-text"> &nbsp Tempe, AZ</p>
+                        <img id="profilePic" class="image-cropper" src="stock1.jpg" />
+                        <div id="message">
+                            <h3 class="card-title">Sarah Garbinski</h3>
+                            <h5 class="card-text">Message: <i>Hello, I'd love to connect!</i></h5>
+                        </div>
                         <a href="#" id="connect" onclick="konnect()" class="btn btn-primary" style="margin-right:15px;">&nbsp Connect &nbsp</a>
-                        <a href="profilementor.html" class="btn btn-primary">Full Profile</a>
-                    </div>
+                        <a href="#" id="connect" onclick="konnect()" class="btn btn-primary" style="margin-right:15px;">&nbsp Reject &nbsp</a>
+                        <br />
+                        <br />
+                        <a id="profile" href="profilementor.html" class="btn btn-primary">Full Profile</a>
+                    </div> 
                 </div>
             </div>
         </div>
