@@ -132,35 +132,35 @@
         }
 
 
-			function userInfo() {
-			console.log(localStorage.getItem("username"));
-			let userData = document.getElementById("eyedee");
-			let userId = localStorage.getItem("username");
-			var userName;
-				switch(userId){
-					case "sm":
-						userName = "Sam";
-						break;
-					case "ts":
-						userName = "Tanner";
-						break;
-					case "sg":
-						userName = "Sarah";
-						break;
-					case "yc":
-						userName = "Yumira";
-						break;
-					case "jh":
-						userName = "Marshall";
-						break;
-                }
-                
-			userData.innerHTML = userName;
-		}
+        function userInfo() {
+            console.log(localStorage.getItem("username"));
+            let userData = document.getElementById("eyedee");
+            let userId = localStorage.getItem("username");
+            var userName;
+            switch (userId) {
+                case "sm":
+                    userName = "Sam";
+                    break;
+                case "ts":
+                    userName = "Tanner";
+                    break;
+                case "sg":
+                    userName = "Sarah";
+                    break;
+                case "yc":
+                    userName = "Yumira";
+                    break;
+                case "jh":
+                    userName = "Marshall";
+                    break;
+            }
 
-		window.addEventListener('load', event => {
-			userInfo();
-            });
+            userData.innerHTML = userName;
+        }
+
+        window.addEventListener('load', event => {
+            userInfo();
+        });
 
         function konnect() {
 
@@ -177,6 +177,42 @@
             $('#reject').addClass('btn btn-outline-danger');
 
             document.getElementById("reject").innerHTML = "Rejected";
+
+        }
+
+        function konnect2() {
+
+            $('#connect2').removeClass('btn btn-primary');
+            $('#connect2').addClass('btn btn-outline-warning');
+
+            document.getElementById("connect2").innerHTML = "Connected";
+
+        }
+
+        function reject2() {
+
+            $('#reject2').removeClass('btn btn-primary');
+            $('#reject2').addClass('btn btn-outline-danger');
+
+            document.getElementById("reject2").innerHTML = "Rejected";
+
+        }
+
+        function konnect3() {
+
+            $('#connect3').removeClass('btn btn-primary');
+            $('#connect3').addClass('btn btn-outline-warning');
+
+            document.getElementById("connect3").innerHTML = "Connected";
+
+        }
+
+        function reject3() {
+
+            $('#reject3').removeClass('btn btn-primary');
+            $('#reject3').addClass('btn btn-outline-danger');
+
+            document.getElementById("reject3").innerHTML = "Rejected";
 
         }
 
@@ -235,7 +271,7 @@
 
         .card {
             width: 875px;
-            margin:30px;
+            margin: 30px;
         }
 
         .col-lg-3 {
@@ -249,7 +285,7 @@
             margin: 0 auto;
             height: 100%;
             width: auto;
-            float:left;
+            float: left;
         }
 
         #profilePic {
@@ -271,27 +307,26 @@
             border-radius: 50%;
         }
 
-        h3{
+        h3 {
             font-size: 20px;
         }
 
-        h5{
-            font-size:15px;
+        h5 {
+            font-size: 15px;
         }
 
-        #info{
-            float:left;
-            margin:15px;
-
+        #info {
+            float: left;
+            margin: 15px;
         }
 
         .btn {
-            float:right;
-            margin-top:20px;
+            float: right;
+            margin-top: 20px;
         }
 
-        #profile{
-            margin-right:75px;
+        #profile {
+            margin-right: 75px;
         }
     </style>
     <!--END OF YOUR OWN CSS-->
@@ -325,23 +360,23 @@
 
 
                 <!--<li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown1</a>
-                <ul class="dropdown-menu" aria-labelledby="dropdown1">
-                    <li class="dropdown-item" href="#"><a>Action 1</a></li>
-                    <li class="dropdown-item dropdown">
-                        <a class="dropdown-toggle" id="dropdown1-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown1.1</a>
-                        <ul class="dropdown-menu" aria-labelledby="dropdown1-1">
-                            <li class="dropdown-item" href="#"><a>Action 1.1</a></li>
-                            <li class="dropdown-item dropdown">
-                                <a class="dropdown-toggle" id="dropdown1-1-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown1.1.1</a>
-                                <ul class="dropdown-menu" aria-labelledby="dropdown1-1-1">
-                                    <li class="dropdown-item" href="#"><a>Action 1.1.1</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>-->
+                    <a class="nav-link dropdown-toggle" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown1</a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdown1">
+                        <li class="dropdown-item" href="#"><a>Action 1</a></li>
+                        <li class="dropdown-item dropdown">
+                            <a class="dropdown-toggle" id="dropdown1-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown1.1</a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdown1-1">
+                                <li class="dropdown-item" href="#"><a>Action 1.1</a></li>
+                                <li class="dropdown-item dropdown">
+                                    <a class="dropdown-toggle" id="dropdown1-1-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown1.1.1</a>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdown1-1-1">
+                                        <li class="dropdown-item" href="#"><a>Action 1.1.1</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>-->
                 <!--(document.getElementById('searchBar').value)-->
 
             </ul>
@@ -353,13 +388,13 @@
 
                 <!--SETTINGS, LOG OFF DROP DOWN BUTTON-->
                 <!--<ul class="navbar-nav mr-auto">
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Settings</a>
-            <ul class="dropdown-menu" aria-labelledby="dropdown1">
-                <li class="dropdown-item" href="login.html" onclick="logOff()"><a>Log Off</a></li>
-            </ul>
-        </li>
-    </ul>-->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Settings</a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdown1">
+                            <li class="dropdown-item" href="login.html" onclick="logOff()"><a>Log Off</a></li>
+                        </ul>
+                    </li>
+                </ul>-->
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
                         <a class="nav-link" href="login.html">Log Off <span class="sr-only">(current)</span></a>
@@ -384,17 +419,17 @@
         <h4>You have 3 invitiations:</h4>
         <div class="col-lg-3">
             <div class="card">
-                    <div class="card-body">
-                        <img id="profilePic" class="image-cropper" src="stock5.jpg" />
-                        <div id="info">
-                            <h3 class="card-title"><a id="profile" href="profilementor.html"> Tanner Stewart</a></h3>
-                            <h5 class="card-text">Message: <i>Hello, I'd love to connect!</i></h5>
-                        </div>
-                        <a href="#" id="reject" onclick="reject()" class="btn btn-primary" style="margin-right:15px;">&nbsp Reject &nbsp</a>
-                        <a href="#" id="connect" onclick="konnect()" class="btn btn-primary" style="margin-right:15px;">&nbsp Connect &nbsp</a>
-                        <br />
-                        <br />
+                <div class="card-body">
+                    <img id="profilePic" class="image-cropper" src="stock5.jpg" />
+                    <div id="info">
+                        <h3 class="card-title"><a id="profile" href="profilementor.html"> Tanner Stewart</a></h3>
+                        <h5 class="card-text">Message: <i>Hello, I'd love to connect!</i></h5>
                     </div>
+                    <a href="#" id="reject" onclick="reject()" class="btn btn-primary" style="margin-right:15px;">&nbsp Reject &nbsp</a>
+                    <a href="#" id="connect" onclick="konnect()" class="btn btn-primary" style="margin-right:15px;">&nbsp Connect &nbsp</a>
+                    <br />
+                    <br />
+                </div>
             </div>
             <div class="card">
                 <div class="card-body">
@@ -403,8 +438,8 @@
                         <h3 class="card-title"><a id="profile" href="profilementor.html">Marshall Hinze</a></h3>
                         <h5 class="card-text">Message: <i>Hey Sam!</i></h5>
                     </div>
-                    <a href="#" id="reject" onclick="reject()" class="btn btn-primary" style="margin-right:15px;">&nbsp Reject &nbsp</a>
-                    <a href="#" id="connect" onclick="konnect()" class="btn btn-primary" style="margin-right:15px;">&nbsp Connect &nbsp</a>
+                    <a href="#" id="reject2" onclick="reject2()" class="btn btn-primary" style="margin-right:15px;">&nbsp Reject &nbsp</a>
+                    <a href="#" id="connect2" onclick="konnect2()" class="btn btn-primary" style="margin-right:15px;">&nbsp Connect &nbsp</a>
                     <br />
                     <br />
                 </div>
@@ -416,8 +451,8 @@
                         <h3 class="card-title"><a id="profile" href="profilementor.html">Yumira Chung</a></h3>
                         <h5 class="card-text">Message: <i>Hi! We should connect.</i></h5>
                     </div>
-                    <a href="#" id="reject" onclick="reject()" class="btn btn-primary" style="margin-right:15px;">&nbsp Reject &nbsp</a>
-                    <a href="#" id="connect" onclick="konnect()" class="btn btn-primary" style="margin-right:15px;">&nbsp Connect &nbsp</a>
+                    <a href="#" id="reject3" onclick="reject3()" class="btn btn-primary" style="margin-right:15px;">&nbsp Reject &nbsp</a>
+                    <a href="#" id="connect3" onclick="konnect3()" class="btn btn-primary" style="margin-right:15px;">&nbsp Connect &nbsp</a>
                     <br />
                     <br />
                 </div>
