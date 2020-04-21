@@ -136,14 +136,26 @@
             var list = document.getElementById('list1');
 
             g = document.createElement('div');
+            l = document.createElement('button');
+            l.setAttribute("id", "deletebutton");
+            l.setAttribute("class", "btn btn-outline-secondary");
+            l.innerHTML = "x";
+            g.setAttribute("onclick", "remove(this)")
+            console.log(l)
             g.setAttribute("id", "card6");
             g.setAttribute("class", "goal-card");
-            g.setAttribute("src", "")
             g.setAttribute("draggable", "true");
             g.setAttribute("ondragstart", "dragStart(event)");
             g.innerHTML = input;
+            g.appendChild(l)
+            console.log(g)
             list.appendChild(g);
 
+            var add = document.getElementById('add-a-list-btn');
+            var save = document.getElementById('save-list-box');
+
+            add.style.display = 'inline';
+            save.style.display = 'none';
             document.getElementById("myform").reset();
 
         }
@@ -472,7 +484,7 @@
         <div class="board-layout">
 
             <div class="left">
-                <div class="board-text">Goals</div>
+                <div class="board-text"><span id="eyedee"></span>'s Goals</div>
 
             </div>
 
@@ -486,8 +498,8 @@
                             <div onclick="addItem()" id="add-a-list-btn">Add an item...</div>
                             <div id="save-list-box">
                                 <form id="myform" name="myform">
-                                    <input id="list-input-box" placeholder="Add an item..." />        
-                                <button onclick="addGoal()" type="button" id="save-list-btn">Save</button>
+                                    <input id="list-input-box" class="form-control mr-sm-2" placeholder="Add an item..." />        
+                                <button onclick="addGoal()" type="button" id="save-list-btn" class="btn btn-primary">Save</button>
                                 </form>  
 </div>
                     </div>
